@@ -74,7 +74,7 @@ app.get('/download', async (req, res) => {
     const type = response.headers.get('content-type') || '';
     if (!type.toLowerCase().startsWith('video/')) return res.status(422).send('URL is not a direct video file.');
     res.setHeader('Content-Type', type);
-    res.setHeader('Content-Disposition', 'attachment; filename="clipflow-video"');
+    res.setHeader('Content-Disposition', 'attachment; filename="clipflow-video.mp4"');
     const length = response.headers.get('content-length');
     if (length) res.setHeader('Content-Length', length);
     if (!response.body) return res.status(502).send('No media stream available.');
