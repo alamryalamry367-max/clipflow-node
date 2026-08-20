@@ -41,7 +41,18 @@ async function validateRemoteUrl(value) {
   return u;
 }
 
+function detectPlatform(value) {
+  let host;
+  try { host = new URL(value).hostname.toLowerCase().replace(/^www./, ""); } catch { return "unknown"; }
+  if (host === "youtube.com" || host === "youtu.be" || host.endsWith(".youtube.com")) return "youtube";
+  if (host === "tiktok.com" || host.endsWith(".tiktok.com")) return "tiktok";
+  if (host === "instagram.com" || host.endsWith(".instagram.com")) return "instagram";
+  if (host === "facebook.com" || host === "fb.watch" || host.endsWith(".facebook.com")) return "facebook";
+  return "direct";
+}
+
 async function fetchMedia(value, method = 'HEAD') {
+
   const u = await validateRemoteUrl(value);
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 8000);
@@ -52,6 +63,7 @@ async function fetchMedia(value, method = 'HEAD') {
 
 app.post('/api/resolve', async (req, res) => {
   const { url } = req.body || {};
+  const platform = detectPlatform(url);
   if (!url) return res.status(400).json({ error: 'Paste a URL first.' });
   try {
     const response = await fetchMedia(url, 'HEAD');
@@ -60,7 +72,7 @@ app.post('/api/resolve', async (req, res) => {
     if (!type.toLowerCase().startsWith('video/')) {
       return res.status(422).json({ error: 'This URL does not point directly to a video file. ClipFlow V1 does not bypass platform protections.' });
     }
-    res.json({ ok: true, finalUrl: response.url, contentType: type, contentLength: length ? Number(length) : null });
+    res.json({ ok: true, platform, finalUrl: response.url, contentType: type, contentLength: length ? Number(length) : null });
   } catch (e) {
     res.status(400).json({ error: e.name === 'AbortError' ? 'The source took too long to respond.' : (e.message || 'Could not verify this URL.') });
   }
