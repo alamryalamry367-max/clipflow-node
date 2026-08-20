@@ -1,7 +1,7 @@
-FROM node:20-bookworm
+FROM node:22-bookworm
 
 RUN apt-get update && \
-    apt-get install -y ffmpeg python3 python3-pip deno git && \
+    apt-get install -y ffmpeg python3 python3-pip git && \
     pip3 install --break-system-packages -U "yt-dlp[default]" bgutil-ytdlp-pot-provider && \
     git clone --depth 1 --branch 1.3.1 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git /opt/bgutil-ytdlp-pot-provider && \
     cd /opt/bgutil-ytdlp-pot-provider/server && \
