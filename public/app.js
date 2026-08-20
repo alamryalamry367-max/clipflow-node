@@ -19,7 +19,7 @@ async function check() {
   show('Verifying the media URL…', 'loading');
 
   try {
-    const r = await fetch('/api/resolve', {
+    const r = await fetch('/api/resolve?v=2', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({url})
