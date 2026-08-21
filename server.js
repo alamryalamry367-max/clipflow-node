@@ -153,7 +153,7 @@ app.post('/api/resolve', async (req, res) => {
     if (platform === 'youtube') {
       resolveArgs.push(
         '--extractor-args',
-        'youtube:player_client=web',
+        'youtube:player_client=mweb',
         '--extractor-args',
         'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416'
       );
@@ -212,7 +212,7 @@ app.get('/download', async (req, res) => {
       '--no-warnings',
       '--quiet',
       '--extractor-args',
-      'youtube:player_client=web',
+      'youtube:player_client=mweb',
       '--extractor-args',
       'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416',
       '--format',
@@ -325,7 +325,7 @@ app.get('/debug/ytdlp', async (_, res) => {
     '--simulate',
     '--get-title',
     '--extractor-args',
-    'youtube:player_client=web',
+    'youtube:player_client=mweb',
     '--extractor-args',
     'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416',
     'https://www.youtube.com/watch?v=qYYozfEtv_E'
