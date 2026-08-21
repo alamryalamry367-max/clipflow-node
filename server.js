@@ -317,6 +317,38 @@ app.get('/download', async (req, res) => {
     }
   }
 });
+app.get('/debug/ytdlp', async (_, res) => {
+  const { spawn } = require('child_process');
+
+  const child = spawn('yt-dlp', [
+    '-v',
+    '--simulate',
+    '--get-title',
+    '--extractor-args',
+    'youtube:player_client=mweb,android_vr',
+    '--extractor-args',
+    'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416',
+    'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+  ]);
+
+  let output = '';
+  child.stdout.on('data', d => output += d.toString());
+  child.stderr.on('data', d => output += d.toString());
+
+  child.on('close', code => {
+    const lines = output.split('\n').filter(line =>
+      line.includes('PO Token') ||
+      line.includes('bgutil') ||
+      line.includes('Generating a') ||
+      line.includes('Retrieved a') ||
+      line.includes('403') ||
+      line.includes('ERROR')
+    );
+
+    res.json({ code, lines });
+  });
+});
+
 app.get('/debug/bgutil', async (_, res) => {
   try {
     const r = await fetch('http://127.0.0.1:4416/ping');
