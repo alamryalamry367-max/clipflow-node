@@ -16,6 +16,7 @@ RUN npm install
 
 COPY . .
 
+ENV YT_DLP_POT_PROVIDER_URL=http://127.0.0.1:4416
 EXPOSE 3000
 
 CMD ["sh", "-c", "node /opt/bgutil-ytdlp-pot-provider/server/build/main.js & exec node server.js"]
