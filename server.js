@@ -379,6 +379,10 @@ app.get('/terms', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'terms.html'))
 );
 
+app.get('/dmca', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'dmca.html'))
+);
+
 app.get('/robots.txt', (_, res) =>
   res.type('text').send(
     'User-agent: *\nAllow: /\nSitemap: /sitemap.xml\n'
@@ -392,6 +396,7 @@ app.get('/sitemap.xml', (_, res) =>
 <url><loc>/</loc></url>
 <url><loc>/privacy</loc></url>
 <url><loc>/terms</loc></url>
+<url><loc>/dmca</loc></url>
 </urlset>`
   )
 );
