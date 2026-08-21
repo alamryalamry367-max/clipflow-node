@@ -203,7 +203,7 @@ app.get('/download', async (req, res) => {
       '--no-warnings',
       '--quiet',
       '--extractor-args',
-      'youtube:player_client=mweb',
+      'youtube:player_client=android_vr',
       '--format',
       'bestvideo*+bestaudio/best',
       '--merge-output-format',
