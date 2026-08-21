@@ -371,6 +371,10 @@ app.get('/debug/bgutil', async (_, res) => {
   }
 });
 
+app.get('/tiktok-video-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
+);
+
 app.get('/privacy', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'privacy.html'))
 );
