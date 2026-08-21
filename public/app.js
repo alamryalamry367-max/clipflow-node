@@ -2,74 +2,41 @@ const input = document.getElementById('url');
 const btn = document.getElementById('go');
 const result = document.getElementById('result');
 
-const formatBytes = n => !n ? '' : `${(n / 1048576).toFixed(1)} MB`;
-
-function show(html, kind='') {
+function show(html, kind = '') {
   result.className = `result ${kind}`;
   result.innerHTML = html;
 }
 
-async function check() {
+function startDownload() {
   const url = input.value.trim();
 
-  if (!url) return show('Paste a URL first.', 'error');
+  if (!url) {
+    show('Paste a video URL first.', 'error');
+    input.focus();
+    return;
+  }
 
   btn.disabled = true;
-  btn.textContent = 'Checking…';
-  show('Verifying the media URL…', 'loading');
+  btn.textContent = 'Preparing download…';
 
-  try {
-    const r = await fetch('/api/resolve?v=2', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({url})
-    });
+  show(
+    '<div class="loading">Preparing your download…</div>',
+    'loading'
+  );
 
-    const d = await r.json();
+  setTimeout(() => { window.location.href = `/download?url=${encodeURIComponent(url)}`; }, 120);
 
-    if (!r.ok) throw new Error(d.error || 'Could not verify URL.');
-
-    const size = formatBytes(d.contentLength);
-
-    show(`
-      <div class="success">
-        <strong>Video detected · ${({youtube:"YouTube",tiktok:"TikTok",instagram:"Instagram",facebook:"Facebook",direct:"Direct Video"})[d.platform] || "Video"}</strong>
-        <span>${d.contentType}${size ? ` · ${size}` : ''}</span>
-
-        <a class="download" id="downloadBtn"
-           href="/download?url=${encodeURIComponent(url)}">
-           Download video
-        </a>
-
-        <div id="downloadStatus" class="download-status"></div>
-      </div>
-    `, 'ok');
-
-    const downloadBtn = document.getElementById('downloadBtn');
-    const downloadStatus = document.getElementById('downloadStatus');
-
-    downloadBtn.addEventListener('click', () => {
-      downloadBtn.textContent = 'Downloading…';
-      downloadBtn.style.pointerEvents = 'none';
-      downloadStatus.textContent = 'Your download has started…';
-
-      setTimeout(() => {
-        downloadBtn.textContent = '✓ Download complete';
-        downloadBtn.style.pointerEvents = 'auto';
-        downloadStatus.textContent = 'The video was downloaded successfully.';
-      }, 2500);
-    });
-
-  } catch (e) {
-    show(e.message, 'error');
-  } finally {
+  setTimeout(() => {
     btn.disabled = false;
-    btn.textContent = 'Check video';
-  }
+    btn.textContent = 'Download video';
+  }, 3000);
 }
 
-btn.addEventListener('click', check);
+btn.addEventListener('click', startDownload);
 
 input.addEventListener('keydown', e => {
-  if (e.key === 'Enter') check();
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    startDownload();
+  }
 });

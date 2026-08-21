@@ -1,26 +1,209 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Downio — Fast Video Download Tool</title>
-<meta name="description" content="Downio is a fast, mobile-first tool for checking and downloading direct video URLs you own or are authorized to download.">
-<meta name="robots" content="index,follow"><meta property="og:title" content="Downio — Fast Video Download Tool"><meta property="og:description" content="Check a direct video URL and download authorized media.">
-<link rel="stylesheet" href="/styles.css?v=2">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Downio — Download Videos Fast</title>
+<meta name="description" content="Download videos quickly with Downio. Paste a video link and start your download.">
+<meta name="robots" content="index,follow">
+<meta property="og:title" content="Downio — Download Videos Fast">
+<meta property="og:description" content="Fast and simple video downloads.">
+<link rel="stylesheet" href="/styles.css?v=3">
 </head>
+
 <body>
-<header><a class="brand" href="/" aria-label="Downio home"><span class="mark" aria-hidden="true"></span><span>Down<span class="accent">io</span></span></a><nav><a href="#how">How it works</a><a href="#faq">FAQ</a><a href="/terms">Terms</a></nav></header>
+
+<header>
+  <a class="brand" href="/" aria-label="Downio home">
+    <span class="mark" aria-hidden="true"></span>
+    <span>Down<span class="accent">io</span></span>
+  </a>
+
+  <nav>
+    <a href="#how">How it works</a>
+    <a href="#faq">FAQ</a>
+    <a href="/terms">Terms</a>
+  </nav>
+</header>
+
 <main>
+
 <section class="hero">
-<div class="eyebrow">FAST · SIMPLE · MOBILE FIRST</div>
-<h1>Download your <span>authorized</span> videos.</h1>
-<p class="lead">Paste a direct video URL you own or have permission to download. Downio checks the media and gives you a clean download option.</p>
-<div class="tool" role="search"><input id="url" type="url" placeholder="Paste a direct video URL…" autocomplete="off" aria-label="Video URL"><button id="go">Check video</button></div>
-<div id="result" class="result" aria-live="polite"></div>
-<p class="notice">By using Downio, you confirm that you have the right to download the media.</p>
+
+  <div class="eyebrow">FAST · SIMPLE · FREE</div>
+
+  <h1>Download videos<br><span>without the hassle.</span></h1>
+
+  <p class="lead">
+    Paste your video link below and Downio will prepare it for download.
+  </p>
+
+  <div class="platform-icons" aria-label="Supported platforms">
+    <div class="platform-icon tiktok">
+      <span>♪</span>
+      <small>TikTok</small>
+    </div>
+
+    <div class="platform-icon instagram">
+      <span>◎</span>
+      <small>Instagram</small>
+    </div>
+
+    <div class="platform-icon facebook">
+      <span>f</span>
+      <small>Facebook</small>
+    </div>
+
+    <div class="platform-icon snapchat">
+      <span>👻</span>
+      <small>Snapchat</small>
+    </div>
+  </div>
+
+  <div class="tool" role="search">
+
+    <div class="input-wrap">
+      <input
+        id="url"
+        type="url"
+        placeholder="Paste video link here..."
+        autocomplete="off"
+        aria-label="Video URL"
+      >
+
+      <button
+        type="button"
+        id="paste"
+        class="paste"
+        aria-label="Paste from clipboard"
+      >
+        📋 Paste
+      </button>
+    </div>
+
+    <button id="go" class="download-main">
+      ↓ Download
+    </button>
+
+  </div>
+
+  <div id="result" class="result" aria-live="polite"></div>
+
+  <p class="notice">
+    By using Downio, you confirm that you have the right to download the media.
+  </p>
+
 </section>
-<section class="platforms"><div class="section-head"><span>SUPPORTED PLATFORMS</span><h2>You can check links from these platforms.</h2></div><div class="platform-grid"><div class="platform-card"><strong>YouTube</strong><span>Link detection</span></div><div class="platform-card"><strong>TikTok</strong><span>Link detection</span></div><div class="platform-card"><strong>Instagram</strong><span>Link detection</span></div><div class="platform-card"><strong>Facebook</strong><span>Link detection</span></div><div class="platform-card"><strong>Direct Video</strong><span>MP4 and direct media</span></div></div></section><section id="how" class="section"><div class="section-head"><span>HOW IT WORKS</span><h2>Three steps. No account.</h2></div><div class="cards"><article><span>01</span><h3>Paste</h3><p>Add a direct video file URL from content you own or are authorized to use.</p></article><article><span>02</span><h3>Verify</h3><p>Downio checks whether the URL actually serves video media.</p></article><article><span>03</span><h3>Download</h3><p>Use the generated download action to save the authorized file.</p></article></div></section>
-<section id="faq" class="section faq"><div class="section-head"><span>FAQ</span><h2>Built for compliant use.</h2></div><details open><summary>Can I paste any social-media page?</summary><p>Not in V1. Platform pages may require official APIs, exports, authentication, or may restrict downloading. Downio does not bypass those controls.</p></details><details><summary>Does Downio store my videos?</summary><p>V1 streams direct media through the request path and does not intentionally maintain a video library. Production deployments should add explicit retention and privacy controls.</p></details><details><summary>How will Downio make money?</summary><p>The planned model is free utility traffic first, followed by compliant advertising and optional premium features once usage justifies the operating cost.</p></details></section>
+
+<section class="trust">
+  <div>
+    <strong>⚡ Fast</strong>
+    <span>Quick download processing</span>
+  </div>
+
+  <div>
+    <strong>🎥 High Quality</strong>
+    <span>Keep the best available quality</span>
+  </div>
+
+  <div>
+    <strong>📱 Mobile Friendly</strong>
+    <span>Works smoothly on your phone</span>
+  </div>
+</section>
+
+<section id="how" class="section">
+
+  <div class="section-head">
+    <span>HOW IT WORKS</span>
+    <h2>Three simple steps.</h2>
+  </div>
+
+  <div class="cards">
+
+    <article>
+      <span>01</span>
+      <h3>Copy</h3>
+      <p>Copy the video link from a supported platform.</p>
+    </article>
+
+    <article>
+      <span>02</span>
+      <h3>Paste</h3>
+      <p>Paste the link into the Downio download box.</p>
+    </article>
+
+    <article>
+      <span>03</span>
+      <h3>Download</h3>
+      <p>Press Download and save your video.</p>
+    </article>
+
+  </div>
+
+</section>
+
+<section id="faq" class="section faq">
+
+  <div class="section-head">
+    <span>FAQ</span>
+    <h2>Frequently asked questions.</h2>
+  </div>
+
+  <details open>
+    <summary>Which platforms does Downio support?</summary>
+    <p>
+      Downio currently supports supported TikTok, Instagram, Facebook,
+      Snapchat Spotlight and direct video URLs.
+    </p>
+  </details>
+
+  <details>
+    <summary>Does Downio store my videos?</summary>
+    <p>
+      Downio is designed to process downloads without maintaining a personal
+      video library.
+    </p>
+  </details>
+
+  <details>
+    <summary>Is Downio free?</summary>
+    <p>
+      Yes. Downio is designed as a free video download utility.
+    </p>
+  </details>
+
+</section>
+
 </main>
-<footer><span>© 2026 Downio</span><span><a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></span></footer>
+
+<footer>
+  <span>© 2026 Downio</span>
+  <span>
+    <a href="/privacy">Privacy</a> ·
+    <a href="/terms">Terms</a>
+  </span>
+</footer>
+
 <script src="/app.js"></script>
-</body></html>
+
+<script>
+const pasteBtn = document.getElementById('paste');
+const urlInput = document.getElementById('url');
+
+pasteBtn.addEventListener('click', async () => {
+  try {
+    const text = await navigator.clipboard.readText();
+
+    if (text) {
+      urlInput.value = text;
+      urlInput.focus();
+    }
+  } catch {
+    urlInput.focus();
+  }
+});
+</script>
+
+</body>
+</html>

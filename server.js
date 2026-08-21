@@ -99,6 +99,11 @@ function detectPlatform(value) {
     host.endsWith('.facebook.com')
   ) return 'facebook';
 
+  if (
+    host === 'snapchat.com' ||
+    host.endsWith('.snapchat.com')
+  ) return 'snapchat';
+
   return 'other';
 }
 
@@ -195,6 +200,7 @@ app.get('/download', async (req, res) => {
       platform === 'tiktok' ? 'clipflow-tiktok.mp4' :
       platform === 'instagram' ? 'clipflow-instagram.mp4' :
       platform === 'facebook' ? 'clipflow-facebook.mp4' :
+      platform === 'snapchat' ? 'clipflow-snapchat.mp4' :
       platform === 'youtube' ? 'clipflow-youtube.mp4' :
       'clipflow-video.mp4';
 
