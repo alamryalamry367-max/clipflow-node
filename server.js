@@ -317,6 +317,16 @@ app.get('/download', async (req, res) => {
     }
   }
 });
+app.get('/debug/bgutil', async (_, res) => {
+  try {
+    const r = await fetch('http://127.0.0.1:4416/ping');
+    const text = await r.text();
+    res.json({ ok: r.ok, status: r.status, response: text });
+  } catch (e) {
+    res.status(500).json({ ok: false, error: e.message });
+  }
+});
+
 app.get('/privacy', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'privacy.html'))
 );
