@@ -207,22 +207,28 @@ app.get('/download', async (req, res) => {
 
     const outputTemplate = path.join(tempDir, 'video.%(ext)s');
 
-    child = spawn('yt-dlp', [
+    const downloadArgs = [
       '--no-playlist',
       '--no-warnings',
       '--quiet',
-      '--extractor-args',
-      'youtube:player_client=mweb',
-      '--extractor-args',
-      'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416',
       '--format',
       'bestvideo*+bestaudio/best',
       '--merge-output-format',
       'mp4',
       '--output',
-      outputTemplate,
-      url
-    ]);
+      outputTemplate
+    ];
+
+    if (platform === 'youtube') {
+      downloadArgs.push(
+        '--extractor-args',
+        'youtube:player_client=mweb',
+        '--extractor-args',
+        'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416'
+      );
+    }
+
+    child = spawn('yt-dlp', [...downloadArgs, url]);
 
     let errorText = '';
 
