@@ -328,7 +328,7 @@ app.get('/debug/ytdlp', async (_, res) => {
     'youtube:player_client=mweb',
     '--extractor-args',
     'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416',
-    'https://www.youtube.com/watch?v=dQw4w9WgXcQ'
+    'https://www.youtube.com/watch?v=qYYozfEtv_E'
   ]);
 
   let output = '';
