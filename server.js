@@ -393,10 +393,10 @@ app.get('/sitemap.xml', (_, res) =>
   res.type('application/xml').send(
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>/</loc></url>
-<url><loc>/privacy</loc></url>
-<url><loc>/terms</loc></url>
-<url><loc>/dmca</loc></url>
+<url><loc>https://clipflow-node-1.onrender.com/</loc></url>
+<url><loc>https://clipflow-node-1.onrender.com/privacy</loc></url>
+<url><loc>https://clipflow-node-1.onrender.com/terms</loc></url>
+<url><loc>https://clipflow-node-1.onrender.com/dmca</loc></url>
 </urlset>`
   )
 );
