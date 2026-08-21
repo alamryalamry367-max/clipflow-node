@@ -148,9 +148,18 @@ app.post('/api/resolve', async (req, res) => {
 
     const platform = detectPlatform(url);
 
-    const title = await runYtDlp(url, [
-      '--get-title'
-    ]);
+    const resolveArgs = ['--get-title'];
+
+    if (platform === 'youtube') {
+      resolveArgs.push(
+        '--extractor-args',
+        'youtube:player_client=mweb,android_vr',
+        '--extractor-args',
+        'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416'
+      );
+    }
+
+    const title = await runYtDlp(url, resolveArgs);
 
     res.json({
       ok: true,
