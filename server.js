@@ -202,6 +202,8 @@ app.get('/download', async (req, res) => {
       '--no-playlist',
       '--no-warnings',
       '--quiet',
+      '--extractor-args',
+      'youtube:player_client=mweb',
       '--format',
       'bestvideo*+bestaudio/best',
       '--merge-output-format',
