@@ -399,16 +399,6 @@ app.get('/tiktok-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
 );
 
-app.get('/robots.txt', (_, res) => {
-  res.type('text/plain');
-  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.send(
-    'User-agent: *\n' +
-    'Allow: /\n' +
-    'Sitemap: https://clipflow-node-1.onrender.com/sitemap.xml\n'
-  );
-});
-
 app.get('/sitemap.xml', (_, res) =>
   res.type('application/xml').send(
     `<?xml version="1.0" encoding="UTF-8"?>
