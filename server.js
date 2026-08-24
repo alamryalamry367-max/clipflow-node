@@ -207,8 +207,11 @@ app.get('/download', async (req, res) => {
     const fs = require('fs');
     const os = require('os');
 
+    const baseTempDir = path.join(__dirname, 'temp-downloads');
+    await fs.promises.mkdir(baseTempDir, { recursive: true });
+
     tempDir = await fs.promises.mkdtemp(
-      path.join(os.tmpdir(), 'clipflow-')
+      path.join(baseTempDir, 'clipflow-')
     );
 
     const outputTemplate = path.join(tempDir, 'video.%(ext)s');
@@ -231,6 +234,15 @@ app.get('/download', async (req, res) => {
         'youtube:player_client=mweb',
         '--extractor-args',
         'youtubepot-bgutilhttp:base_url=http://127.0.0.1:4416'
+      );
+    }
+
+    if (platform === 'tiktok') {
+      downloadArgs.splice(
+        downloadArgs.indexOf('--format'),
+        4,
+        '--format',
+        'best'
       );
     }
 
@@ -383,6 +395,10 @@ app.get('/dmca', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'dmca.html'))
 );
 
+app.get('/tiktok-video-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
+);
+
 app.get('/robots.txt', (_, res) =>
   res.type('text').send(
     'User-agent: *\nAllow: /\nSitemap: /sitemap.xml\n'
@@ -397,6 +413,7 @@ app.get('/sitemap.xml', (_, res) =>
 <url><loc>https://clipflow-node-1.onrender.com/privacy</loc></url>
 <url><loc>https://clipflow-node-1.onrender.com/terms</loc></url>
 <url><loc>https://clipflow-node-1.onrender.com/dmca</loc></url>
+<url><loc>https://clipflow-node-1.onrender.com/tiktok-video-downloader</loc></url>
 </urlset>`
   )
 );
