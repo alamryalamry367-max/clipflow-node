@@ -1,2 +1,15 @@
 node_modules/
 .env
+
+# Backup files
+*.backup
+*.before-*
+
+# Temporary downloads and test folders
+temp-downloads/
+test-download/
+test-snapchat/
+test-tiktok/
+
+# Local test/info files
+snapchat-info.json
