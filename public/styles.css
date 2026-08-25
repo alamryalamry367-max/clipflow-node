@@ -650,3 +650,770 @@ footer{
   background:#514a72;
   box-shadow:none;
 }
+
+/* =========================================================
+   VOOXOR PREMIUM VISUAL IDENTITY
+   Visual-only layer — no functionality changes
+   ========================================================= */
+
+:root{
+  --bg:#050816;
+  --surface:#101626;
+  --surface-2:#121827;
+  --text:#F5F7FA;
+  --muted:#AEB6C8;
+  --line:rgba(255,255,255,.08);
+  --accent:#7B3DFF;
+  --accent-dark:#6840E8;
+  --accent-blue:#3B82FF;
+  --cyan:#00D4FF;
+  --shadow:0 22px 65px rgba(0,0,0,.42);
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(123,61,255,.14),transparent 30%),
+    radial-gradient(circle at 85% 25%,rgba(59,130,255,.07),transparent 25%),
+    #050816;
+}
+
+header{
+  background:rgba(5,8,22,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.brand{
+  color:#F5F7FA;
+}
+
+.brand .accent{
+  color:#F5F7FA;
+}
+
+/* VOOXOR logo mark */
+.mark{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:linear-gradient(135deg,#7B3DFF,#3B82FF);
+  box-shadow:
+    0 8px 24px rgba(123,61,255,.28),
+    0 0 22px rgba(59,130,255,.10);
+  overflow:hidden;
+}
+
+.mark:after{
+  content:"V↓";
+  color:#fff;
+  font-size:17px;
+  font-weight:950;
+  letter-spacing:-4px;
+  text-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+
+nav{
+  color:#AEB6C8;
+}
+
+nav a:hover{
+  color:#8A55FF;
+}
+
+.hero{
+  margin-top:62px;
+}
+
+.eyebrow{
+  background:rgba(123,61,255,.09);
+  border:1px solid rgba(123,61,255,.28);
+  color:#B99BFF;
+  box-shadow:0 0 25px rgba(123,61,255,.08);
+}
+
+h1 span{
+  background:linear-gradient(90deg,#8A55FF,#3B82FF);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.lead{
+  color:#AEB6C8;
+}
+
+.platform-icon span{
+  background:#101626;
+  border-color:rgba(255,255,255,.08);
+  box-shadow:0 8px 25px rgba(0,0,0,.22);
+}
+
+.tool{
+  background:rgba(16,22,38,.88);
+  border-color:rgba(255,255,255,.08);
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.42),
+    0 0 40px rgba(123,61,255,.05);
+}
+
+#url{
+  background:#0D111F;
+  color:#F5F7FA;
+}
+
+#url:focus{
+  box-shadow:inset 0 0 0 2px rgba(123,61,255,.35);
+}
+
+.paste{
+  background:#121827;
+  color:#AEB6C8;
+}
+
+.paste:hover{
+  color:#9B7AFF;
+}
+
+.download-main{
+  background:linear-gradient(135deg,#7B3DFF,#3B82FF);
+  box-shadow:0 10px 28px rgba(88,65,255,.24);
+}
+
+.download-main:hover{
+  background:linear-gradient(135deg,#8A55FF,#3B82FF);
+  box-shadow:0 12px 34px rgba(88,65,255,.32);
+}
+
+.result.loading{
+  color:#8A55FF;
+}
+
+.trust{
+  background:#101626;
+  border-color:rgba(255,255,255,.08);
+  box-shadow:0 18px 50px rgba(0,0,0,.28);
+}
+
+.trust div{
+  border-color:rgba(255,255,255,.08);
+}
+
+.section-head>span{
+  color:#8A55FF;
+}
+
+.cards article{
+  background:linear-gradient(145deg,#101626,#0D111F);
+  border-color:rgba(255,255,255,.08);
+  box-shadow:0 14px 40px rgba(0,0,0,.20);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+
+.cards article:hover{
+  transform:translateY(-3px);
+  border-color:rgba(123,61,255,.25);
+  box-shadow:0 20px 50px rgba(0,0,0,.32);
+}
+
+.cards article>span{
+  color:#9B7AFF;
+}
+
+details{
+  background:#101626;
+  border-color:rgba(255,255,255,.08);
+}
+
+footer{
+  border-color:rgba(255,255,255,.08);
+  color:#7F899D;
+}
+
+footer a:hover{
+  color:#8A55FF;
+}
+
+/* Keep platform brand colors limited to their icons */
+.platform-icon.tiktok span{
+  background:#11151c;
+}
+
+.platform-icon.instagram span{
+  background:linear-gradient(135deg,#7b2cff,#e1306c,#ff9a3c);
+}
+
+.platform-icon.facebook span{
+  background:#1877f2;
+}
+
+.platform-icon.snapchat span{
+  background:#fffc00;
+}
+
+@media(max-width:700px){
+  header{
+    background:rgba(5,8,22,.82);
+  }
+
+  .hero{
+    margin-top:45px;
+  }
+
+  .tool{
+    box-shadow:0 20px 50px rgba(0,0,0,.36);
+  }
+}
+
+/* =========================================================
+   VOOXOR — PREMIUM BRAND SYSTEM
+   VISUAL ONLY — DO NOT MODIFY FUNCTIONALITY
+   ========================================================= */
+
+:root{
+  --vooxor-bg:#050816;
+  --vooxor-bg-2:#080B18;
+  --vooxor-surface:#0D111F;
+  --vooxor-card:#101626;
+  --vooxor-card-2:#121827;
+  --vooxor-white:#F5F7FA;
+  --vooxor-muted:#AEB6C8;
+  --vooxor-purple:#7B3DFF;
+  --vooxor-purple-2:#8A55FF;
+  --vooxor-blue:#3B82FF;
+  --vooxor-cyan:#00D4FF;
+  --vooxor-border:rgba(255,255,255,.08);
+}
+
+/* ---------- GLOBAL ---------- */
+
+html{
+  background:var(--vooxor-bg);
+}
+
+body{
+  background:
+    radial-gradient(
+      700px 400px at 50% -120px,
+      rgba(123,61,255,.16),
+      transparent 70%
+    ),
+    radial-gradient(
+      600px 350px at 100% 35%,
+      rgba(59,130,255,.07),
+      transparent 70%
+    ),
+    linear-gradient(
+      180deg,
+      #050816 0%,
+      #080B18 48%,
+      #050816 100%
+    );
+  color:var(--vooxor-white);
+}
+
+/* ---------- HEADER ---------- */
+
+header{
+  position:relative;
+  z-index:10;
+  min-height:82px;
+  background:rgba(5,8,22,.60);
+  border-bottom:1px solid rgba(255,255,255,.035);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.brand{
+  gap:11px;
+  color:#fff;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-1.4px;
+}
+
+/* ---------- VOOXOR ICON ---------- */
+
+.mark{
+  width:36px;
+  height:36px;
+  flex:none;
+  position:relative;
+  border-radius:11px;
+  background:
+    linear-gradient(
+      145deg,
+      #8A55FF 0%,
+      #7B3DFF 45%,
+      #3B82FF 100%
+    );
+  box-shadow:
+    0 8px 28px rgba(123,61,255,.25),
+    inset 0 1px 1px rgba(255,255,255,.18);
+  overflow:hidden;
+}
+
+/* geometric V */
+.mark:before{
+  content:"";
+  position:absolute;
+  width:19px;
+  height:14px;
+  left:8px;
+  top:8px;
+  border-left:3px solid #fff;
+  border-bottom:3px solid #fff;
+  transform:rotate(-45deg) skew(-8deg,-8deg);
+  opacity:.98;
+}
+
+/* download arrow */
+.mark:after{
+  content:"↓";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding-top:5px;
+  color:#fff;
+  font-size:17px;
+  line-height:1;
+  font-weight:950;
+  text-shadow:0 2px 7px rgba(0,0,0,.25);
+}
+
+.brand > span:last-child{
+  color:#fff;
+}
+
+/* ---------- NAV ---------- */
+
+nav{
+  gap:28px;
+  color:#9EA8BC;
+  font-size:13px;
+  font-weight:650;
+}
+
+nav a{
+  position:relative;
+  padding:28px 0 24px;
+  transition:color .2s ease;
+}
+
+nav a:hover{
+  color:#fff;
+}
+
+nav a:hover:after{
+  content:"";
+  position:absolute;
+  left:20%;
+  right:20%;
+  bottom:13px;
+  height:2px;
+  border-radius:99px;
+  background:linear-gradient(
+    90deg,
+    var(--vooxor-purple),
+    var(--vooxor-blue)
+  );
+  box-shadow:0 0 12px rgba(123,61,255,.45);
+}
+
+/* ---------- HERO ---------- */
+
+.hero{
+  position:relative;
+  width:min(900px,calc(100% - 28px));
+  margin:76px auto 0;
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:300px;
+  left:50%;
+  top:-100px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse,
+    rgba(123,61,255,.10),
+    transparent 70%
+  );
+  pointer-events:none;
+  z-index:-1;
+}
+
+.eyebrow{
+  padding:8px 15px;
+  border:1px solid rgba(123,61,255,.28);
+  background:rgba(123,61,255,.07);
+  color:#BFAEFF;
+  box-shadow:
+    inset 0 0 18px rgba(123,61,255,.035),
+    0 0 22px rgba(123,61,255,.06);
+}
+
+h1{
+  font-weight:900;
+  letter-spacing:-3.5px;
+  color:#fff;
+}
+
+h1 span{
+  background:linear-gradient(
+    90deg,
+    #8A55FF 0%,
+    #7B3DFF 38%,
+    #3B82FF 100%
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
+}
+
+.lead{
+  color:var(--vooxor-muted);
+}
+
+/* ---------- PLATFORM ICONS ---------- */
+
+.platform-icons{
+  gap:18px;
+  margin-top:8px;
+}
+
+.platform-icon{
+  min-width:64px;
+}
+
+.platform-icon span{
+  width:46px;
+  height:46px;
+  border-radius:14px;
+  border:1px solid var(--vooxor-border);
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.25),
+    inset 0 1px 1px rgba(255,255,255,.04);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.platform-icon:hover span{
+  transform:translateY(-3px);
+  box-shadow:
+    0 14px 32px rgba(0,0,0,.35);
+}
+
+/* platform colors stay inside icons */
+.platform-icon.tiktok span{
+  background:#10131B;
+  color:#fff;
+}
+
+.platform-icon.instagram span{
+  background:linear-gradient(
+    135deg,
+    #7b2cff,
+    #e1306c,
+    #ff9a3c
+  );
+}
+
+.platform-icon.facebook span{
+  background:#1877F2;
+}
+
+.platform-icon.snapchat span{
+  background:#FFFC00;
+  color:#111;
+}
+
+.platform-icon small{
+  color:#7F899D;
+}
+
+/* ---------- DOWNLOAD TOOL ---------- */
+
+.tool{
+  position:relative;
+  padding:11px;
+  gap:11px;
+  background:rgba(16,22,38,.78);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:24px;
+  box-shadow:
+    0 30px 80px rgba(0,0,0,.42),
+    0 0 50px rgba(123,61,255,.055),
+    inset 0 1px 0 rgba(255,255,255,.035);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+}
+
+#url{
+  height:60px;
+  background:#0D111F;
+  border:1px solid rgba(255,255,255,.045);
+  border-radius:16px;
+  color:#fff;
+}
+
+#url::placeholder{
+  color:#69748A;
+}
+
+#url:focus{
+  box-shadow:
+    inset 0 0 0 1px rgba(123,61,255,.55),
+    0 0 25px rgba(123,61,255,.08);
+}
+
+.paste{
+  background:#151C2D;
+  color:#B8C1D2;
+  border:1px solid rgba(255,255,255,.06);
+  transition:.2s ease;
+}
+
+.paste:hover{
+  color:#fff;
+  background:#1B2235;
+}
+
+/* ---------- DOWNLOAD BUTTON ---------- */
+
+.download-main{
+  height:60px;
+  min-width:178px;
+  border-radius:16px;
+  background:
+    linear-gradient(
+      135deg,
+      #7B3DFF 0%,
+      #7045F5 45%,
+      #3B82FF 100%
+    );
+  box-shadow:
+    0 10px 30px rgba(83,65,255,.25),
+    inset 0 1px 0 rgba(255,255,255,.14);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+.download-main:hover{
+  transform:translateY(-2px);
+  filter:brightness(1.06);
+  box-shadow:
+    0 14px 38px rgba(83,65,255,.34),
+    0 0 28px rgba(123,61,255,.12);
+}
+
+/* ---------- TRUST ---------- */
+
+.trust{
+  background:rgba(16,22,38,.70);
+  border:1px solid var(--vooxor-border);
+  border-radius:22px;
+  box-shadow:0 18px 55px rgba(0,0,0,.28);
+}
+
+.trust div{
+  border-color:var(--vooxor-border);
+}
+
+.trust strong{
+  color:#F5F7FA;
+}
+
+.trust span{
+  color:#8994A8;
+}
+
+/* ---------- SECTIONS ---------- */
+
+.section{
+  margin-top:110px;
+}
+
+.section-head{
+  margin-bottom:32px;
+}
+
+.section-head>span{
+  color:#9B7AFF;
+  font-size:10px;
+  letter-spacing:2px;
+}
+
+.section-head h2{
+  color:#fff;
+  font-weight:850;
+}
+
+/* ---------- FEATURE CARDS ---------- */
+
+.cards{
+  gap:18px;
+}
+
+.cards article{
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16,22,38,.96),
+      rgba(13,17,31,.96)
+    );
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:20px;
+  padding:27px;
+  box-shadow:0 18px 45px rgba(0,0,0,.24);
+  transition:
+    transform .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease;
+}
+
+.cards article:before{
+  content:"";
+  position:absolute;
+  width:130px;
+  height:130px;
+  right:-60px;
+  top:-60px;
+  background:radial-gradient(
+    circle,
+    rgba(123,61,255,.10),
+    transparent 70%
+  );
+  pointer-events:none;
+}
+
+.cards article:hover{
+  transform:translateY(-5px);
+  border-color:rgba(123,61,255,.25);
+  box-shadow:
+    0 24px 55px rgba(0,0,0,.34),
+    0 0 30px rgba(123,61,255,.045);
+}
+
+.cards article>span{
+  color:#9B7AFF;
+}
+
+.cards h3{
+  color:#F5F7FA;
+}
+
+.cards p{
+  color:#9DA8BA;
+}
+
+/* ---------- FAQ ---------- */
+
+details{
+  background:rgba(16,22,38,.82);
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;
+  transition:border-color .2s ease,background .2s ease;
+}
+
+details:hover{
+  border-color:rgba(123,61,255,.22);
+  background:#111829;
+}
+
+summary{
+  color:#F5F7FA;
+}
+
+details p{
+  color:#9DA8BA;
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+  margin-top:30px;
+  border-color:rgba(255,255,255,.07);
+  color:#737E92;
+}
+
+footer a:hover{
+  color:#9B7AFF;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:700px){
+
+  header{
+    min-height:68px;
+    background:rgba(5,8,22,.82);
+  }
+
+  .brand{
+    font-size:22px;
+  }
+
+  .mark{
+    width:32px;
+    height:32px;
+  }
+
+  nav{
+    display:none;
+  }
+
+  .hero{
+    margin-top:48px;
+  }
+
+  h1{
+    font-size:43px;
+    letter-spacing:-2.5px;
+  }
+
+  .platform-icons{
+    gap:9px;
+  }
+
+  .platform-icon{
+    min-width:57px;
+  }
+
+  .platform-icon span{
+    width:40px;
+    height:40px;
+    border-radius:12px;
+  }
+
+  .tool{
+    border-radius:21px;
+  }
+
+  #url{
+    height:56px;
+  }
+
+  .download-main{
+    height:56px;
+    min-width:0;
+    width:100%;
+  }
+
+  .cards article{
+    border-radius:18px;
+  }
+
+}
+
+/* =========================================================
+   END VOOXOR VISUAL SYSTEM
+   ========================================================= */
