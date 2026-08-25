@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clipflow-node-1.onrender.com/sitemap.xml
+Sitemap: https://vooxor.com/sitemap.xml

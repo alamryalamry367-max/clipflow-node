@@ -1,8 +1,8 @@
 {
-  "name": "clipflow",
+  "name": "vooxor",
   "version": "1.0.0",
   "private": true,
-  "description": "ClipFlow V1 - compliant direct-media downloader MVP.",
+  "description": "VOOXOR - compliant public-media downloader.",
   "main": "server.js",
   "scripts": { "start": "node server.js" },
   "engines": { "node": ">=20" },

@@ -403,11 +403,11 @@ app.get('/sitemap.xml', (_, res) =>
   res.type('application/xml').send(
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://clipflow-node-1.onrender.com/</loc></url>
-<url><loc>https://clipflow-node-1.onrender.com/privacy</loc></url>
-<url><loc>https://clipflow-node-1.onrender.com/terms</loc></url>
-<url><loc>https://clipflow-node-1.onrender.com/dmca</loc></url>
-<url><loc>https://clipflow-node-1.onrender.com/tiktok-video-downloader</loc></url>
+<url><loc>https://vooxor.com/</loc></url>
+<url><loc>https://vooxor.com/privacy</loc></url>
+<url><loc>https://vooxor.com/terms</loc></url>
+<url><loc>https://vooxor.com/dmca</loc></url>
+<url><loc>https://vooxor.com/tiktok-video-downloader</loc></url>
 </urlset>`
   )
 );
@@ -417,5 +417,5 @@ app.get('*splat', (_, res) =>
 );
 
 app.listen(PORT, () =>
-  console.log(`ClipFlow V1 running on http://localhost:${PORT}`)
+  console.log(`VOOXOR running on http://localhost:${PORT}`)
 );
