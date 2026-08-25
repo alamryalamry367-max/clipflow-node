@@ -40,3 +40,23 @@ input.addEventListener('keydown', e => {
     startDownload();
   }
 });
+
+const pasteBtn = document.getElementById('paste');
+
+if (pasteBtn) {
+  pasteBtn.addEventListener('click', async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+
+      if (text && text.trim()) {
+        input.value = text.trim();
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    } catch (err) {
+      // Clipboard permission unavailable.
+      // User can paste manually into the focused input.
+    }
+
+    input.focus();
+  });
+}
