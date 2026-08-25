@@ -237,15 +237,6 @@ app.get('/download', async (req, res) => {
       );
     }
 
-    if (platform === 'tiktok') {
-      downloadArgs.splice(
-        downloadArgs.indexOf('--format'),
-        4,
-        '--format',
-        'best'
-      );
-    }
-
     child = spawn('yt-dlp', [...downloadArgs, url]);
 
     let errorText = '';
