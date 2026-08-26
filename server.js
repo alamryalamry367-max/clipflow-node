@@ -390,19 +390,6 @@ app.get('/tiktok-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
 );
 
-app.get('/sitemap.xml', (_, res) =>
-  res.type('application/xml').send(
-    `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<url><loc>https://vooxor.com/</loc></url>
-<url><loc>https://vooxor.com/privacy</loc></url>
-<url><loc>https://vooxor.com/terms</loc></url>
-<url><loc>https://vooxor.com/dmca</loc></url>
-<url><loc>https://vooxor.com/tiktok-video-downloader</loc></url>
-</urlset>`
-  )
-);
-
 app.get('*splat', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'index.html'))
 );
