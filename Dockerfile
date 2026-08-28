@@ -4,7 +4,7 @@ RUN apt-get update && \
     apt-get install -y ffmpeg python3 python3-pip git curl unzip && \
     curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh && \
     deno --version && \
-    pip3 install --break-system-packages -U --pre "yt-dlp[default]" bgutil-ytdlp-pot-provider && \
+    pip3 install --break-system-packages -U --pre "yt-dlp[default]" "curl-cffi" bgutil-ytdlp-pot-provider && \
     yt-dlp --version && \
     git clone --depth 1 --branch 1.3.2 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git /opt/bgutil-ytdlp-pot-provider && \
     cd /opt/bgutil-ytdlp-pot-provider/server && \
