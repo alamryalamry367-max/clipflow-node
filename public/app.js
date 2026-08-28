@@ -60,3 +60,37 @@ if (pasteBtn) {
     input.focus();
   });
 }
+
+/* VOOXOR Install App */
+(function () {
+  let deferredPrompt = null;
+  const installButton = document.getElementById("install-app");
+
+  if (!installButton) return;
+
+  window.addEventListener("beforeinstallprompt", function (event) {
+    event.preventDefault();
+    deferredPrompt = event;
+    installButton.hidden = false;
+  });
+
+  installButton.addEventListener("click", async function () {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+
+    try {
+      await deferredPrompt.userChoice;
+    } catch (e) {
+      console.warn("Install prompt error:", e);
+    }
+
+    deferredPrompt = null;
+    installButton.hidden = true;
+  });
+
+  window.addEventListener("appinstalled", function () {
+    deferredPrompt = null;
+    installButton.hidden = true;
+  });
+})();
