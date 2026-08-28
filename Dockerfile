@@ -5,6 +5,7 @@ RUN apt-get update && \
     curl -fsSL https://deno.land/install.sh | DENO_INSTALL=/usr/local sh && \
     deno --version && \
     pip3 install --break-system-packages -U --pre "yt-dlp[default]" bgutil-ytdlp-pot-provider && \
+    yt-dlp --version && \
     git clone --depth 1 --branch 1.3.2 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git /opt/bgutil-ytdlp-pot-provider && \
     cd /opt/bgutil-ytdlp-pot-provider/server && \
     npm ci && \
