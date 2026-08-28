@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VOOXOR - محمل فيديو مجاني من تيك توك وإنستغرام وفيسبوك وسناب شات</title>
+<meta name="description" content="VOOXOR أداة مجانية لتحميل الفيديوهات من تيك توك وإنستغرام وفيسبوك وسناب شات. سريعة وبسيطة ومتوافقة مع الجوال والكمبيوتر.">
+<meta name="robots" content="index,follow">
+<meta name="author" content="VOOXOR">
+<meta name="google-site-verification" content="DLqrvVAQoX4GTR6H9YSe5Ig7Zx7nGcGsGn_1N9scIEQ" />
+<link rel="canonical" href="https://vooxor.com/ar/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vooxor.com/">
+<meta property="og:site_name" content="VOOXOR">
+<meta property="og:title" content="VOOXOR - محمل فيديو مجاني for تيك توك, إنستغرام, فيسبوك & سناب شات">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VOOXOR - محمل فيديو مجاني">
+<meta name="twitter:description" content="تحميل supported public videos from تيك توك, إنستغرام, فيسبوك and سناب شات with VOOXOR.">
+<meta property="og:description" content="تحميل supported public videos online with VOOXOR. سريع, simple and mobile-friendly video downloading.">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://vooxor.com/#website",
+      "url": "https://vooxor.com/",
+      "name": "VOOXOR",
+      "description": "Free online video downloader for supported social video platforms."
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://vooxor.com/#organization",
+      "name": "VOOXOR",
+      "url": "https://vooxor.com/",
+      "description": "VOOXOR provides a simple online tool for downloading supported public videos."
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="/styles.css?v=3">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@700;800;900&display=swap');
+</style>
+
+</head>
+
+<body>
+
+<header>
+  <a class="brand" href="/" aria-label="VOOXOR home"
+style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
+    <img src="/vooxor-logo.png"
+         alt="VOOXOR icon"
+         style="height:42px;width:42px;object-fit:contain;display:block;
+                filter:drop-shadow(0 0 10px rgba(139,92,246,.35));">
+
+    <span style="
+        font-family:'Sora',sans-serif;
+        font-size:25px;
+        font-weight:800;
+        line-height:1;
+        letter-spacing:-1.6px;
+        background:linear-gradient(100deg,#ffffff 0%,#f5e9ff 42%,#c084fc 72%,#818cf8 100%);
+        -webkit-background-clip:text;
+        background-clip:text;
+        color:transparent;
+        white-space:nowrap;
+        text-shadow:0 0 22px rgba(139,92,246,.18);
+    ">VOOXOR</span>
+</a>
+
+  <nav>
+    <a href="#how">طريقة الاستخدام</a>
+    <a href="#faq">الأسئلة الشائعة</a>
+    <a href="/terms">الشروط</a>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero">
+
+  <div class="eyebrow">سريع · بسيط · مجاني</div>
+
+  <h1>
+    محمل فيديو مجاني
+    <br>
+    <span>حمّل الفيديوهات عبر الإنترنت — بسرعة وسهولة</span>
+  </h1>
+
+  <p class="lead">
+    تحميل supported public videos online from تيك توك, إنستغرام, فيسبوك
+    and سناب شات. الصق your video link and VOOXOR will prepare it for download
+    in seconds — directly from your phone or computer.
+  </p>
+
+  <div class="platform-icons" aria-label="Supported video platforms">
+
+    <div class="platform-icon tiktok">
+      <span>♪</span>
+      <small>تيك توك</small>
+    </div>
+
+    <div class="platform-icon instagram">
+      <span>◎</span>
+      <small>إنستغرام</small>
+    </div>
+
+    <div class="platform-icon facebook">
+      <span>f</span>
+      <small>فيسبوك</small>
+    </div>
+
+    <div class="platform-icon snapchat">
+      <span>👻</span>
+      <small>سناب شات</small>
+    </div>
+
+  </div>
+
+  <div class="tool" role="search">
+
+    <div class="input-wrap">
+      <input
+        id="url"
+        type="url"
+        placeholder="الصق رابط الفيديو هنا..."
+        autocomplete="off"
+        aria-label="Video URL"
+      >
+
+      <button
+        type="button"
+        id="paste"
+        class="paste"
+        aria-label="الصق from clipboard"
+      >
+        📋 الصق
+      </button>
+    </div>
+
+    <button id="go" class="download-main">
+      ↓ تحميل
+    </button>
+
+  </div>
+
+  <div id="result" class="result" aria-live="polite"></div>
+
+  <p class="notice">
+    حمّل فقط الفيديوهات التي تملكها أو لديك إذن بتحميلها.
+  </p>
+
+</section>
+
+<section class="trust">
+  <div>
+    <strong>⚡ سريع</strong>
+    <span>معالجة سريعة للتحميل</span>
+  </div>
+
+  <div>
+    <strong>🎥 جودة عالية</strong>
+    <span>الحفاظ على أفضل جودة متاحة</span>
+  </div>
+
+  <div>
+    <strong>📱 متوافق مع الجوال</strong>
+    <span>يعمل بسهولة على هاتفك</span>
+  </div>
+</section>
+
+<section id="how" class="section">
+
+  <div class="section-head">
+    <span>طريقة الاستخدام</span>
+    <h2>ثلاث خطوات بسيطة.</h2>
+  </div>
+
+  <div class="cards">
+
+    <article>
+      <span>01</span>
+      <h3>انسخ</h3>
+      <p>انسخ the video link from a supported platform.</p>
+    </article>
+
+    <article>
+      <span>02</span>
+      <h3>الصق</h3>
+      <p>الصق the link into the VOOXOR download box.</p>
+    </article>
+
+    <article>
+      <span>03</span>
+      <h3>تحميل</h3>
+      <p>Press تحميل and save your video.</p>
+    </article>
+
+  </div>
+
+</section>
+
+<section class="section seo-content">
+
+  <div class="section-head">
+    <span>محمل فيديوهات عبر الإنترنت</span>
+    <h2>تحميل Videos Online with VOOXOR</h2>
+  </div>
+
+  <div class="seo-text">
+
+    <p>
+      VOOXOR هو محمل فيديوهات مجاني عبر الإنترنت مصمم لجعل حفظ
+      supported public videos simple and convenient. انسخ a video link,
+      paste it into the downloader above, and start the download from your
+      mobile phone, tablet, or computer.
+    </p>
+
+    <p>
+      لا تحتاج إلى خطوات معقدة. يوفر VOOXOR طريقة بسيطة
+      for supported links from popular social video platforms.
+    </p>
+
+    <h3>تيك توك Video تحميلer</h3>
+    <p>
+      هل تبحث عن محمل فيديوهات بسيط من تيك توك؟ انسخ رابط
+      supported public تيك توك video, paste it into VOOXOR, and press تحميل.
+      The service will process the compatible link and prepare the available
+      media for download.
+    </p>
+
+    <h3>إنستغرام Video تحميلer</h3>
+    <p>
+      VOOXOR supports compatible public إنستغرام video links. انسخ the video
+      URL from إنستغرام, paste it into the VOOXOR downloader, and start the
+      download using the same simple process.
+    </p>
+
+    <h3>فيسبوك Video تحميلer</h3>
+    <p>
+      حمّل فيديوهات فيسبوك العامة المدعومة عبر الإنترنت باستخدام VOOXOR. ببساطة
+      copy the فيسبوك video URL, paste it into the download box, and let
+      VOOXOR process the compatible media.
+    </p>
+
+    <h3>سناب شات Video تحميلer</h3>
+    <p>
+      VOOXOR also supports compatible public سناب شات Spotlight video links.
+      انسخ a supported Spotlight URL, paste it into the downloader, and start
+      the download.
+    </p>
+
+    <h3>How to تحميل a Video</h3>
+    <p>
+      استخدام VOOXOR يتطلب ثلاث خطوات بسيطة: انسخ رابط
+      public video, paste the link into the VOOXOR downloader, and press
+      تحميل. If the URL is supported, VOOXOR will prepare the available
+      video for download.
+    </p>
+
+    <h3>Video تحميلer for Mobile and Desktop</h3>
+    <p>
+      تم تصميم VOOXOR للعمل مع المتصفحات الحديثة وعلى الهواتف
+      tablets, and desktop computers. The interface is mobile-friendly,
+      lightweight, and focused on making the download process straightforward.
+    </p>
+
+    <h3>تحميل Responsibly</h3>
+    <p>
+      حمّل فقط المحتوى الذي تملكه أو لديك إذن بتحميله.
+      Respect copyright, privacy, and the terms of service of the platform
+      where the content is hosted.
+    </p>
+
+  </div>
+
+</section>
+
+<section id="faq" class="section faq">
+
+  <div class="section-head">
+    <span>الأسئلة الشائعة</span>
+    <h2>الأسئلة الشائعة</h2>
+  </div>
+
+  <details open>
+    <summary>ما هو VOOXOR؟</summary>
+    <p>
+      VOOXOR هو محمل فيديوهات مجاني عبر الإنترنت للروابط العامة المتوافقة
+      links from supported social platforms.
+    </p>
+  </details>
+
+  <details>
+    <summary>ما المنصات التي يدعمها VOOXOR؟</summary>
+    <p>
+      VOOXOR currently supports compatible public video links from تيك توك,
+      إنستغرام, فيسبوك, and سناب شات Spotlight.
+    </p>
+  </details>
+
+  <details>
+    <summary>كيف أحمل فيديو باستخدام VOOXOR؟</summary>
+    <p>
+      انسخ a supported public video URL, paste it into the VOOXOR download
+      box, and press تحميل. The service will process the compatible link.
+    </p>
+  </details>
+
+  <details>
+    <summary>هل استخدام VOOXOR مجاني؟</summary>
+    <p>
+      نعم. تم تصميم VOOXOR ليكون أداة مجانية لتحميل الفيديوهات عبر الإنترنت.
+    </p>
+  </details>
+
+  <details>
+    <summary>هل يعمل VOOXOR على الهواتف؟</summary>
+    <p>
+      نعم. تم تصميم VOOXOR للعمل مع متصفحات الجوال والكمبيوتر الحديثة.
+    </p>
+  </details>
+
+  <details>
+    <summary>هل يحتفظ VOOXOR بالفيديوهات التي تم تحميلها؟</summary>
+    <p>
+      تم تصميم VOOXOR لمعالجة عمليات التحميل المتوافقة دون الاحتفاظ
+      a personal video library for users.
+    </p>
+  </details>
+
+  <details>
+    <summary>هل يمكنني تحميل أي فيديو؟</summary>
+    <p>
+      You should only download media that you own or have permission to
+      download. انسخright and platform terms still apply.
+    </p>
+  </details>
+
+</section>
+
+</main>
+
+<footer>
+  <span>© 2026 VOOXOR</span>
+  <span>
+    <a href="/privacy">الخصوصية</a> ·
+    <a href="/terms">الشروط</a> ·
+    <a href="/dmca">DMCA</a>
+  </span>
+</footer>
+
+<script src="/app.js"></script>
+
+
+
+
+<script>
+window.addEventListener("load", function () {
+  window.scrollTo(0, 0);
+  document.documentElement.scrollLeft = 0;
+  document.body.scrollLeft = 0;
+});
+</script>
+</body>
+</html>

@@ -390,6 +390,10 @@ app.get('/tiktok-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
 );
 
+app.get('/ar/', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'ar', 'index.html'))
+);
+
 app.get('*splat', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'index.html'))
 );
