@@ -333,61 +333,6 @@ app.get('/download', async (req, res) => {
   }
 });
 
-// TEMP TikTok runtime diagnostic
-app.get('/__diag_tiktok_bcd0708424a77e12', async (_, res) => {
-  const { spawn } = require('child_process');
-
-  const run = (command, args, timeout = 45000) => new Promise((resolve) => {
-    const child = spawn(command, args);
-    let output = '';
-
-    const timer = setTimeout(() => {
-      try { child.kill('SIGTERM'); } catch {}
-      resolve({ code: 'TIMEOUT', output });
-    }, timeout);
-
-    child.stdout.on('data', d => {
-      output += d.toString();
-      if (output.length > 30000) output = output.slice(-30000);
-    });
-
-    child.stderr.on('data', d => {
-      output += d.toString();
-      if (output.length > 30000) output = output.slice(-30000);
-    });
-
-    child.on('close', code => {
-      clearTimeout(timer);
-      resolve({ code, output });
-    });
-
-    child.on('error', err => {
-      clearTimeout(timer);
-      resolve({ code: 'ERROR', output: err.message });
-    });
-  });
-
-  const result = await run('yt-dlp', [
-    '--verbose',
-    '--simulate',
-    '--skip-download',
-    '--no-playlist',
-    'https://vt.tiktok.com/ZSVsagLwf/'
-  ], 60000);
-
-  const version = await run('yt-dlp', ['--version'], 10000);
-  const deno = await run('deno', ['--version'], 10000);
-  const python = await run('python3', ['--version'], 10000);
-
-  res.json({
-    yt_dlp_version: version.output.trim(),
-    deno_version: deno.output.trim(),
-    python_version: python.output.trim(),
-    tiktok_exit_code: result.code,
-    tiktok_output: result.output
-  });
-});
-
 app.get('/debug/ytdlp', async (_, res) => {
   const { spawn } = require('child_process');
 
