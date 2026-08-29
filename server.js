@@ -107,6 +107,115 @@ function detectPlatform(value) {
   return 'other';
 }
 
+async function normalizeTikTokUrl(value) {
+  const u = new URL(value);
+  const host = u.hostname.toLowerCase();
+
+  if (host !== 'm.tiktok.com' || !/^\/v\/\d+\.html$/i.test(u.pathname)) {
+    return value;
+  }
+
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 10000);
+
+  try {
+    const oembedUrl = new URL('https://www.tiktok.com/oembed');
+    oembedUrl.searchParams.set('url', value);
+
+    const response = await fetch(oembedUrl, {
+      signal: controller.signal,
+      headers: {
+        'User-Agent': 'VOOXOR/1.0'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`TikTok oEmbed returned HTTP ${response.status}.`);
+    }
+
+    const data = await response.json();
+
+    if (!data.author_unique_id) {
+      throw new Error('TikTok oEmbed did not return the author ID.');
+    }
+
+    const videoId = u.pathname.match(/^\/v\/(\d+)\.html$/i)[1];
+
+    return `https://www.tiktok.com/@${data.author_unique_id}/video/${videoId}`;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+async function resolveTikTokViaSSSTik(value) {
+  const inputUrl = await normalizeTikTokUrl(value);
+
+  const headers = {
+    'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/150.0.0.0 Mobile Safari/537.36',
+    'Accept-Language': 'ar-SA,ar;q=0.9,en;q=0.8'
+  };
+
+  const home = await fetch('https://ssstik.io/ar', {
+    headers,
+    signal: AbortSignal.timeout(20000)
+  });
+
+  if (!home.ok) {
+    throw new Error(`SSSTik homepage returned HTTP ${home.status}.`);
+  }
+
+  const homeHtml = await home.text();
+
+  const tokenMatch =
+    homeHtml.match(/s_tt\s*=\s*['"]([^'"]+)/i) ||
+    homeHtml.match(/name=["']s_tt["'][^>]*value=["']([^"']+)/i) ||
+    homeHtml.match(/value=["']([^"']+)["'][^>]*name=["']s_tt["']/i);
+
+  if (!tokenMatch) {
+    throw new Error('SSSTik token was not found.');
+  }
+
+  const form = new URLSearchParams({
+    id: inputUrl,
+    locale: 'ar',
+    tt: tokenMatch[1]
+  });
+
+  const result = await fetch('https://ssstik.io/abc?url=dl', {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Referer': 'https://ssstik.io/ar',
+      'Origin': 'https://ssstik.io',
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: form,
+    signal: AbortSignal.timeout(30000)
+  });
+
+  if (!result.ok) {
+    throw new Error(`SSSTik resolver returned HTTP ${result.status}.`);
+  }
+
+  const html = await result.text();
+
+  const links = [...html.matchAll(/href=["'](https?:\/\/[^"']+)["']/gi)]
+    .map(m => m[1].replace(/&amp;/g, '&'));
+
+  const videoUrl = links.find(link =>
+    /https:\/\/tikcdn\.io\/ssstik\/\d+\?/i.test(link)
+  );
+
+  if (!videoUrl) {
+    throw new Error('SSSTik did not return a video download URL.');
+  }
+
+  return {
+    sourceUrl: inputUrl,
+    videoUrl
+  };
+}
+
 function runYtDlp(url, args = []) {
   return new Promise((resolve, reject) => {
     const child = spawn('yt-dlp', [
@@ -153,6 +262,33 @@ app.post('/api/resolve', async (req, res) => {
 
     const platform = detectPlatform(url);
 
+    if (platform === 'tiktok') {
+      const normalizedUrl = await normalizeTikTokUrl(url);
+      const meta = await fetch(
+        `https://www.tiktok.com/oembed?url=${encodeURIComponent(normalizedUrl)}`,
+        {
+          headers: {
+            'User-Agent': 'VOOXOR/1.0'
+          },
+          signal: AbortSignal.timeout(15000)
+        }
+      );
+
+      if (!meta.ok) {
+        throw new Error(`TikTok metadata returned HTTP ${meta.status}.`);
+      }
+
+      const data = await meta.json();
+
+      return res.json({
+        ok: true,
+        platform,
+        title: data.title || 'TikTok Video',
+        contentType: 'video/mp4',
+        contentLength: null
+      });
+    }
+
     const resolveArgs = ['--get-title'];
 
     if (platform === 'youtube') {
@@ -195,6 +331,43 @@ app.get('/download', async (req, res) => {
     await validateRemoteUrl(url);
 
     const platform = detectPlatform(url);
+
+    if (platform === 'tiktok') {
+      const resolved = await resolveTikTokViaSSSTik(url);
+
+      const upstream = await fetch(resolved.videoUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/150.0.0.0 Mobile Safari/537.36',
+          'Referer': 'https://ssstik.io/'
+        },
+        signal: AbortSignal.timeout(60000)
+      });
+
+      if (!upstream.ok || !upstream.body) {
+        throw new Error(`TikTok video provider returned HTTP ${upstream.status}.`);
+      }
+
+      res.setHeader('Content-Type', 'video/mp4');
+      res.setHeader(
+        'Content-Disposition',
+        'attachment; filename="clipflow-tiktok.mp4"'
+      );
+
+      if (upstream.headers.get('content-length')) {
+        res.setHeader('Content-Length', upstream.headers.get('content-length'));
+      }
+
+      for await (const chunk of upstream.body) {
+        if (res.destroyed) break;
+        res.write(Buffer.from(chunk));
+      }
+
+      if (!res.destroyed) {
+        res.end();
+      }
+
+      return;
+    }
 
     const safeName =
       platform === 'tiktok' ? 'clipflow-tiktok.mp4' :
