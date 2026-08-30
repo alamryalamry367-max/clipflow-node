@@ -129,6 +129,82 @@ select {
 <link rel="apple-touch-icon" sizes="180x180" href="/vooxor-icon-180.png" />
 <link rel="manifest" href="/manifest.webmanifest" />
 <meta name="theme-color" content="#0b0714" />
+<style id="vooxor-ar-final-hero">
+@media (max-width: 600px) {
+
+  /* تقليل الفراغ بين الهيدر/الشعار وبداية المحتوى */
+  header {
+    padding-bottom: 0 !important;
+  }
+
+  .hero {
+    padding-top: 0 !important;
+    margin-top: -6px !important;
+  }
+
+  /* عنوان أكبر لكن بمساحة عمودية محسوبة */
+  .hero h1 {
+    font-size: clamp(36px, 10vw, 52px) !important;
+    line-height: 1.08 !important;
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .hero .eyebrow {
+    margin-bottom: 4px !important;
+  }
+
+  .hero .lead {
+    margin-top: 2px !important;
+    margin-bottom: 8px !important;
+    line-height: 1.45 !important;
+  }
+
+  .hero .platform-icons {
+    margin-top: 4px !important;
+    margin-bottom: 8px !important;
+  }
+}
+</style>
+
+
+
+<style id="vooxor-ar-header-eyebrow">
+@media (max-width: 600px) {
+  header {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+
+    header .header-eyebrow {
+    font-size: 11px !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    padding: 5px 8px !important;
+    border: 1px solid rgba(139,92,246,.35) !important;
+    border-radius: 999px !important;
+    background: linear-gradient(100deg, rgba(139,92,246,.16), rgba(129,140,248,.12)) !important;
+    color: #e9d5ff !important;
+    box-shadow: 0 0 14px rgba(139,92,246,.12) !important;
+  }
+
+  header nav {
+    margin-inline-start: auto !important;
+  }
+}
+</style>
+
+
+<style id="vooxor-ar-header-bg">
+@media (max-width: 600px) {
+  header {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -156,6 +232,8 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
     ">VOOXOR</span>
 </a>
 
+  <div class="header-eyebrow">سريع · بسيط · مجاني</div>
+
   <nav>
     <a href="#how">طريقة الاستخدام</a>
     <a href="#faq">الأسئلة الشائعة</a>
@@ -167,7 +245,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
 <section class="hero">
 
-  <div class="eyebrow">سريع · بسيط · مجاني</div>
+
 
   <h1>
     تحميل فيديوهات من مواقع التواصل الاجتماعي
@@ -233,9 +311,26 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
   </div>
 
   <div id="result" class="result" aria-live="polite"></div>
-<button id="install-app" class="install-app-btn" type="button" hidden>
+
+  <!-- Adsterra Banner 300x250 -->
+<div class="vooxor-ad" aria-label="Advertisement">
+  <script>
+    atOptions = {
+      'key' : 'c4c06ebc3b6b353ed9603feb319ce9a6',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highrevenueformat.com/c4c06ebc3b6b353ed9603feb319ce9a6/invoke.js"></script>
+</div>
+<!-- End Adsterra Banner 300x250 -->
+
+  <button id="install-app" class="install-app-btn" type="button" hidden>
   📱 تثبيت VOOXOR على الشاشة الرئيسية
 </button>
+
 
 
   <p class="notice">
