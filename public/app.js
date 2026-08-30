@@ -34,6 +34,24 @@ function startDownload() {
 
 btn.addEventListener('click', startDownload);
 
+btn.addEventListener('click', function () {
+  if (typeof gtag !== 'function') return;
+
+  let platform = 'unknown';
+  try {
+    const host = new URL(input.value.trim()).hostname.toLowerCase();
+    if (host.includes('tiktok')) platform = 'tiktok';
+    else if (host.includes('instagram')) platform = 'instagram';
+    else if (host.includes('facebook') || host.includes('fb.watch')) platform = 'facebook';
+    else if (host.includes('snapchat')) platform = 'snapchat';
+    else if (host.includes('youtube') || host.includes('youtu.be')) platform = 'youtube';
+  } catch (_) {}
+
+  gtag('event', 'download_click', {
+    platform: platform
+  });
+});
+
 input.addEventListener('keydown', e => {
   if (e.key === 'Enter') {
     e.preventDefault();
