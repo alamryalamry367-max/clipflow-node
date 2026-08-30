@@ -63,7 +63,7 @@ if (pasteBtn) {
 
 /* VOOXOR Install App */
 (function () {
-  let deferredPrompt = null;
+  let deferredPrompt = window.__vooxorInstallPrompt || null;
   const installButton = document.getElementById("install-app");
 
   if (!installButton) return;
