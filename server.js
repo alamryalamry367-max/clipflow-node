@@ -562,7 +562,11 @@ app.get('/dmca', (_, res) =>
 
 app.get('/tiktok-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'tiktok-video-downloader.html'))
-);
+)
+app.get('/instagram-video-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'instagram-video-downloader.html'))
+)
+;
 
 app.get('/ar/', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'ar', 'index.html'))
