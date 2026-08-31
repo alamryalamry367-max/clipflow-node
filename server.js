@@ -566,6 +566,9 @@ app.get('/tiktok-video-downloader', (_, res) =>
 app.get('/instagram-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'instagram-video-downloader.html'))
 )
+app.get('/snapchat-video-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'snapchat-video-downloader.html'))
+)
 ;
 
 app.get('/facebook-video-downloader', (_, res) =>
