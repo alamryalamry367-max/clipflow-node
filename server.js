@@ -568,6 +568,10 @@ app.get('/instagram-video-downloader', (_, res) =>
 )
 ;
 
+app.get('/facebook-video-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'facebook-video-downloader.html'))
+);
+
 app.get('/ar/', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'ar', 'index.html'))
 );
