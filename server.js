@@ -575,6 +575,14 @@ app.get('/facebook-video-downloader', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'facebook-video-downloader.html'))
 );
 
+app.get('/ar/snapchat-story-downloader', (_, res) =>
+  res.redirect(301, '/ar/snapchat-spotlight-downloader')
+);
+
+app.get('/ar/snapchat-spotlight-downloader', (_, res) =>
+  res.sendFile(path.join(PUBLIC, 'ar', 'snapchat-spotlight-downloader.html'))
+);
+
 app.get('/ar/', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'ar', 'index.html'))
 );
