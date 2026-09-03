@@ -9,119 +9,24 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>تحميل فيديوهات إنستقرام أونلاين | Instagram Video Downloader | VOOXOR</title>
-<meta name="description" content="حمّل فيديوهات إنستقرام العامة المتوافقة أونلاين باستخدام VOOXOR. أداة مجانية وسريعة لتنزيل فيديوهات Instagram من الجوال أو الكمبيوتر دون تثبيت تطبيق.">
+<title>Pengunduh Video TikTok Online Gratis | TikTok Video Downloader | VOOXOR</title>
+<meta name="description" content="VOOXOR adalah pengunduh video TikTok online gratis untuk video publik yang didukung. Salin tautan video TikTok, tempelkan di VOOXOR, lalu unduh dengan mudah dari ponsel, tablet, atau komputer.">
 <meta name="robots" content="index,follow">
 <meta name="author" content="VOOXOR">
 <meta name="google-site-verification" content="DLqrvVAQoX4GTR6H9YSe5Ig7Zx7nGcGsGn_1N9scIEQ" />
-<link rel="canonical" href="https://vooxor.com/instagram-video-downloader">
+<link rel="canonical" href="https://vooxor.com/id/tiktok-video-downloader/">
 
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://vooxor.com/instagram-video-downloader">
+<meta property="og:url" content="https://vooxor.com/id/tiktok-video-downloader/">
 <meta property="og:site_name" content="VOOXOR">
-<meta property="og:title" content="تحميل فيديوهات إنستقرام أونلاين | Instagram Video Downloader | VOOXOR">
-<meta property="og:description" content="أداة VOOXOR المجانية لتحميل فيديوهات Instagram العامة المتوافقة من الجوال أو الكمبيوتر بسرعة وسهولة.">
+<meta property="og:title" content="Pengunduh Video TikTok Online Gratis | VOOXOR">
+<meta property="og:description" content="VOOXOR adalah pengunduh video TikTok online gratis untuk video publik yang didukung. Salin tautan video TikTok, tempelkan di VOOXOR, lalu unduh dengan mudah dari ponsel, tablet, atau komputer.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="تحميل فيديوهات إنستقرام أونلاين | Instagram Video Downloader | VOOXOR">
-<meta name="twitter:description" content="حمّل فيديوهات Instagram العامة المتوافقة باستخدام VOOXOR من المتصفح.">
+<meta name="twitter:title" content="Pengunduh Video TikTok Online Gratis | VOOXOR">
+<meta name="twitter:description" content="VOOXOR adalah pengunduh video TikTok online gratis untuk video publik yang didukung. Salin tautan video TikTok, tempelkan di VOOXOR, lalu unduh dengan mudah dari ponsel, tablet, atau komputer.">
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://vooxor.com/#website",
-      "url": "https://vooxor.com/",
-      "name": "VOOXOR",
-      "description": "VOOXOR is a free online downloader for supported public social media videos."
-    },
-    {
-      "@type": "WebPage",
-      "@id": "https://vooxor.com/instagram-video-downloader#webpage",
-      "url": "https://vooxor.com/instagram-video-downloader",
-      "name": "Pengunduh Video TikTok Online Gratis | TikTok Video Downloader | VOOXOR",
-      "description": "أداة VOOXOR لتحميل فيديوهات Instagram العامة المتوافقة من الجوال والكمبيوتر.",
-      "isPartOf": {
-        "@id": "https://vooxor.com/#website"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://vooxor.com/instagram-video-downloader#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "الرئيسية",
-          "item": "https://vooxor.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "تحميل فيديوهات إنستقرام",
-          "item": "https://vooxor.com/instagram-video-downloader"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://vooxor.com/instagram-video-downloader#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "كيف أحمل فيديو من إنستقرام؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "انسخ رابط فيديو Instagram العام المتوافق، الصقه في VOOXOR، ثم اضغط على زر Download لبدء تجهيز الفيديو."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل يمكن تحميل فيديوهات إنستقرام من الجوال؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، يعمل VOOXOR من متصفحات الهواتف والأجهزة اللوحية والكمبيوتر."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل أحتاج إلى تثبيت تطبيق لتحميل فيديو إنستقرام؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "لا، يمكنك استخدام VOOXOR مباشرة من متصفح الويب."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل Instagram Video Downloader مجاني؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، VOOXOR متاح كأداة مجانية للتعامل مع روابط Instagram العامة المتوافقة."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل يعمل VOOXOR على الكمبيوتر؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، يمكن استخدام VOOXOR من المتصفحات الحديثة على الكمبيوتر والهاتف والجهاز اللوحي."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل يمكن تحميل أي فيديو من Instagram؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "تعتمد المعالجة على توافق الرابط وإمكانية الوصول إلى الوسائط. استخدم الخدمة فقط مع المحتوى الذي تملكه أو لديك إذن بتحميله."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
+
 <link rel="stylesheet" href="/styles.css?v=3">
 
 <style>
@@ -268,15 +173,106 @@ iframe{
 }
 </style>
 
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "name":"VOOXOR",
+      "url":"https://vooxor.com/",
+      "description":"Pengunduh video TikTok online gratis untuk video publik yang didukung."
+    },
+    {
+      "@type":"WebPage",
+      "name":"Pengunduh Video TikTok Online Gratis | VOOXOR",
+      "url":"https://vooxor.com/id/tiktok-video-downloader/",
+      "description":"VOOXOR adalah alat online gratis untuk mengunduh video TikTok publik yang didukung dari ponsel dan komputer."
+    },
+    {
+      "@type":"BreadcrumbList",
+      "itemListElement":[
+        {
+          "@type":"ListItem",
+          "position":1,
+          "name":"Beranda",
+          "item":"https://vooxor.com/"
+        },
+        {
+          "@type":"ListItem",
+          "position":2,
+          "name":"Unduh Video TikTok",
+          "item":"https://vooxor.com/id/tiktok-video-downloader/"
+        }
+      ]
+    },
+    {
+      "@type":"FAQPage",
+      "mainEntity":[
+        {
+          "@type":"Question",
+          "name":"Bagaimana cara mengunduh video TikTok?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Salin tautan video TikTok publik yang didukung, tempelkan di VOOXOR, lalu tekan Unduh."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Apakah saya perlu memasang aplikasi?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Tidak. Anda dapat menggunakan VOOXOR langsung melalui browser tanpa memasang aplikasi tambahan."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Apakah VOOXOR dapat digunakan di ponsel?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Ya. VOOXOR dapat digunakan melalui browser di Android, iPhone, tablet, dan komputer."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Apakah TikTok Video Downloader VOOXOR gratis?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Ya. VOOXOR menyediakan alat pengunduh video TikTok gratis untuk tautan publik yang didukung."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Apakah VOOXOR berfungsi di komputer?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Ya. VOOXOR berfungsi pada browser modern di komputer, ponsel, dan tablet."
+          }
+        },
+        {
+          "@type":"Question",
+          "name":"Apakah semua video TikTok dapat diunduh?",
+          "acceptedAnswer":{
+            "@type":"Answer",
+            "text":"Tidak selalu. VOOXOR hanya memproses video publik yang didukung dan dapat diakses oleh layanan."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 </head>
 
 <body>
 
 <header>
-  <a class="brand" href="/" aria-label="VOOXOR home"
-style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
+  <a class="brand" href="/" aria-label="Beranda VOOXOR"
+     style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
     <img src="/vooxor-logo.png"
-         alt="VOOXOR icon"
+         alt="Logo VOOXOR"
          style="height:42px;width:42px;object-fit:contain;display:block;
                 filter:drop-shadow(0 0 10px rgba(139,92,246,.35));">
 
@@ -293,7 +289,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
         white-space:nowrap;
         text-shadow:0 0 22px rgba(139,92,246,.18);
     ">VOOXOR</span>
-</a>
+  </a>
 
   <nav>
     <a href="#how">Cara Menggunakan</a>
@@ -320,7 +316,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
     memproses video dari ponsel, tablet, atau komputer.
   </p>
 
-  <div class="platform-icons" aria-label="Supported video platforms">
+  <div class="platform-icons" aria-label="Platform video yang didukung">
 
     <div class="platform-icon tiktok">
       <span>♪</span>
@@ -350,16 +346,16 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
       <input
         id="url"
         type="url"
-        placeholder="Paste video link here..."
+        placeholder="Tempel tautan video di sini..."
         autocomplete="off"
-        aria-label="Video URL"
+        aria-label="Tautan video"
       >
 
       <button
         type="button"
         id="paste"
         class="paste"
-        aria-label="Paste from clipboard"
+        aria-label="Tempel dari clipboard"
       >
         📋 Tempel
       </button>
@@ -373,8 +369,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
   <div id="result" class="result" aria-live="polite"></div>
 
-<!-- Adsterra Banner 300x250 -->
-<div class="vooxor-ad" aria-label="Advertisement">
+  <div class="vooxor-ad" aria-label="Advertisement">
   <script>
     atOptions = {
       'key' : 'c4c06ebc3b6b353ed9603feb319ce9a6',
@@ -384,14 +379,12 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
       'params' : {}
     };
   </script>
+  <script src="https://www.highrevenueformat.com/c4c06ebc3b6b353ed9603feb319ce9a6/invoke.js"></script>
 </div>
-<!-- End Adsterra Banner 300x250 -->
 
-<button id="install-app" class="install-app-btn" type="button" hidden>
+  <button id="install-app" class="install-app-btn" type="button" hidden>
     📱 Instal VOOXOR di perangkat Anda
   </button>
-
-
 
   <p class="notice">
     Unduh hanya video yang Anda miliki atau yang Anda berhak mengunduhnya.
@@ -439,7 +432,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
     <article>
       <span>03</span>
-      <h3>Download</h3>
+      <h3>Unduh</h3>
       <p>Tekan Unduh untuk memproses dan menyimpan video.</p>
     </article>
 
@@ -523,14 +516,10 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
       membuka halaman berikut:
     </p>
 
-    <h3>Alat Pengunduh Video Utama</h3>
-
-    <p> ·
-      </p>
-
     <p class="internal-links">
-      <a href="/">Unduh Video TikTok</a> ·
-      <a href="/tiktok-video-downloader">Unduh Video Instagram</a> ·
+      <a href="/">Alat Pengunduh Video Utama</a> ·
+      <a href="/tiktok-video-downloader">Unduh Video TikTok</a> ·
+      <a href="/instagram-video-downloader">Unduh Video Instagram</a> ·
       <a href="/facebook-video-downloader">Unduh Video Facebook</a> ·
       <a href="/snapchat-video-downloader">Unduh Video Snapchat Spotlight</a>
     </p>
@@ -553,7 +542,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
     <h2>Pertanyaan yang Sering Diajukan</h2>
   </div>
 
-  <details open>
+  <details>
     <summary>Bagaimana cara mengunduh video TikTok?</summary>
     <p>
       Salin tautan video TikTok publik yang didukung, tempelkan di VOOXOR,
@@ -577,7 +566,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
   </details>
 
   <details>
-    <summary>Apakah TikTok Video Unduher ini gratis?</summary>
+    <summary>Apakah TikTok Video Downloader ini gratis?</summary>
     <p>
       Ya. VOOXOR menyediakan alat pengunduh video TikTok gratis untuk
       tautan publik yang didukung.
@@ -612,25 +601,14 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 </main>
 
 <footer>
-  <span>© 2026 VOOXOR</span>
-  <span>
+  <div>© 2026 VOOXOR</div>
+  <div>
     <a href="/privacy">Privasi</a> ·
     <a href="/terms">Ketentuan</a> ·
     <a href="/dmca">DMCA</a>
-  </span>
+  </div>
 </footer>
 
 <script src="/app.js"></script>
 
-
-
-
-<script>
-window.addEventListener("load", function () {
-  window.scrollTo(0, 0);
-  document.documentElement.scrollLeft = 0;
-  document.body.scrollLeft = 0;
-});
-</script>
 </body>
-</html>
