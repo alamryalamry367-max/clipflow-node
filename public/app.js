@@ -7,7 +7,50 @@ function show(html, kind = '') {
   result.innerHTML = html;
 }
 
-function startDownload() {
+let deferredPrompt = null;
+let installPromptUsed = false;
+
+window.addEventListener('beforeinstallprompt', function (event) {
+  event.preventDefault();
+  deferredPrompt = event;
+
+  const installButton = document.getElementById('install-app');
+  if (installButton) {
+    installButton.hidden = false;
+  }
+});
+
+window.addEventListener('appinstalled', function () {
+  deferredPrompt = null;
+  installPromptUsed = true;
+
+  const installButton = document.getElementById('install-app');
+  if (installButton) {
+    installButton.hidden = true;
+  }
+});
+
+async function maybePromptInstall() {
+  if (!deferredPrompt || installPromptUsed) return;
+
+  installPromptUsed = true;
+
+  try {
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+  } catch (e) {
+    console.warn('Install prompt error:', e);
+  }
+
+  deferredPrompt = null;
+
+  const installButton = document.getElementById('install-app');
+  if (installButton) {
+    installButton.hidden = true;
+  }
+}
+
+async function startDownload() {
   const url = input.value.trim();
 
   if (!url) {
@@ -24,7 +67,11 @@ function startDownload() {
     'loading'
   );
 
-  setTimeout(() => { window.location.href = `/download?url=${encodeURIComponent(url)}`; }, 120);
+  await maybePromptInstall();
+
+  setTimeout(() => {
+    window.location.href = `/download?url=${encodeURIComponent(url)}`;
+  }, 120);
 
   setTimeout(() => {
     btn.disabled = false;
@@ -79,39 +126,6 @@ if (pasteBtn) {
   });
 }
 
-/* VOOXOR Install App */
-(function () {
-  let deferredPrompt = window.__vooxorInstallPrompt || null;
-  const installButton = document.getElementById("install-app");
-
-  if (!installButton) return;
-
-  window.addEventListener("beforeinstallprompt", function (event) {
-    event.preventDefault();
-    deferredPrompt = event;
-    installButton.hidden = false;
-  });
-
-  installButton.addEventListener("click", async function () {
-    if (!deferredPrompt) return;
-
-    deferredPrompt.prompt();
-
-    try {
-      await deferredPrompt.userChoice;
-    } catch (e) {
-      console.warn("Install prompt error:", e);
-    }
-
-    deferredPrompt = null;
-    installButton.hidden = true;
-  });
-
-  window.addEventListener("appinstalled", function () {
-    deferredPrompt = null;
-    installButton.hidden = true;
-  });
-})();
 
 /* VOOXOR Service Worker */
 if ("serviceWorker" in navigator) {
