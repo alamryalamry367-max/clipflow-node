@@ -10,13 +10,36 @@ function show(html, kind = '') {
 let deferredPrompt = null;
 let installPromptUsed = false;
 
+function getInstallContext() {
+  const path = window.location.pathname.toLowerCase();
+
+  let platform = 'home';
+
+  if (path.includes('tiktok')) platform = 'tiktok';
+  else if (path.includes('instagram')) platform = 'instagram';
+  else if (path.includes('facebook')) platform = 'facebook';
+  else if (path.includes('snapchat')) platform = 'snapchat';
+
+  return {
+    page_path: window.location.pathname,
+    page_title: document.title || '',
+    platform: platform,
+    referrer: document.referrer || 'direct'
+  };
+}
+
 window.addEventListener('beforeinstallprompt', function (event) {
   event.preventDefault();
   deferredPrompt = event;
 
   const installButton = document.getElementById('install-app');
+
   if (installButton) {
     installButton.hidden = false;
+  }
+
+  if (typeof gtag === 'function') {
+    gtag('event', 'pwa_install_prompt_available', getInstallContext());
   }
 });
 
@@ -24,7 +47,12 @@ window.addEventListener('appinstalled', function () {
   deferredPrompt = null;
   installPromptUsed = true;
 
+  if (typeof gtag === 'function') {
+    gtag('event', 'pwa_installed', getInstallContext());
+  }
+
   const installButton = document.getElementById('install-app');
+
   if (installButton) {
     installButton.hidden = true;
   }
@@ -35,16 +63,36 @@ async function maybePromptInstall() {
 
   installPromptUsed = true;
 
+  if (typeof gtag === 'function') {
+    gtag('event', 'pwa_install_prompt_shown', getInstallContext());
+  }
+
   try {
     deferredPrompt.prompt();
-    await deferredPrompt.userChoice;
+
+    const choice = await deferredPrompt.userChoice;
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'pwa_install_prompt_result', {
+        ...getInstallContext(),
+        outcome: choice.outcome
+      });
+    }
   } catch (e) {
     console.warn('Install prompt error:', e);
+
+    if (typeof gtag === 'function') {
+      gtag('event', 'pwa_install_prompt_error', {
+        ...getInstallContext(),
+        error: 'prompt_error'
+      });
+    }
   }
 
   deferredPrompt = null;
 
   const installButton = document.getElementById('install-app');
+
   if (installButton) {
     installButton.hidden = true;
   }
