@@ -13,3 +13,6 @@ test-tiktok/
 
 # Local test/info files
 snapchat-info.json
+
+# VOOXOR private analytics data
+/data/

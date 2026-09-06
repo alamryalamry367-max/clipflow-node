@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080b12">
+<title>VOOXOR Analytics</title>
+<style>
+:root{--bg:#080b12;--panel:#0e131d;--panel2:#111824;--line:#1c2635;--text:#f5f7fb;--muted:#8994a6;--green:#43e68b;--cyan:#54c8ff;--purple:#9a7cff;--orange:#ffb45c;--red:#ff6f7d;--shadow:0 18px 50px rgba(0,0,0,.28);--r:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(84,200,255,.10),transparent 35%),radial-gradient(circle at 10% 0%,rgba(154,124,255,.09),transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{max-width:1440px;margin:auto;padding:22px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:24px}.brand{display:flex;align-items:center;gap:13px}.logo{width:43px;height:43px;border:1px solid #263348;border-radius:13px;display:grid;place-items:center;background:linear-gradient(145deg,#151d2a,#0c111a);font-weight:900;letter-spacing:-1px}.brand h1{font-size:19px;margin:0;letter-spacing:.2px}.brand small{color:var(--muted);display:block;margin-top:2px}.actions{display:flex;align-items:center;gap:10px}.live{display:flex;align-items:center;gap:7px;color:#bff8d7;font-size:12px;font-weight:800;border:1px solid rgba(67,230,139,.25);background:rgba(67,230,139,.07);padding:9px 11px;border-radius:999px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 5px rgba(67,230,139,.08);animation:pulse 1.8s infinite}@keyframes pulse{50%{opacity:.35}}.updated{color:var(--muted);font-size:12px}.refresh{position:relative;z-index:20;pointer-events:auto;touch-action:manipulation;border:1px solid var(--line);background:#111722;color:#dce3ee;padding:9px 12px;border-radius:11px}.refresh:hover{border-color:#344258}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}.card{background:linear-gradient(180deg,rgba(17,24,36,.94),rgba(12,17,26,.94));border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.kpi{padding:18px;position:relative;overflow:hidden}.kpi:after{content:"";position:absolute;width:110px;height:110px;right:-45px;top:-45px;border-radius:50%;background:var(--glow,rgba(84,200,255,.08));filter:blur(4px)}.kpiHead{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px;font-weight:800;letter-spacing:.07em}.ico{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:#151d2a;border:1px solid #243044;color:var(--accent,var(--cyan));font-size:15px}.num{font-size:34px;font-weight:850;letter-spacing:-1.5px;margin:16px 0 5px}.sub{color:var(--muted);font-size:12px}
+.layout{display:grid;grid-template-columns:minmax(0,1.7fr) minmax(300px,.9fr);gap:14px}.panel{padding:18px}.panelTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.panelTitle h2{font-size:14px;margin:0}.panelTitle span{font-size:11px;color:var(--muted)}
+.chart{height:260px;display:flex;align-items:flex-end;gap:9px;padding:10px 3px 0;border-bottom:1px solid var(--line)}.barWrap{height:100%;flex:1;display:flex;align-items:flex-end;justify-content:center;position:relative;min-width:8px}.bar{width:100%;max-width:34px;border-radius:7px 7px 2px 2px;background:linear-gradient(180deg,var(--cyan),rgba(84,200,255,.18));min-height:3px;transition:height .45s ease}.bar:hover{filter:brightness(1.25)}.barLabel{position:absolute;bottom:-23px;color:#697589;font-size:9px}.barVal{position:absolute;bottom:5px;font-size:9px;color:#afbac9;opacity:0;transition:.2s}.barWrap:hover .barVal{opacity:1}.empty{height:100%;width:100%;display:grid;place-items:center;color:#667286;font-size:12px}
+.activity{max-height:315px;overflow:auto}.event{display:grid;grid-template-columns:65px 1fr auto;gap:10px;padding:11px 0;border-bottom:1px solid #182131;align-items:center}.event:last-child{border-bottom:0}.time{font:11px ui-monospace,SFMono-Regular,monospace;color:#6f7c90}.eventMain{min-width:0}.eventName{font-size:12px;font-weight:750}.eventPath{font-size:10px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}.pill{font-size:9px;padding:5px 7px;border-radius:999px;border:1px solid #273449;color:#aeb9ca;background:#111824}
+.rows{display:grid;gap:10px}.row{display:grid;grid-template-columns:88px 1fr 42px;align-items:center;gap:10px;font-size:11px}.track{height:8px;border-radius:99px;background:#171f2c;overflow:hidden}.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--purple),var(--cyan));width:0;transition:width .5s}.count{text-align:right;color:#cbd3df;font-weight:800}.funnel{display:grid;gap:10px}.step{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 13px;background:#0b111a;border:1px solid #192536;border-radius:12px}.step strong{font-size:12px}.step small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.step b{font-size:19px}.rate{font-size:10px;color:#7fe6aa;margin-top:2px}.footer{text-align:center;color:#566174;font-size:10px;padding:18px 0 4px}
+.login{position:fixed;inset:0;background:var(--bg);display:grid;place-items:center;padding:20px;z-index:5}.loginBox{width:min(420px,100%);padding:26px}.loginBox h2{margin:0 0 7px}.loginBox p{color:var(--muted);font-size:13px;margin:0 0 20px}.loginBox input{width:100%;padding:13px;border-radius:12px;border:1px solid var(--line);background:#090e16;color:white;outline:none}.loginBox input:focus{border-color:#42617f}.loginBox button{width:100%;margin-top:10px;padding:13px;border:0;border-radius:12px;background:#e9eef6;color:#0a0d13;font-weight:850}.err{color:#ff8585;font-size:11px;margin-top:10px;min-height:14px}
+@media(max-width:980px){.grid4{grid-template-columns:repeat(2,1fr)}.layout{grid-template-columns:1fr}}@media(max-width:560px){.wrap{padding:13px}.top{align-items:flex-start}.updated{display:none}.brand h1{font-size:17px}.grid4{gap:9px}.kpi{padding:14px}.num{font-size:28px}.ico{width:29px;height:29px}.layout{gap:9px}.panel{padding:14px}.chart{height:210px;gap:4px}.event{grid-template-columns:52px 1fr auto}.eventPath{max-width:145px}.row{grid-template-columns:75px 1fr 34px}}
+</style>
+</head>
+<body>
+<div id="login" class="login"><div class="loginBox card"><div class="brand"><div class="logo">V</div><div><h1>VOOXOR Analytics</h1><small>Private real-time dashboard</small></div></div><p style="margin-top:18px">Enter your analytics dashboard token to continue.</p><input id="token" type="password" autocomplete="off" placeholder="Dashboard token"><button id="loginBtn">Open Dashboard</button><div id="loginErr" class="err"></div></div></div>
+<main id="app" class="wrap hidden">
+<header class="top"><div class="brand"><div class="logo">V</div><div><h1>VOOXOR Analytics</h1><small>Real-time performance & acquisition</small></div></div><div class="actions"><div class="live"><i class="dot"></i> LIVE</div><div class="updated" id="updated">Updated —</div><button type="button" class="refresh" id="refresh">↻ Refresh</button></div></header>
+<section class="grid4"><div class="card kpi" style="--accent:var(--cyan);--glow:rgba(84,200,255,.12)"><div class="kpiHead"><span>LIVE USERS</span><i class="ico">◉</i></div><div class="num" id="live">0</div><div class="sub">Active in last 30 minutes</div></div><div class="card kpi" style="--accent:var(--purple);--glow:rgba(154,124,255,.12)"><div class="kpiHead"><span>VISITORS TODAY</span><i class="ico">◎</i></div><div class="num" id="visitors">0</div><div class="sub">Unique visitors</div></div><div class="card kpi" style="--accent:var(--orange);--glow:rgba(255,180,92,.12)"><div class="kpiHead"><span>DOWNLOADS</span><i class="ico">↓</i></div><div class="num" id="downloads">0</div><div class="sub">Download clicks today</div></div><div class="card kpi" style="--accent:var(--green);--glow:rgba(67,230,139,.12)"><div class="kpiHead"><span>PWA INSTALLS</span><i class="ico">▣</i></div><div class="num" id="installs">0</div><div class="sub">Installed today</div></div></section>
+<section class="layout"><div class="card panel"><div class="panelTitle"><h2>Traffic overview</h2><span>Last 14 days</span></div><div id="chart" class="chart"></div></div><div class="card panel"><div class="panelTitle"><h2>Install funnel</h2><span>Today</span></div><div class="funnel"><div class="step"><div><strong>Prompt shown</strong><small>Install prompt displayed</small><span id="shownRate" class="rate">—</span></div><b id="shown">0</b></div><div class="step"><div><strong>Accepted</strong><small>User accepted prompt</small><span id="acceptedRate" class="rate">—</span></div><b id="accepted">0</b></div><div class="step"><div><strong>Installed</strong><small>App installed successfully</small></div><b id="installed">0</b></div></div></div></section>
+<section class="layout" style="margin-top:14px"><div class="card panel"><div class="panelTitle"><h2>Live activity</h2><span>Auto refresh · 10s</span></div><div id="activity" class="activity"></div></div><div><div class="card panel"><div class="panelTitle"><h2>Downloads by platform</h2><span>Today</span></div><div id="platforms" class="rows"></div></div><div class="card panel" style="margin-top:14px"><div class="panelTitle"><h2>Top pages</h2><span>Downloads</span></div><div id="pages" class="rows"></div></div></div></section>
+
+<section class="card panel" style="margin-top:14px">
+  <div class="panelTitle">
+    <h2>Live Traffic</h2>
+    <span>Real visitors · auto refresh</span>
+  </div>
+  <div id="liveChart" class="chart"></div>
+</section>
+
+<section class="card panel" style="margin-top:14px">
+  <div class="panelTitle">
+    <h2>Visitors by country</h2>
+    <span>Today</span>
+  </div>
+  <div id="countries" class="rows"></div>
+</section>
+
+<div class="footer">VOOXOR · Private analytics · Refreshes every 10 seconds</div></main>
+<script>
+const KEY='vooxor_analytics_dashboard_token_v3', $=id=>document.getElementById(id);let token=localStorage.getItem(KEY)||'';
+function fmt(n){return Number(n||0).toLocaleString()}function eventName(e){const m={page_view:'Page View',download_click:'Download',pwa_install_prompt_available:'Install Prompt Available',pwa_install_prompt_shown:'Install Prompt Shown',pwa_install_prompt_result:'Install Prompt Result',pwa_installed:'PWA Installed',pwa_install_prompt_error:'Install Error'};return m[e]||String(e||'Activity').replaceAll('_',' ')}function timeOf(v){try{return new Date(v).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch{return '—'}}function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden')}
+function loginAction(){token=$('token').value.trim();if(!token)return;$('loginErr').textContent='';localStorage.setItem(KEY,token);load(true)}$('loginBtn').onclick=loginAction;$('token').onkeydown=e=>{if(e.key==='Enter')loginAction()};$('refresh').onclick=()=>{alert('REFRESH CLICK OK');load(true)};$('refresh').addEventListener('pointerdown',e=>{e.preventDefault();load(true)});$('refresh').addEventListener('touchend',e=>{e.preventDefault();load(true)},{passive:false});if(token){$('token').value=token;load(true)}
+async function load(first=false){try{const r=await fetch('/api/vooxor-analytics/summary',{headers:{Authorization:'Bearer '+token},cache:'no-store'});if(r.status===401){localStorage.removeItem(KEY);token='';$('login').classList.remove('hidden');$('app').classList.add('hidden');$('loginErr').textContent='Invalid dashboard token.';return}if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();showApp();render(d.data || d);$('updated').textContent='Updated '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch(e){if(first)$('loginErr').textContent='Unable to connect to analytics.'}}
+
+const countryNames = {
+  SA:"Saudi Arabia", US:"United States", ID:"Indonesia", PK:"Pakistan",
+  BD:"Bangladesh", IN:"India", AE:"United Arab Emirates", EG:"Egypt",
+  YE:"Yemen", GB:"United Kingdom", CA:"Canada", AU:"Australia",
+  TR:"Turkey", MY:"Malaysia", DE:"Germany", FR:"France", ES:"Spain",
+  IT:"Italy", BR:"Brazil", MX:"Mexico", UNKNOWN:"Unknown"
+};
+
+function flag(code){
+  if(!code || code==="UNKNOWN" || code.length!==2) return "🌐";
+  return String.fromCodePoint(...code.toUpperCase().split("").map(c=>127397+c.charCodeAt(0)));
+}
+
+function renderCountries(d){
+  const box = $('countries');
+  if(!box) return;
+
+  const countries = d.countries_today || {};
+  const cities = d.cities_today || {};
+  const entries = Object.entries(countries)
+    .filter(([k,v]) => Number(v) > 0)
+    .sort((a,b)=>Number(b[1])-Number(a[1]));
+
+  if(!entries.length){
+    box.innerHTML = '<div class="muted">No real country data yet.</div>';
+    return;
+  }
+
+  box.innerHTML = entries.map(([code,count])=>{
+    const cityMap = cities[code] || {};
+    const cityEntries = Object.entries(cityMap)
+      .filter(([k,v])=>Number(v)>0)
+      .sort((a,b)=>Number(b[1])-Number(a[1]));
+
+    return `
+      <div class="row countryRow" data-country="${code}" style="display:block;cursor:pointer">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+          <div style="display:flex;align-items:center;gap:9px">
+            <span style="font-size:21px">${flag(code)}</span>
+            <span>${countryNames[code] || code}</span>
+          </div>
+          <strong>${fmt(count)}</strong>
+        </div>
+        <div class="cities hidden" style="padding:8px 0 2px 30px">
+          ${cityEntries.length
+            ? cityEntries.map(([city,n])=>`<div style="display:flex;justify-content:space-between;padding:4px 0;color:var(--muted)"><span>↳ ${city}</span><span>${fmt(n)}</span></div>`).join("")
+            : '<div style="color:var(--muted);font-size:12px">No city data yet.</div>'}
+        </div>
+      </div>`;
+  }).join("");
+
+  box.querySelectorAll('.countryRow').forEach(row=>{
+    row.addEventListener('click',()=>{
+      row.querySelector('.cities')?.classList.toggle('hidden');
+    });
+  });
+}
+
+function renderLiveChart(d){
+  const box = $('liveChart');
+  if(!box) return;
+
+  const events = Array.isArray(d.recent_activity) ? d.recent_activity : [];
+  const now = Date.now();
+  const windowMs = 30 * 60 * 1000;
+  const bucketMs = 5 * 60 * 1000;
+  const buckets = Array.from({length:6}, (_,i)=>({
+    start: now - (6-i) * bucketMs,
+    count: 0
+  }));
+
+  events.forEach(ev=>{
+    const t = Date.parse(ev.ts || '');
+    if(!Number.isFinite(t) || t < now - windowMs || t > now) return;
+    const idx = Math.min(5, Math.max(0, Math.floor((t - (now - windowMs)) / bucketMs)));
+    buckets[idx].count++;
+  });
+
+  const max = Math.max(1, ...buckets.map(x=>x.count));
+
+  box.innerHTML = `
+    <div style="height:190px;display:flex;align-items:flex-end;gap:8px;padding:8px 2px 0">
+      ${buckets.map((b,i)=>{
+        const h = Math.max(6, Math.round((b.count/max)*155));
+        const minutes = (30 - (5 - i) * 5);
+        const label = i === 5 ? 'now' : `${Math.max(0, minutes)}m`;
+        return `
+          <div style="flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px">
+            <span style="font-size:10px;color:var(--muted)">${b.count}</span>
+            <div style="width:100%;max-width:42px;height:${h}px;border-radius:8px 8px 3px 3px;background:var(--green)"></div>
+            <span style="font-size:9px;color:var(--muted)">${label}</span>
+          </div>`;
+      }).join('')}
+    </div>
+    <div style="font-size:11px;color:var(--muted);margin-top:8px">
+      Real events · last 30 minutes
+    </div>
+  `;
+}
+
+function render(d){renderCountries(d);renderLiveChart(d);$('live').textContent=fmt(d.live_users_30m);$('visitors').textContent=fmt(d.visitors_today);$('downloads').textContent=fmt(d.downloads_today);$('installs').textContent=fmt(d.installs_today);$('shown').textContent=fmt(d.prompt_shown_today);$('accepted').textContent=fmt(d.accepted_today);$('installed').textContent=fmt(d.installs_today);const s=Number(d.prompt_shown_today||0),a=Number(d.accepted_today||0),i=Number(d.installs_today||0);$('shownRate').textContent=(s?'100% shown': '—');$('acceptedRate').textContent=(s?Math.round(a/s*100)+'% of prompts':'—');
+const daily=d.daily_14d||[],chart=$('chart');chart.innerHTML='';if(!daily.length)chart.innerHTML='<div class="empty">No daily data yet</div>';else{const max=Math.max(1,...daily.map(x=>Number(x.page_views||x.visitors||x.downloads||0)));daily.forEach(x=>{const n=Number(x.page_views||x.visitors||x.downloads||0),w=document.createElement('div');w.className='barWrap';const b=document.createElement('div');b.className='bar';b.style.height=Math.max(2,n/max*92)+'%';b.title=(x.date||'')+' · '+fmt(n);const v=document.createElement('div');v.className='barVal';v.textContent=fmt(n);const l=document.createElement('div');l.className='barLabel';l.textContent=String(x.date||'').slice(5);w.append(b,v,l);chart.appendChild(w)})}
+const acts=d.recent_activity||[],ac=$('activity');ac.innerHTML=acts.length?acts.map(x=>`<div class="event"><div class="time">${timeOf(x.timestamp||x.time)}</div><div class="eventMain"><div class="eventName">${eventName(x.event)}</div><div class="eventPath">${x.page_path||x.path||'/'}</div></div><div class="pill">${x.platform||'VOOXOR'}</div></div>`).join(''):'<div class="empty" style="height:220px">No recent activity</div>';drawRows('platforms',d.downloads_by_platform,'No platform data yet');drawRows('pages',d.downloads_by_page,'No download data yet')}
+function drawRows(id,obj,empty){const el=$(id);el.innerHTML='';let entries=Array.isArray(obj)?obj.map(x=>[x.platform||x.page||x.name||'Other',Number(x.count||x.downloads||0)]):Object.entries(obj||{});entries=entries.filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){el.innerHTML='<div class="empty" style="height:80px">'+empty+'</div>';return}const max=Math.max(1,...entries.map(x=>x[1]));entries.forEach(([name,n])=>{const row=document.createElement('div');row.className='row';row.innerHTML=`<div>${String(name).replace(/^./,c=>c.toUpperCase())}</div><div class="track"><div class="fill" style="width:${n/max*100}%"></div></div><div class="count">${fmt(n)}</div>`;el.appendChild(row)})}
+setInterval(()=>{if(token)load(false)},10000);
+</script>
+
+
+</body></html>

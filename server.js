@@ -11,6 +11,10 @@ const PUBLIC = path.join(__dirname, 'public');
 
 app.disable('x-powered-by');
 app.use(express.json({ limit: '16kb' }));
+
+const { setupVoooxorAnalytics } = require('./analytics');
+setupVoooxorAnalytics(app);
+
 app.use(express.static(PUBLIC, { maxAge: '1h' }));
 
 function isPrivateIp(ip) {

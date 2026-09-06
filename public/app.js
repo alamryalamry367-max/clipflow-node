@@ -1,4 +1,52 @@
+const VOOXOR_VISITOR_ID = (() => {
+  try {
+    const key = 'vooxor_visitor_id';
+    let id = localStorage.getItem(key);
+
+    if (!id) {
+      id = (crypto.randomUUID
+        ? crypto.randomUUID()
+        : 'v_' + Date.now() + '_' + Math.random().toString(36).slice(2));
+
+      localStorage.setItem(key, id);
+    }
+
+    return id;
+  } catch (_) {
+    return '';
+  }
+})();
+
 const input = document.getElementById('url');
+
+/* VOOXOR private analytics client. Sends to your own server, independent of GA4. */
+function vooxorTrack(event, extra = {}) {
+  try {
+    const payload = {
+      event,
+      page_path: location.pathname,
+      page_title: document.title || '',
+      referrer: document.referrer || 'direct',
+      language: navigator.language || '',
+      visitor_id: VOOXOR_VISITOR_ID,
+      ...extra
+    };
+    const body = JSON.stringify(payload);
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: 'application/json' });
+      navigator.sendBeacon('/api/vooxor-analytics', blob);
+    } else {
+      fetch('/api/vooxor-analytics', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body,
+        keepalive: true
+      }).catch(() => {});
+    }
+  } catch (_) {}
+}
+
+vooxorTrack('page_view');
 const btn = document.getElementById('go');
 const result = document.getElementById('result');
 
@@ -38,6 +86,8 @@ window.addEventListener('beforeinstallprompt', function (event) {
     installButton.hidden = false;
   }
 
+  vooxorTrack('pwa_install_prompt_available', getInstallContext());
+
   if (typeof gtag === 'function') {
     gtag('event', 'pwa_install_prompt_available', getInstallContext());
   }
@@ -46,6 +96,8 @@ window.addEventListener('beforeinstallprompt', function (event) {
 window.addEventListener('appinstalled', function () {
   deferredPrompt = null;
   installPromptUsed = true;
+
+  vooxorTrack('pwa_installed', getInstallContext());
 
   if (typeof gtag === 'function') {
     gtag('event', 'pwa_installed', getInstallContext());
@@ -63,6 +115,8 @@ async function maybePromptInstall() {
 
   installPromptUsed = true;
 
+  vooxorTrack('pwa_install_prompt_shown', getInstallContext());
+
   if (typeof gtag === 'function') {
     gtag('event', 'pwa_install_prompt_shown', getInstallContext());
   }
@@ -73,6 +127,11 @@ async function maybePromptInstall() {
     const choice = await deferredPrompt.userChoice;
 
     if (typeof gtag === 'function') {
+      vooxorTrack('pwa_install_prompt_result', {
+        ...getInstallContext(),
+        outcome: choice.outcome
+      });
+
       gtag('event', 'pwa_install_prompt_result', {
         ...getInstallContext(),
         outcome: choice.outcome
@@ -82,6 +141,11 @@ async function maybePromptInstall() {
     console.warn('Install prompt error:', e);
 
     if (typeof gtag === 'function') {
+      vooxorTrack('pwa_install_prompt_error', {
+        ...getInstallContext(),
+        outcome: 'error'
+      });
+
       gtag('event', 'pwa_install_prompt_error', {
         ...getInstallContext(),
         error: 'prompt_error'
@@ -145,6 +209,8 @@ btn.addEventListener('click', function () {
   gtag('event', 'download_click', {
     platform: platform
   });
+
+  vooxorTrack('download_click', { platform });
 });
 
 input.addEventListener('keydown', e => {
