@@ -237,12 +237,19 @@ async function b2Authorize() {
 
   const data = await response.json();
 
+  const storageApi = data.apiInfo?.storageApi || {};
+  const allowedBuckets = Array.isArray(data.allowed?.buckets)
+    ? data.allowed.buckets
+    : [];
+
   const auth = {
     createdAt: Date.now(),
     authorizationToken: data.authorizationToken,
-    apiUrl: data.apiUrl,
-    downloadUrl: data.downloadUrl,
-    bucketId: data.allowed?.bucketId || ''
+    apiUrl: storageApi.apiUrl || '',
+    downloadUrl: storageApi.downloadUrl || '',
+    bucketId: allowedBuckets.find(
+      bucket => bucket && bucket.name === B2_BUCKET
+    )?.id || allowedBuckets[0]?.id || ''
   };
 
   if (!auth.authorizationToken || !auth.apiUrl) {
