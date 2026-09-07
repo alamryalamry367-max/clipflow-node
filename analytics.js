@@ -242,6 +242,14 @@ async function b2Authorize() {
     ? storageApi.allowed.buckets
     : [];
 
+  console.log('[VOOXOR B2 DIAG]', JSON.stringify({
+    apiUrlPresent: Boolean(storageApi.apiUrl),
+    downloadUrlPresent: Boolean(storageApi.downloadUrl),
+    allowedBucketsPresent: Array.isArray(storageApi.allowed?.buckets),
+    bucketNames: allowedBuckets.map(bucket => bucket?.name || null),
+    targetBucketFound: allowedBuckets.some(bucket => bucket?.name === B2_BUCKET)
+  }));
+
   const targetBucket = allowedBuckets.find(
     bucket => bucket && bucket.name === B2_BUCKET
   );
