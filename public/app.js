@@ -162,6 +162,14 @@ async function maybePromptInstall() {
   }
 }
 
+const installButton = document.getElementById('install-app');
+
+if (installButton) {
+  installButton.addEventListener('click', async function () {
+    await maybePromptInstall();
+  });
+}
+
 async function startDownload() {
   const url = input.value.trim();
 
