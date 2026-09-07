@@ -296,10 +296,21 @@ async function b2GetUploadUrl() {
   );
 
   if (!response.ok) {
+    const errorText = await response.text();
+    console.error('[VOOXOR B2 UPLOAD URL]', JSON.stringify({
+      status: response.status,
+      body: errorText.slice(0, 1000)
+    }));
     throw new Error(`B2 upload URL failed: HTTP ${response.status}`);
   }
 
   const data = await response.json();
+
+  console.log('[VOOXOR B2 UPLOAD URL OK]', JSON.stringify({
+    uploadUrlPresent: Boolean(data.uploadUrl),
+    uploadTokenPresent: Boolean(data.authorizationToken),
+    bucketIdPresent: Boolean(data.bucketId)
+  }));
 
   if (!data.uploadUrl || !data.authorizationToken) {
     throw new Error('B2 upload URL response incomplete');
@@ -373,6 +384,15 @@ async function b2UploadEvents(events) {
   });
 
   if (!response.ok) {
+    const errorText = await response.text();
+
+    console.error('[VOOXOR B2 UPLOAD]', JSON.stringify({
+      status: response.status,
+      body: errorText.slice(0, 1000),
+      bodyBytes: body.length,
+      sha1
+    }));
+
     b2UploadCache = null;
     upload = await b2GetUploadUrl();
 
@@ -390,8 +410,22 @@ async function b2UploadEvents(events) {
   }
 
   if (!response.ok) {
+    const errorText = await response.text();
+
+    console.error('[VOOXOR B2 UPLOAD RETRY]', JSON.stringify({
+      status: response.status,
+      body: errorText.slice(0, 1000),
+      bodyBytes: body.length,
+      sha1
+    }));
+
     throw new Error(`B2 upload failed: HTTP ${response.status}`);
   }
+
+  console.log('[VOOXOR B2 UPLOAD OK]', JSON.stringify({
+    bodyBytes: body.length,
+    sha1
+  }));
 }
 
 async function loadEvents() {
