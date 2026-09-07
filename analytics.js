@@ -238,18 +238,20 @@ async function b2Authorize() {
   const data = await response.json();
 
   const storageApi = data.apiInfo?.storageApi || {};
-  const allowedBuckets = Array.isArray(data.allowed?.buckets)
-    ? data.allowed.buckets
+  const allowedBuckets = Array.isArray(storageApi.allowed?.buckets)
+    ? storageApi.allowed.buckets
     : [];
+
+  const targetBucket = allowedBuckets.find(
+    bucket => bucket && bucket.name === B2_BUCKET
+  );
 
   const auth = {
     createdAt: Date.now(),
     authorizationToken: data.authorizationToken,
     apiUrl: storageApi.apiUrl || '',
     downloadUrl: storageApi.downloadUrl || '',
-    bucketId: allowedBuckets.find(
-      bucket => bucket && bucket.name === B2_BUCKET
-    )?.id || allowedBuckets[0]?.id || ''
+    bucketId: targetBucket?.id || ''
   };
 
   if (!auth.authorizationToken || !auth.apiUrl) {
