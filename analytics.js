@@ -310,9 +310,7 @@ async function b2DownloadEvents() {
   const auth = await b2Authorize();
 
   const url =
-    `${auth.downloadUrl}/b2api/v4/b2_download_file_by_name` +
-    `?bucketName=${encodeURIComponent(B2_BUCKET)}` +
-    `&fileName=${encodeURIComponent(B2_FILE_NAME)}`;
+    `${auth.downloadUrl}/file/${encodeURIComponent(B2_BUCKET)}/${B2_FILE_NAME}`;
 
   const response = await fetch(url, {
     headers: {
