@@ -606,6 +606,7 @@ function summarize(events) {
     page_views_month: monthPageViews,
     visitors_month: monthVisitors,
     returning_visitors_month: returningVisitors,
+    daily_14d: daily,
 
     installs_today: installsToday,
     install_prompt_shown_today: promptShownToday,
