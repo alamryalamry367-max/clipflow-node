@@ -522,13 +522,24 @@ function monthKey(ts) {
 
 function aggregate(events, field, eventName = null) {
   const result = {};
+  const allowedPlatforms = new Set(['tiktok', 'instagram', 'facebook', 'snapchat']);
 
   for (const event of events) {
     if (eventName && event.event !== eventName) {
       continue;
     }
 
-    const key = event[field] || 'UNKNOWN';
+    const raw = event[field];
+
+    if (
+      field === 'platform' &&
+      eventName === 'download_click' &&
+      !allowedPlatforms.has(String(raw || '').toLowerCase())
+    ) {
+      continue;
+    }
+
+    const key = raw || 'UNKNOWN';
     result[key] = (result[key] || 0) + 1;
   }
 

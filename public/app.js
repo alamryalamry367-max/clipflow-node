@@ -211,7 +211,6 @@ btn.addEventListener('click', function () {
     else if (host.includes('instagram')) platform = 'instagram';
     else if (host.includes('facebook') || host.includes('fb.watch')) platform = 'facebook';
     else if (host.includes('snapchat')) platform = 'snapchat';
-    else if (host.includes('youtube') || host.includes('youtu.be')) platform = 'youtube';
   } catch (_) {}
 
   gtag('event', 'download_click', {
