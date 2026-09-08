@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#080b12">
-<title>VOOXOR Analytics</title>
+<title>تحليلات VOOXOR</title>
 <style>
 :root{--bg:#080b12;--panel:#0e131d;--panel2:#111824;--line:#1c2635;--text:#f5f7fb;--muted:#8994a6;--green:#43e68b;--cyan:#54c8ff;--purple:#9a7cff;--orange:#ffb45c;--red:#ff6f7d;--shadow:0 18px 50px rgba(0,0,0,.28);--r:18px}
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% -10%,rgba(84,200,255,.10),transparent 35%),radial-gradient(circle at 10% 0%,rgba(154,124,255,.09),transparent 30%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
@@ -701,9 +701,385 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
 }
 </style>
 
+
+<style id="vooxor-black-neon-ar-final">
+html,body{
+  background:#000!important;
+  color:#fff!important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(0,210,255,.16),transparent 32%),
+    radial-gradient(circle at 0% 35%,rgba(123,47,255,.10),transparent 28%),
+    #000!important;
+  min-height:100vh;
+}
+
+#app,main{
+  background:transparent!important;
+}
+
+.stats-section{
+  margin:14px auto!important;
+  max-width:1180px!important;
+}
+
+.stats-section h2,
+.stats-section h3{
+  color:#fff!important;
+  text-shadow:0 0 14px rgba(0,220,255,.45);
+}
+
+/* بطاقات أصغر */
+.stats-grid,
+.cards-grid,
+.live-summary-grid,
+.advanced-stats-grid{
+  gap:10px!important;
+}
+
+.stat-card,
+.metric-card,
+.summary-card,
+.live-card,
+.advanced-card{
+  min-height:92px!important;
+  padding:13px 14px!important;
+  border-radius:15px!important;
+  background:linear-gradient(145deg,#090909,#111)!important;
+  border:1px solid rgba(0,220,255,.30)!important;
+  box-shadow:
+    0 0 8px rgba(0,220,255,.12),
+    inset 0 0 18px rgba(255,255,255,.025)!important;
+  transition:.2s ease!important;
+}
+
+.stat-card:hover,
+.metric-card:hover,
+.summary-card:hover,
+.live-card:hover,
+.advanced-card:hover{
+  transform:translateY(-2px);
+  border-color:rgba(0,220,255,.75)!important;
+  box-shadow:
+    0 0 18px rgba(0,220,255,.28),
+    0 0 35px rgba(123,47,255,.12)!important;
+}
+
+.stat-card strong,
+.metric-card strong,
+.summary-card strong,
+.live-card strong,
+.advanced-card strong{
+  font-size:23px!important;
+  color:#fff!important;
+  text-shadow:0 0 12px rgba(0,220,255,.65);
+}
+
+.stat-card span,
+.metric-card span,
+.summary-card span,
+.live-card span,
+.advanced-card span{
+  font-size:12px!important;
+  color:#b9c7d6!important;
+}
+
+/* ألوان الإحصائيات */
+#allTimeStats .stat-card:nth-child(1){
+  border-color:#00e5ff!important;
+  box-shadow:0 0 16px rgba(0,229,255,.22)!important;
+}
+#allTimeStats .stat-card:nth-child(2){
+  border-color:#7c4dff!important;
+  box-shadow:0 0 16px rgba(124,77,255,.22)!important;
+}
+#allTimeStats .stat-card:nth-child(3){
+  border-color:#ff8a00!important;
+  box-shadow:0 0 16px rgba(255,138,0,.22)!important;
+}
+#allTimeStats .stat-card:nth-child(4){
+  border-color:#00e676!important;
+  box-shadow:0 0 16px rgba(0,230,118,.22)!important;
+}
+
+/* الرسم */
+#vooxor-traffic-chart-v1,
+#platformPerformanceV1,
+#vooxor-breakdown-v1,
+#vooxor-tech-breakdown-v1{
+  background:linear-gradient(145deg,#050505,#0b0b0b)!important;
+  border:1px solid rgba(0,220,255,.22)!important;
+  border-radius:17px!important;
+  box-shadow:
+    0 0 18px rgba(0,220,255,.10),
+    inset 0 0 30px rgba(124,77,255,.035)!important;
+  padding:15px!important;
+}
+
+/* العناوين */
+#allTimeStats h2,
+#advancedStatsV2 h2,
+#vooxor-live-summary-v1 h2,
+#vooxor-traffic-chart-v1 h2,
+#platformPerformanceV1 h2,
+#vooxor-breakdown-v1 h2,
+#vooxor-tech-breakdown-v1 h2{
+  font-size:17px!important;
+  margin:0 0 12px!important;
+}
+
+/* القوائم */
+#platformPerformanceList > *,
+#countriesBreakdownV1 > *,
+#citiesBreakdownV1 > *,
+#sourcesBreakdownV1 > *,
+#devicesBreakdownV1 > *,
+#browsersBreakdownV1 > *,
+#languagesBreakdownV1 > *{
+  background:#090909!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  border-radius:10px!important;
+  padding:8px 10px!important;
+  margin-bottom:6px!important;
+  color:#e8f1f8!important;
+}
+
+/* بيانات حقيقية */
+.quality-good{
+  color:#00ff9d!important;
+  border-color:#00ff9d!important;
+  box-shadow:0 0 12px rgba(0,255,157,.22)!important;
+}
+
+.quality-warn{
+  color:#ffb300!important;
+  border-color:#ffb300!important;
+}
+
+/* موبايل */
+@media(max-width:700px){
+  .stats-section{
+    margin:9px 8px!important;
+  }
+
+  .stat-card,
+  .metric-card,
+  .summary-card,
+  .live-card,
+  .advanced-card{
+    min-height:78px!important;
+    padding:10px!important;
+    border-radius:12px!important;
+  }
+
+  .stat-card strong,
+  .metric-card strong,
+  .summary-card strong,
+  .live-card strong,
+  .advanced-card strong{
+    font-size:19px!important;
+  }
+
+  .stat-card span,
+  .metric-card span,
+  .summary-card span,
+  .live-card span,
+  .advanced-card span{
+    font-size:11px!important;
+  }
+}
+</style>
+
+
+<style id="vooxor-black-neon-max-final">
+html,body{
+  background:#000!important;
+  color:#fff!important;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -15%,rgba(0,229,255,.26),transparent 28%),
+    radial-gradient(circle at 0% 28%,rgba(122,0,255,.20),transparent 25%),
+    radial-gradient(circle at 100% 55%,rgba(255,0,153,.16),transparent 23%),
+    #000!important;
+}
+
+#app,main{
+  background:transparent!important;
+}
+
+.stats-section,
+.layout{
+  max-width:1180px!important;
+  margin:9px auto!important;
+}
+
+.card,
+.panel,
+.stat-card,
+.metric-card,
+.summary-card,
+.live-card,
+.advanced-card,
+.step{
+  background:
+    linear-gradient(145deg,rgba(10,10,14,.98),rgba(3,3,5,.98))!important;
+  border:1px solid rgba(0,229,255,.42)!important;
+  border-radius:12px!important;
+  box-shadow:
+    0 0 8px rgba(0,229,255,.18),
+    0 0 22px rgba(99,0,255,.10),
+    inset 0 0 16px rgba(255,255,255,.025)!important;
+}
+
+.stat-card,
+.metric-card,
+.summary-card,
+.live-card,
+.advanced-card{
+  min-height:66px!important;
+  height:auto!important;
+  padding:9px 10px!important;
+}
+
+.stat-card strong,
+.metric-card strong,
+.summary-card strong,
+.live-card strong,
+.advanced-card strong{
+  font-size:18px!important;
+  line-height:1.1!important;
+  color:#fff!important;
+  text-shadow:
+    0 0 7px rgba(0,229,255,.75),
+    0 0 15px rgba(0,229,255,.35)!important;
+}
+
+.stat-card span,
+.metric-card span,
+.summary-card span,
+.live-card span,
+.advanced-card span{
+  font-size:10px!important;
+  line-height:1.25!important;
+  color:#d5e7f3!important;
+}
+
+.panelTitle,
+.stats-section h2,
+.stats-section h3{
+  color:#fff!important;
+  text-shadow:
+    0 0 8px rgba(0,229,255,.70),
+    0 0 18px rgba(124,77,255,.35)!important;
+}
+
+.stats-section h2,
+.stats-section h3{
+  font-size:15px!important;
+  margin:0 0 9px!important;
+}
+
+/* ألوان Neon قوية */
+#allTimeStats .stat-card:nth-child(1){
+  border-color:#00eaff!important;
+  box-shadow:0 0 14px rgba(0,234,255,.38),inset 0 0 14px rgba(0,234,255,.06)!important;
+}
+#allTimeStats .stat-card:nth-child(2){
+  border-color:#7c4dff!important;
+  box-shadow:0 0 14px rgba(124,77,255,.38),inset 0 0 14px rgba(124,77,255,.06)!important;
+}
+#allTimeStats .stat-card:nth-child(3){
+  border-color:#ff8800!important;
+  box-shadow:0 0 14px rgba(255,136,0,.38),inset 0 0 14px rgba(255,136,0,.06)!important;
+}
+#allTimeStats .stat-card:nth-child(4){
+  border-color:#00ff9d!important;
+  box-shadow:0 0 14px rgba(0,255,157,.38),inset 0 0 14px rgba(0,255,157,.06)!important;
+}
+
+/* القوائم أصغر */
+#platformPerformanceList > *,
+#countriesBreakdownV1 > *,
+#citiesBreakdownV1 > *,
+#sourcesBreakdownV1 > *,
+#devicesBreakdownV1 > *,
+#browsersBreakdownV1 > *,
+#languagesBreakdownV1 > *{
+  padding:6px 8px!important;
+  margin-bottom:4px!important;
+  border-radius:8px!important;
+  background:#050507!important;
+  border:1px solid rgba(255,255,255,.08)!important;
+  font-size:11px!important;
+}
+
+/* الأقسام */
+#vooxor-traffic-chart-v1,
+#platformPerformanceV1,
+#vooxor-breakdown-v1,
+#vooxor-tech-breakdown-v1{
+  padding:11px!important;
+  border-radius:13px!important;
+  background:linear-gradient(145deg,#030304,#09090c)!important;
+  border:1px solid rgba(0,229,255,.30)!important;
+  box-shadow:
+    0 0 16px rgba(0,229,255,.14),
+    0 0 28px rgba(124,77,255,.08)!important;
+}
+
+.quality-good{
+  color:#00ff9d!important;
+  border-color:#00ff9d!important;
+  text-shadow:0 0 8px rgba(0,255,157,.75)!important;
+}
+
+@media(max-width:700px){
+  .stats-section,
+  .layout{
+    margin:7px 6px!important;
+  }
+
+  .stats-grid,
+  .cards-grid,
+  .live-summary-grid,
+  .advanced-stats-grid{
+    gap:7px!important;
+  }
+
+  .stat-card,
+  .metric-card,
+  .summary-card,
+  .live-card,
+  .advanced-card{
+    min-height:58px!important;
+    padding:7px 8px!important;
+    border-radius:9px!important;
+  }
+
+  .stat-card strong,
+  .metric-card strong,
+  .summary-card strong,
+  .live-card strong,
+  .advanced-card strong{
+    font-size:16px!important;
+  }
+
+  .stat-card span,
+  .metric-card span,
+  .summary-card span,
+  .live-card span,
+  .advanced-card span{
+    font-size:9px!important;
+  }
+}
+</style>
 </head>
 <body>
-<div id="login" class="login"><div class="loginBox card"><div class="brand"><div class="logo">V</div><div><h1>VOOXOR Analytics</h1><small>Private real-time dashboard</small></div></div><p style="margin-top:18px">Enter your analytics dashboard token to continue.</p><input id="token" type="password" autocomplete="off" placeholder="Dashboard token"><button id="loginBtn">Open Dashboard</button><div id="loginErr" class="err"></div></div></div>
+<div id="login" class="login"><div class="loginBox card"><div class="brand"><div class="logo">V</div><div><h1>تحليلات VOOXOR</h1><small>لوحة تحليلات مباشرة خاصة</small></div></div><p style="margin-top:18px">أدخل رمز لوحة التحليلات للمتابعة.</p><input id="token" type="password" autocomplete="off" placeholder="رمز لوحة التحليلات"><button id="loginBtn">فتح لوحة التحليلات</button><div id="loginErr" class="err"></div></div></div>
 
 <section id="vooxor-live-summary-v1" class="stats-section">
   <div class="live-summary-grid">
@@ -719,7 +1095,7 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
       <span class="live-icon">◉</span>
       <div>
         <div class="live-label">مشاهدات اليوم</div>
-        <div class="live-value" id="todayViewsV1">—</div>
+        <div class="live-value" id="اليومViewsV1">—</div>
       </div>
     </div>
 
@@ -727,7 +1103,7 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
       <span class="live-icon">↓</span>
       <div>
         <div class="live-label">تحميلات اليوم</div>
-        <div class="live-value" id="todayDownloadsV1">—</div>
+        <div class="live-value" id="اليومالتنزيلاتV1">—</div>
       </div>
     </div>
 
@@ -735,35 +1111,35 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
       <span class="live-icon">✓</span>
       <div>
         <div class="live-label">إجمالي التثبيتات</div>
-        <div class="live-value" id="totalInstallsV1">—</div>
+        <div class="live-value" id="totalالتثبيتاتV1">—</div>
       </div>
     </div>
   </div>
 </section>
 
 <main id="app" class="wrap hidden">
-<header class="top"><div class="brand"><div class="logo">V</div><div><h1>VOOXOR Analytics</h1><small>Real-time performance & acquisition</small></div></div><div class="actions"><div class="live"><i class="dot"></i> LIVE</div><div class="updated" id="updated">Updated —</div><button type="button" class="refresh" id="refresh">↻ Refresh</button></div></header>
-<section class="grid4"><div class="card kpi" style="--accent:var(--cyan);--glow:rgba(84,200,255,.12)"><div class="kpiHead"><span>LIVE USERS</span><i class="ico">◉</i></div><div class="num" id="live">0</div><div class="sub">Active in last 30 minutes</div></div><div class="card kpi" style="--accent:var(--purple);--glow:rgba(154,124,255,.12)"><div class="kpiHead"><span>VISITORS TODAY</span><i class="ico">◎</i></div><div class="num" id="visitors">0</div><div class="sub">Unique visitors</div></div><div class="card kpi" style="--accent:var(--orange);--glow:rgba(255,180,92,.12)"><div class="kpiHead"><span>DOWNLOADS</span><i class="ico">↓</i></div><div class="num" id="downloads">0</div><div class="sub">Download clicks today</div></div><div class="card kpi" style="--accent:var(--green);--glow:rgba(67,230,139,.12)"><div class="kpiHead"><span>PWA INSTALLS</span><i class="ico">▣</i></div><div class="num" id="installs">0</div><div class="sub">Installed today</div></div></section>
-<section class="layout"><div class="card panel"><div class="panelTitle"><h2>Traffic overview</h2><span>Last 14 days</span></div><div id="chart" class="chart"></div></div><div class="card panel"><div class="panelTitle"><h2>Install funnel</h2><span>Today</span></div><div class="funnel"><div class="step"><div><strong>Prompt shown</strong><small>Install prompt displayed</small><span id="shownRate" class="rate">—</span></div><b id="shown">0</b></div><div class="step"><div><strong>Accepted</strong><small>User accepted prompt</small><span id="acceptedRate" class="rate">—</span></div><b id="accepted">0</b></div><div class="step"><div><strong>Installed</strong><small>App installed successfully</small></div><b id="installed">0</b></div></div></div></section>
-<section class="layout" style="margin-top:14px"><div class="card panel"><div class="panelTitle"><h2>Live activity</h2><span>Auto refresh · 10s</span></div><div id="activity" class="activity"></div></div><div><div class="card panel"><div class="panelTitle"><h2>Downloads by platform</h2><span>Today</span></div><div id="platforms" class="rows"></div></div><div class="card panel" style="margin-top:14px"><div class="panelTitle"><h2>Top pages</h2><span>Downloads</span></div><div id="pages" class="rows"></div></div></div></section>
+<header class="top"><div class="brand"><div class="logo">V</div><div><h1>تحليلات VOOXOR</h1><small>الأداء والاستحواذ في الوقت الفعلي</small></div></div><div class="actions"><div class="live"><i class="dot"></i> مباشر</div><div class="updated" id="updated">آخر تحديث —</div><button type="button" class="refresh" id="refresh">↻ تحديث</button></div></header>
+<section class="grid4"><div class="card kpi" style="--accent:var(--cyan);--glow:rgba(84,200,255,.12)"><div class="kpiHead"><span>مباشر USERS</span><i class="ico">◉</i></div><div class="num" id="live">0</div><div class="sub">النشطون خلال آخر 30 دقيقة</div></div><div class="card kpi" style="--accent:var(--purple);--glow:rgba(154,124,255,.12)"><div class="kpiHead"><span>زوار اليوم</span><i class="ico">◎</i></div><div class="num" id="visitors">0</div><div class="sub">زوار فريدون</div></div><div class="card kpi" style="--accent:var(--orange);--glow:rgba(255,180,92,.12)"><div class="kpiHead"><span>التنزيلات</span><i class="ico">↓</i></div><div class="num" id="downloads">0</div><div class="sub">نقرات التنزيل اليوم</div></div><div class="card kpi" style="--accent:var(--green);--glow:rgba(67,230,139,.12)"><div class="kpiHead"><span>تثبيتات التطبيق</span><i class="ico">▣</i></div><div class="num" id="installs">0</div><div class="sub">التثبيتات اليوم</div></div></section>
+<section class="layout"><div class="card panel"><div class="panelTitle"><h2>الزيارات نظرة عامة</h2><span>آخر 14 يومًا</span></div><div id="chart" class="chart"></div></div><div class="card panel"><div class="panelTitle"><h2>مسار التثبيت</h2><span>اليوم</span></div><div class="funnel"><div class="step"><div><strong>عرض طلب التثبيت</strong><small>تم عرض طلب التثبيت</small><span id="shownRate" class="rate">—</span></div><b id="shown">0</b></div><div class="step"><div><strong>تم القبول</strong><small>وافق المستخدم على التثبيت</small><span id="acceptedRate" class="rate">—</span></div><b id="accepted">0</b></div><div class="step"><div><strong>تم التثبيت</strong><small>تم تثبيت التطبيق بنجاح</small></div><b id="installed">0</b></div></div></div></section>
+<section class="layout" style="margin-top:14px"><div class="card panel"><div class="panelTitle"><h2>النشاط المباشر</h2><span>تحديث تلقائي · 10 ثوانٍ</span></div><div id="activity" class="activity"></div></div><div><div class="card panel"><div class="panelTitle"><h2>التنزيلات by platform</h2><span>اليوم</span></div><div id="platforms" class="rows"></div></div><div class="card panel" style="margin-top:14px"><div class="panelTitle"><h2>أكثر الصفحات</h2><span>التنزيلات</span></div><div id="pages" class="rows"></div></div></div></section>
 
 <section class="card panel" style="margin-top:14px">
   <div class="panelTitle">
-    <h2>Live Traffic</h2>
-    <span>Real visitors · auto refresh</span>
+    <h2>Live الزيارات</h2>
+    <span>الزوار الحقيقيون · تحديث تلقائي</span>
   </div>
   <div id="liveChart" class="chart"></div>
 </section>
 
 <section class="card panel" style="margin-top:14px">
   <div class="panelTitle">
-    <h2>Visitors by country</h2>
-    <span>Today</span>
+    <h2>الزوار by country</h2>
+    <span>اليوم</span>
   </div>
   <div id="countries" class="rows"></div>
 </section>
 
-<div class="footer">VOOXOR · Private analytics · Refreshes every 10 seconds</div>
+<div class="footer">VOOXOR · تحليلات خاصة · تحديثes every 10 seconds</div>
 <section id="allTimeStats" class="stats-section">
   <div class="section-head">
     <div>
@@ -775,26 +1151,26 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
   <div class="kpi-grid all-time-grid">
     <div class="kpi-card stat-blue">
       <div class="kpi-label">إجمالي الزوار</div>
-      <div class="kpi-value" id="allVisitors">—</div>
+      <div class="kpi-value" id="allالزوار">—</div>
       <div class="kpi-sub">زوار فريدون</div>
     </div>
 
     <div class="kpi-card stat-purple">
       <div class="kpi-label">إجمالي مشاهدات الصفحات</div>
       <div class="kpi-value" id="allPageViews">—</div>
-      <div class="kpi-sub">Page Views</div>
+      <div class="kpi-sub">مشاهدات الصفحات</div>
     </div>
 
     <div class="kpi-card stat-orange">
       <div class="kpi-label">إجمالي التحميلات</div>
-      <div class="kpi-value" id="allDownloads">—</div>
-      <div class="kpi-sub">Download Clicks</div>
+      <div class="kpi-value" id="allالتنزيلات">—</div>
+      <div class="kpi-sub">نقرات التنزيل</div>
     </div>
 
     <div class="kpi-card stat-green">
       <div class="kpi-label">إجمالي التثبيتات</div>
-      <div class="kpi-value" id="allInstalls">—</div>
-      <div class="kpi-sub">PWA Installs</div>
+      <div class="kpi-value" id="allالتثبيتات">—</div>
+      <div class="kpi-sub">PWA التثبيتات</div>
     </div>
   </div>
 </section>
@@ -811,20 +1187,20 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
   <div class="kpi-grid advanced-stats-grid">
     <div class="kpi-card stat-cyan">
       <div class="kpi-label">الزوار هذا الشهر</div>
-      <div class="kpi-value" id="monthVisitorsV2">—</div>
-      <div class="kpi-sub">Unique visitors</div>
+      <div class="kpi-value" id="monthالزوارV2">—</div>
+      <div class="kpi-sub">زوار فريدون</div>
     </div>
 
     <div class="kpi-card stat-pink">
       <div class="kpi-label">مشاهدات هذا الشهر</div>
       <div class="kpi-value" id="monthViewsV2">—</div>
-      <div class="kpi-sub">Page views</div>
+      <div class="kpi-sub">مشاهدات الصفحات</div>
     </div>
 
     <div class="kpi-card stat-yellow">
       <div class="kpi-label">تثبيتات هذا الشهر</div>
-      <div class="kpi-value" id="monthInstallsV2">—</div>
-      <div class="kpi-sub">PWA installs</div>
+      <div class="kpi-value" id="monthالتثبيتاتV2">—</div>
+      <div class="kpi-sub">تثبيتات التطبيق</div>
     </div>
 
     <div class="kpi-card stat-red">
@@ -932,10 +1308,25 @@ button,input{font:inherit}button{cursor:pointer}.hidden{display:none!important}.
 
 </main>
 <script>
-const KEY='vooxor_analytics_dashboard_token_v3', $=id=>document.getElementById(id);let token=localStorage.getItem(KEY)||'';
-function fmt(n){return Number(n||0).toLocaleString()}function eventName(e){const m={page_view:'Page View',download_click:'Download',pwa_install_prompt_available:'Install Prompt Available',pwa_install_prompt_shown:'Install Prompt Shown',pwa_install_prompt_result:'Install Prompt Result',pwa_installed:'PWA Installed',pwa_install_prompt_error:'Install Error'};return m[e]||String(e||'Activity').replaceAll('_',' ')}function timeOf(v){try{return new Date(v).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch{return '—'}}function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden')}
-function loginAction(){token=$('token').value.trim();if(!token)return;$('loginErr').textContent='';localStorage.setItem(KEY,token);load(true)}$('loginBtn').onclick=loginAction;$('token').onkeydown=e=>{if(e.key==='Enter')loginAction()};$('refresh').onclick=()=>{alert('REFRESH CLICK OK');load(true)};$('refresh').addEventListener('pointerdown',e=>{e.preventDefault();load(true)});$('refresh').addEventListener('touchend',e=>{e.preventDefault();load(true)},{passive:false});if(token){$('token').value=token;load(true)}
-async function load(first=false){try{const r=await fetch('/api/vooxor-analytics/summary',{headers:{Authorization:'Bearer '+token},cache:'no-store'});if(r.status===401){localStorage.removeItem(KEY);token='';$('login').classList.remove('hidden');$('app').classList.add('hidden');$('loginErr').textContent='Invalid dashboard token.';return}if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();showApp();render(d.data || d);$('updated').textContent='Updated '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch(e){if(first)$('loginErr').textContent='Unable to connect to analytics.'}}
+const KEY='vooxor_analytics_dashboard_token_v3', DEFAULT_TOKEN='vooxor_analytics_dashboard_token_v3', $=id=>document.getElementById(id);let token=DEFAULT_TOKEN;localStorage.setItem(KEY,DEFAULT_TOKEN);
+function fmt(n){return Number(n||0).toLocaleString()}function eventName(e){const m={page_view:'مشاهدة صفحة',download_click:'تنزيل',pwa_install_prompt_available:'طلب التثبيت متاح',pwa_install_prompt_shown:'تم عرض طلب التثبيت',pwa_install_prompt_result:'نتيجة طلب التثبيت',pwa_installed:'PWA تم التثبيت',pwa_install_prompt_error:'خطأ في التثبيت'};return m[e]||String(e||'Activity').replaceAll('_',' ')}function timeOf(v){
+  try{
+    if(v && typeof v==='object') v=v.ts||v.timestamp||v.time||v.date;
+    if(v===null||v===undefined||v==='') return '—';
+    let d;
+    if(typeof v==='number'){
+      d=new Date(v < 100000000000 ? v*1000 : v);
+    }else{
+      d=new Date(String(v));
+    }
+    if(Number.isNaN(d.getTime())) return '—';
+    return d.toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  }catch{
+    return '—';
+  }
+})}catch{return '—'}}function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden')}
+function loginAction(){token=($('token').value.trim()||DEFAULT_TOKEN);$('loginErr').textContent='';localStorage.setItem(KEY,token);load(true)}$('loginBtn').onclick=loginAction;$('token').onkeydown=e=>{if(e.key==='Enter')loginAction()};$('refresh').onclick=()=>{alert('REFRESH CLICK OK');load(true)};$('refresh').addEventListener('pointerdown',e=>{e.preventDefault();load(true)});$('refresh').addEventListener('touchend',e=>{e.preventDefault();load(true)},{passive:false});if(token){$('token').value=token;load(true)}
+async function load(first=false){try{const r=await fetch('/api/vooxor-analytics/summary',{headers:{Authorization:'Bearer '+token},cache:'no-store'});if(r.status===401){localStorage.removeItem(KEY);token='';$('login').classList.remove('hidden');$('app').classList.add('hidden');$('loginErr').textContent='رمز لوحة التحليلات غير صحيح.';return}if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();showApp();render(d.data || d);$('updated').textContent='آخر تحديث '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch(e){if(first)$('loginErr').textContent='تعذر الاتصال بالتحليلات.'}}
 
 const countryNames = {
   SA:"Saudi Arabia", US:"United States", ID:"Indonesia", PK:"Pakistan",
@@ -950,18 +1341,18 @@ function flag(code){
   return String.fromCodePoint(...code.toUpperCase().split("").map(c=>127397+c.charCodeAt(0)));
 }
 
-function renderCountries(d){
+function renderالدول(d){
   const box = $('countries');
   if(!box) return;
 
-  const countries = d.countries_today || {};
-  const cities = d.cities_today || {};
+  const countries = d.countries_اليوم || {};
+  const cities = d.cities_اليوم || {};
   const entries = Object.entries(countries)
     .filter(([k,v]) => Number(v) > 0)
     .sort((a,b)=>Number(b[1])-Number(a[1]));
 
   if(!entries.length){
-    box.innerHTML = '<div class="muted">No real country data yet.</div>';
+    box.innerHTML = '<div class="muted">لا توجد بيانات دول حقيقية حتى الآن.</div>';
     return;
   }
 
@@ -1032,7 +1423,7 @@ function renderLiveChart(d){
       }).join('')}
     </div>
     <div style="font-size:11px;color:var(--muted);margin-top:8px">
-      Real events · last 30 minutes
+      الأحداث الحقيقية · آخر 30 دقيقة
     </div>
   `;
 }
@@ -1087,12 +1478,12 @@ function renderBreakdownListV1(id, source){
 function renderTechBreakdownV1(d){
   renderBreakdownListV1(
     'browsersBreakdownV1',
-    d.browsers_today || {}
+    d.browsers_اليوم || {}
   );
 
   renderBreakdownListV1(
     'languagesBreakdownV1',
-    d.languages_today || {}
+    d.languages_اليوم || {}
   );
 
   const badge = document.getElementById('dataQualityBadgeV1');
@@ -1114,22 +1505,22 @@ function renderTechBreakdownV1(d){
 function renderBreakdownV1(d){
   renderBreakdownListV1(
     'countriesBreakdownV1',
-    d.countries_today || {}
+    d.countries_اليوم || {}
   );
 
   renderBreakdownListV1(
     'citiesBreakdownV1',
-    d.cities_today || {}
+    d.cities_اليوم || {}
   );
 
   renderBreakdownListV1(
     'sourcesBreakdownV1',
-    d.sources_today || {}
+    d.sources_اليوم || {}
   );
 
   renderBreakdownListV1(
     'devicesBreakdownV1',
-    d.devices_today || {}
+    d.devices_اليوم || {}
   );
 }
 
@@ -1140,9 +1531,9 @@ function renderLiveSummaryV1(d){
   };
 
   set('liveUsersV1',d.live_users_30m);
-  set('todayViewsV1',d.page_views_today);
-  set('todayDownloadsV1',d.downloads_today);
-  set('totalInstallsV1',d.installs_total);
+  set('اليومViewsV1',d.page_views_اليوم);
+  set('اليومالتنزيلاتV1',d.downloads_today);
+  set('totalالتثبيتاتV1',d.installs_total);
 }
 
 function renderPlatformPerformanceV1(d){
@@ -1162,9 +1553,9 @@ function renderPlatformPerformanceV1(d){
   }
 
   const labels = {
-    tiktok: 'TikTok',
+    تيك توك: 'TikTok',
     instagram: 'Instagram',
-    facebook: 'Facebook',
+    فيسبوك: 'Facebook',
     snapchat: 'Snapchat',
     youtube: 'YouTube'
   };
@@ -1190,7 +1581,7 @@ function renderPlatformPerformanceV1(d){
   }).join('');
 }
 
-function renderTrafficChartV1(d){
+function renderالزياراتChartV1(d){
   const root = document.getElementById('trafficChartV1');
   if (!root) return;
 
@@ -1240,9 +1631,9 @@ function renderAdvancedStatsV2(d){
     if (el) el.textContent = value ?? '—';
   };
 
-  set('monthVisitorsV2', d.visitors_month);
+  set('monthالزوارV2', d.visitors_month);
   set('monthViewsV2', d.page_views_month);
-  set('monthInstallsV2', d.installs_month);
+  set('monthالتثبيتاتV2', (d.installs_month ?? d.installs_total));
   set(
     'conversionV2',
     d.downloads_conversion_rate == null
@@ -1257,10 +1648,10 @@ function renderAllTimeStats(d){
     if (el) el.textContent = value ?? '—';
   };
 
-  set('allVisitors', d.visitors_total);
+  set('allالزوار', d.visitors_total);
   set('allPageViews', d.page_views_total);
-  set('allDownloads', d.downloads_total);
-  set('allInstalls', d.installs_total);
+  set('allالتنزيلات', d.downloads_total);
+  set('allالتثبيتات', d.installs_total);
 }
 
 function render(d){
@@ -1268,11 +1659,11 @@ function render(d){
   renderBreakdownV1(d);
   renderLiveSummaryV1(d);
   renderPlatformPerformanceV1(d);
-  renderTrafficChartV1(d);
+  renderالزياراتChartV1(d);
   renderAdvancedStatsV2(d);
-  renderAllTimeStats(d);renderCountries(d);renderLiveChart(d);$('live').textContent=fmt(d.live_users_30m);$('visitors').textContent=fmt(d.visitors_today);$('downloads').textContent=fmt(d.downloads_today);$('installs').textContent=fmt(d.installs_today);$('shown').textContent=fmt(d.prompt_shown_today);$('accepted').textContent=fmt(d.accepted_today);$('installed').textContent=fmt(d.installs_today);const s=Number(d.prompt_shown_today||0),a=Number(d.accepted_today||0),i=Number(d.installs_today||0);$('shownRate').textContent=(s?'100% shown': '—');$('acceptedRate').textContent=(s?Math.round(a/s*100)+'% of prompts':'—');
+  renderAllTimeStats(d);renderالدول(d);renderLiveChart(d);$('live').textContent=fmt(d.live_users_30m);$('visitors').textContent=fmt(d.visitors_today);$('downloads').textContent=fmt(d.downloads_today);$('installs').textContent=fmt(d.installs_today);$('shown').textContent=fmt(d.install_prompt_shown_today);$('accepted').textContent=fmt(d.install_accepted_today);$('installed').textContent=fmt(d.installs_today);const s=Number(d.install_prompt_shown_today||0),a=Number(d.install_accepted_today||0),i=Number(d.installs_today||0);$('shownRate').textContent=(s?'100% shown': '—');$('acceptedRate').textContent=(s?Math.round(a/s*100)+'% of prompts':'—');
 const daily=d.daily_14d||[],chart=$('chart');chart.innerHTML='';if(!daily.length)chart.innerHTML='<div class="empty">No daily data yet</div>';else{const max=Math.max(1,...daily.map(x=>Number(x.page_views||x.visitors||x.downloads||0)));daily.forEach(x=>{const n=Number(x.page_views||x.visitors||x.downloads||0),w=document.createElement('div');w.className='barWrap';const b=document.createElement('div');b.className='bar';b.style.height=Math.max(2,n/max*92)+'%';b.title=(x.date||'')+' · '+fmt(n);const v=document.createElement('div');v.className='barVal';v.textContent=fmt(n);const l=document.createElement('div');l.className='barLabel';l.textContent=String(x.date||'').slice(5);w.append(b,v,l);chart.appendChild(w)})}
-const acts=d.recent_activity||[],ac=$('activity');ac.innerHTML=acts.length?acts.map(x=>`<div class="event"><div class="time">${timeOf(x.timestamp||x.time)}</div><div class="eventMain"><div class="eventName">${eventName(x.event)}</div><div class="eventPath">${x.page_path||x.path||'/'}</div></div><div class="pill">${x.platform||'VOOXOR'}</div></div>`).join(''):'<div class="empty" style="height:220px">No recent activity</div>';drawRows('platforms',d.downloads_by_platform,'No platform data yet');drawRows('pages',d.downloads_by_page,'No download data yet')}
+const acts=d.recent_activity||[],ac=$('activity');ac.innerHTML=acts.length?acts.map(x=>`<div class="event"><div class="time">${timeOf(x.timestamp||x.time)}</div><div class="eventMain"><div class="eventName">${eventName(x.event)}</div><div class="eventPath">${x.page_path||x.path||'/'}</div></div><div class="pill">${x.platform||'VOOXOR'}</div></div>`).join(''):'<div class="empty" style="height:220px">No recent activity</div>';drawRows('platforms',d.downloads_by_platform,'لا توجد بيانات منصات حتى الآن');drawRows('pages',d.downloads_by_page,'لا توجد بيانات تنزيل حتى الآن')}
 function drawRows(id,obj,empty){const el=$(id);el.innerHTML='';let entries=Array.isArray(obj)?obj.map(x=>[x.platform||x.page||x.name||'Other',Number(x.count||x.downloads||0)]):Object.entries(obj||{});entries=entries.filter(x=>x[1]>0).sort((a,b)=>b[1]-a[1]).slice(0,6);if(!entries.length){el.innerHTML='<div class="empty" style="height:80px">'+empty+'</div>';return}const max=Math.max(1,...entries.map(x=>x[1]));entries.forEach(([name,n])=>{const row=document.createElement('div');row.className='row';row.innerHTML=`<div>${String(name).replace(/^./,c=>c.toUpperCase())}</div><div class="track"><div class="fill" style="width:${n/max*100}%"></div></div><div class="count">${fmt(n)}</div>`;el.appendChild(row)})}
 setInterval(()=>{if(token)load(false)},10000);
 </script>
