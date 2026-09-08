@@ -1320,11 +1320,16 @@ function fmt(n){return Number(n||0).toLocaleString()}function eventName(e){const
       d=new Date(String(v));
     }
     if(Number.isNaN(d.getTime())) return '—';
-    return d.toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    return d.toLocaleTimeString('ar-SA',{
+      hour:'2-digit',
+      minute:'2-digit',
+      second:'2-digit'
+    });
   }catch{
     return '—';
   }
-})}catch{return '—'}}function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden')}
+}
+function showApp(){$('login').classList.add('hidden');$('app').classList.remove('hidden')}
 function loginAction(){token=($('token').value.trim()||DEFAULT_TOKEN);$('loginErr').textContent='';localStorage.setItem(KEY,token);load(true)}$('loginBtn').onclick=loginAction;$('token').onkeydown=e=>{if(e.key==='Enter')loginAction()};$('refresh').onclick=()=>{alert('REFRESH CLICK OK');load(true)};$('refresh').addEventListener('pointerdown',e=>{e.preventDefault();load(true)});$('refresh').addEventListener('touchend',e=>{e.preventDefault();load(true)},{passive:false});if(token){$('token').value=token;load(true)}
 async function load(first=false){try{const r=await fetch('/api/vooxor-analytics/summary',{headers:{Authorization:'Bearer '+token},cache:'no-store'});if(r.status===401){localStorage.removeItem(KEY);token='';$('login').classList.remove('hidden');$('app').classList.add('hidden');$('loginErr').textContent='رمز لوحة التحليلات غير صحيح.';return}if(!r.ok)throw new Error('HTTP '+r.status);const d=await r.json();showApp();render(d.data || d);$('updated').textContent='آخر تحديث '+new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit',second:'2-digit'})}catch(e){if(first)$('loginErr').textContent='تعذر الاتصال بالتحليلات.'}}
 
@@ -1553,9 +1558,9 @@ function renderPlatformPerformanceV1(d){
   }
 
   const labels = {
-    تيك توك: 'TikTok',
+    tiktok: 'TikTok',
     instagram: 'Instagram',
-    فيسبوك: 'Facebook',
+    facebook: 'Facebook',
     snapchat: 'Snapchat',
     youtube: 'YouTube'
   };
