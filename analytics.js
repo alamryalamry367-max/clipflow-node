@@ -571,11 +571,29 @@ function summarize(events) {
     e => e.event === 'download_click'
   ).length;
 
+  const pageViewsTotal = events.filter(
+    e => e.event === 'page_view'
+  ).length;
+
+  const downloadsTotal = events.filter(
+    e => e.event === 'download_click'
+  ).length;
+
+  const totalVisitors = new Set(
+    events
+      .map(visitorKey)
+      .filter(v => v !== 'UNKNOWN')
+  ).size;
+
   const conversionRate = pageViewsToday
     ? +(downloadsToday / pageViewsToday * 100).toFixed(2)
     : null;
 
   const installsToday = todayEvents.filter(
+    e => e.event === 'pwa_installed'
+  ).length;
+
+  const installsTotal = events.filter(
     e => e.event === 'pwa_installed'
   ).length;
 
@@ -643,6 +661,11 @@ function summarize(events) {
     visitors_today: visitorsToday,
     page_views_today: pageViewsToday,
     downloads_today: downloadsToday,
+
+    visitors_total: totalVisitors,
+    page_views_total: pageViewsTotal,
+    downloads_total: downloadsTotal,
+
     downloads_conversion_rate: conversionRate,
 
     page_views_month: monthPageViews,
@@ -651,6 +674,7 @@ function summarize(events) {
     daily_14d: daily,
 
     installs_today: installsToday,
+    installs_total: installsTotal,
     install_prompt_shown_today: promptShownToday,
     install_accepted_today: acceptedToday,
 
