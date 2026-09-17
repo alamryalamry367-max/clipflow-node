@@ -589,6 +589,7 @@ app.get('/ar/', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'ar', 'index.html'))
 );
 
+app.get('/yandex_ba35d0e8892cda11.html', (_, res) => res.sendFile(path.join(PUBLIC, 'yandex_ba35d0e8892cda11.html')));
 app.get('*splat', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'index.html'))
 );
