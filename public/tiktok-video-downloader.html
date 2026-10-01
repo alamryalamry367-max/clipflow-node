@@ -134,6 +134,80 @@
 
 <link rel="manifest" href="/manifest.webmanifest" />
 
+<style id="vooxor-share-ui">
+.vooxor-share{
+  position:relative;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:14px auto 18px;
+  padding:10px 12px;
+  max-width:760px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+.vooxor-share-label{
+  color:#aaaab5;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.vooxor-share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+}
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;
+  background:#111117;
+  color:#e9e9ef !important;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none !important;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.share-btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(37,244,238,.30);
+  background:#17171e;
+}
+.share-native{color:var(--tt-cyan) !important;}
+.share-whatsapp:hover{border-color:rgba(37,244,238,.35);}
+.share-telegram:hover{border-color:rgba(37,244,238,.35);}
+.share-facebook:hover{border-color:rgba(139,92,246,.42);}
+.share-copy:hover{border-color:rgba(254,44,85,.38);}
+@media (max-width:600px){
+  .vooxor-share{
+    align-items:stretch;
+    margin-top:12px;
+    padding:10px;
+  }
+  .vooxor-share-label{
+    width:100%;
+    text-align:center;
+  }
+  .share-btn{
+    min-height:38px;
+    padding:0 10px;
+  }
+}
+</style>
+
+
 <style id="vooxor-compact-hero-spacing">
 @media (max-width: 600px) {
   .hero .eyebrow {
@@ -584,6 +658,17 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
   <div class="eyebrow">TIKTOK VIDEO DOWNLOADER</div>
 
+  <div id="vooxor-share" class="vooxor-share" aria-label="مشاركة صفحة VOOXOR">
+    <span class="vooxor-share-label">شارك هذه الصفحة مع أصدقائك</span>
+    <div class="vooxor-share-actions">
+      <button type="button" class="share-btn share-native" id="share-native">↗ مشاركة</button>
+      <a class="share-btn share-whatsapp" id="share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="share-btn share-telegram" id="share-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="share-btn share-facebook" id="share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <button type="button" class="share-btn share-copy" id="share-copy">نسخ الرابط</button>
+    </div>
+  </div>
+
   <h1>تحميل فيديوهات تيك توك بدون علامة مائية</h1>
 
   <p class="lead">
@@ -956,6 +1041,69 @@ pasteBtn.addEventListener('click', async () => {
     urlInput.focus();
   }
 });
+</script>
+
+
+<script id="vooxor-share-script">
+(() => {
+  const pageUrl = window.location.href;
+  const shareText = "شاهد أداة VOOXOR لتحميل فيديوهات TikTok";
+
+  const whatsapp = document.getElementById("share-whatsapp");
+  const telegram = document.getElementById("share-telegram");
+  const facebook = document.getElementById("share-facebook");
+  const copy = document.getElementById("share-copy");
+  const native = document.getElementById("share-native");
+
+  if (whatsapp) {
+    whatsapp.href =
+      "https://wa.me/?text=" +
+      encodeURIComponent(shareText + "\n" + pageUrl);
+  }
+
+  if (telegram) {
+    telegram.href =
+      "https://t.me/share/url?url=" +
+      encodeURIComponent(pageUrl) +
+      "&text=" +
+      encodeURIComponent(shareText);
+  }
+
+  if (facebook) {
+    facebook.href =
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(pageUrl);
+  }
+
+  if (copy) {
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        copy.textContent = "تم نسخ الرابط";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 1800);
+      } catch {
+        copy.textContent = "انسخ الرابط من شريط المتصفح";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 2200);
+      }
+    });
+  }
+
+  if (native) {
+    if (navigator.share) {
+      native.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: shareText,
+            url: pageUrl
+          });
+        } catch {}
+      });
+    } else {
+      native.style.display = "none";
+    }
+  }
+})();
 </script>
 
 </body>
