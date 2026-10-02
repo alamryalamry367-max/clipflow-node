@@ -136,209 +136,391 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 
 
-<style id="snapchat-ad-position">
-/* Snapchat page only — compact first-screen layout */
-.hero{
-  margin-top:28px !important;
-}
-
-.hero h1{
-  font-size:clamp(30px,7vw,48px) !important;
-  line-height:1.08 !important;
-  margin:12px 0 8px !important;
-}
-
-.hero h1 span{
-  font-size:.58em !important;
-  line-height:1.25 !important;
-  display:inline-block;
-  margin-top:2px;
-}
-
-.hero .lead{
-  font-size:14px !important;
-  line-height:1.45 !important;
-  margin:0 auto 12px !important;
-  max-width:620px;
-}
-
-.hero .platform-icons{
-  margin-bottom:12px !important;
-}
-
-.hero .tool{
-  margin-top:0 !important;
-}
-
-.hero .result{
-  margin-top:6px !important;
-}
-
-.hero .vooxor-ad{
-  margin-top:-18px !important;
-  margin-bottom:0 !important;
-}
-
-.hero .notice{
-  margin-top:8px !important;
-}
-</style>
 
 
-<style id="snapchat-subtitle-font">
-.hero h1 span{
-  font-family:Arial, Helvetica, sans-serif !important;
-  font-size:.58em !important;
-  font-weight:500 !important;
-  line-height:1.35 !important;
-  letter-spacing:0 !important;
-  display:inline-block;
-  margin-top:3px;
-}
-</style>
 
 
-<style id="snapchat-mobile-overflow-fix">
-html,
-body{
-  width:100%;
-  max-width:100%;
-  overflow-x:hidden;
-}
 
-*,
-*::before,
-*::after{
-  box-sizing:border-box;
-}
 
-main,
-section,
-.hero,
-.trust,
-.tool,
-.input-wrap,
-.seo-content,
-.seo-text,
-.faq{
-  width:100%;
-  max-width:100%;
-}
 
-.hero h1,
-.hero h1 span,
-.hero .lead,
-.section-head,
-.seo-text,
-.seo-text p,
-.seo-text h3{
-  max-width:100%;
-  overflow-wrap:anywhere;
-  word-break:normal;
-}
-
-.seo-text a{
-  overflow-wrap:anywhere;
-}
-
-img,
-iframe{
-  max-width:100%;
-}
-
-@media (max-width:600px){
-  .hero{
-    width:100%;
-    max-width:100%;
-    padding-left:16px !important;
-    padding-right:16px !important;
-    margin-left:0 !important;
-    margin-right:0 !important;
-  }
-
-  .section{
-    width:100%;
-    max-width:100%;
-    padding-left:16px;
-    padding-right:16px;
-  }
-
-  .seo-text{
-    width:100%;
-    max-width:100%;
-  }
-
-  .seo-text p{
-    width:100%;
-    max-width:100%;
-  }
-}
-</style>
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8585974444588582"
      crossorigin="anonymous"></script>
 
-<style id="snapchat-brand-colors">
-/* Snapchat-inspired colors — this page only.
-   Do NOT modify the VOOXOR logo/header. */
 
-:root{
-  --snap-yellow:#fffc00;
-  --snap-yellow-soft:#fff84d;
-  --snap-black:#050505;
-}
-
-/* Snapchat accent without touching the VOOXOR logo */
-.hero .eyebrow,
-.section-head > span{
-  color:var(--snap-yellow) !important;
-}
-
-/* Main download button */
-.hero .download-main{
-  background:var(--snap-yellow) !important;
-  color:#050505 !important;
-  border-color:var(--snap-yellow) !important;
-  box-shadow:0 8px 28px rgba(255,252,0,.18) !important;
-}
-
-.hero .download-main:hover{
-  background:var(--snap-yellow-soft) !important;
-  border-color:var(--snap-yellow-soft) !important;
-  color:#050505 !important;
-}
-
-/* Snapchat platform icon only */
-.platform-icon.snapchat{
-  border-color:rgba(255,252,0,.55) !important;
-  box-shadow:0 0 18px rgba(255,252,0,.10) !important;
-}
-
-.platform-icon.snapchat span{
-  filter:drop-shadow(0 0 6px rgba(255,252,0,.22));
-}
-
-/* Snapchat-related headings */
-.seo-content h2,
-.seo-content h3{
-  text-shadow:0 0 18px rgba(255,252,0,.06);
-}
-
-/* Small Snapchat accent on FAQ */
-.faq details[open] summary{
-  color:var(--snap-yellow) !important;
-}
-
-/* Keep VOOXOR header/logo untouched */
-header .brand,
-header .brand span,
-header .brand img{
-  color:initial;
-}
-</style>
 
     <!-- Monetag In-Page Push -->
     <script>(function(s){s.dataset.zone='11931346',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<style id="vooxor-share-ui">
+.vooxor-share{
+  position:relative;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:14px auto 18px;
+  padding:10px 12px;
+  max-width:760px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+.vooxor-share-label{
+  color:#aaaab5;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.vooxor-share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+}
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;
+  background:#111117;
+  color:#e9e9ef !important;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none !important;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.share-btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(37,244,238,.30);
+  background:#17171e;
+}
+.share-native{color:#fffc00 !important;}
+.share-whatsapp:hover{border-color:rgba(37,244,238,.35);}
+.share-telegram:hover{border-color:rgba(37,244,238,.35);}
+.share-facebook:hover{border-color:rgba(139,92,246,.42);}
+.share-copy:hover{border-color:rgba(254,44,85,.38);}
+@media (max-width:600px){
+  .vooxor-share{
+    align-items:stretch;
+    margin-top:12px;
+    padding:10px;
+  }
+  .vooxor-share-label{
+    width:100%;
+    text-align:center;
+  }
+  .share-btn{
+    min-height:38px;
+    padding:0 10px;
+  }
+}
+</style>
+
+<style id="spotlight-ar-yellow-v1">
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:#0b0c0e !important;color:#f3f3f4;
+  font-family:Arial,Tahoma,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+header{
+  max-width:1160px;margin:auto;padding:22px 24px !important;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:16px;background:#0b0c0e !important;
+  border:0 !important;
+}
+header nav{display:flex;align-items:center;flex-wrap:wrap;gap:24px}
+header nav a{color:#d2d2d7 !important;font-size:14px}
+header nav a:hover{color:#fffc00 !important}
+main{max-width:1120px;margin:auto;padding:0 24px}
+.hero{
+  position:relative;isolation:isolate;
+  width:100%;max-width:none !important;
+  margin:0 !important;padding:0 0 20px !important;
+  display:block !important;background:none !important;
+  border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  overflow:visible !important;text-align:center !important;
+}
+.hero::before,.hero::after{display:none !important}
+.spot-breadcrumb{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 0;color:#bdbdc4;font-size:11px;text-align:right;
+}
+.spot-breadcrumb a{color:#d2d2d8;text-decoration:none}
+.spot-breadcrumb span{color:#fffc00}
+.spot-intro{
+  position:relative;isolation:isolate;overflow:hidden;
+  padding:38px 16px 34px;
+}
+.spot-intro::before{
+  content:"";position:absolute;z-index:-1;
+  width:min(780px,135%);aspect-ratio:1;
+  left:50%;top:8px;transform:translateX(-50%);
+  border:1px solid #fffc0033;border-radius:50%;
+  box-shadow:0 0 0 26px #fffc0005,0 0 0 27px #fffc0012,
+    0 0 0 58px #fffc0003,0 0 0 59px #fffc000c;
+  background:radial-gradient(ellipse at 50% 0%,#fffc000c,transparent 55%);
+  pointer-events:none;
+}
+.hero .eyebrow{
+  display:inline-flex !important;width:auto;align-items:center;
+  margin:0 0 20px !important;padding:7px 18px !important;
+  background:#0b0c0e !important;border:1px solid #fffc0099 !important;
+  border-radius:50px;color:#fffc00 !important;
+  font:11px/1.5 Arial,sans-serif;letter-spacing:3px;direction:ltr;
+}
+.hero h1{
+  margin:0 0 18px !important;color:#f7f7f8 !important;
+  font-size:clamp(44px,6.4vw,78px) !important;
+  font-weight:800;line-height:1.3 !important;letter-spacing:-1.5px;
+}
+.hero h1 span{
+  display:inline !important;margin:0 !important;
+  font:inherit !important;letter-spacing:inherit !important;
+  background:none !important;color:#fffc00 !important;
+  -webkit-text-fill-color:#fffc00 !important;
+}
+.hero .lead{
+  max-width:650px;margin:0 auto !important;
+  color:#bdbdc6 !important;font-size:17px !important;line-height:1.9 !important;
+}
+.spot-panel{
+  position:relative;z-index:1;
+  background:linear-gradient(130deg,#191c1e,#111315);
+  border:1px solid #ffffff13;border-top:3px solid #fffc00;
+  border-radius:12px;box-shadow:0 22px 60px #00000025;
+  scroll-margin-top:20px;
+}
+.hero .tool{
+  display:flex !important;flex-direction:column;gap:14px;
+  max-width:none;width:100%;padding:26px !important;margin:0 !important;
+  background:none !important;border:0 !important;
+  border-radius:0 !important;box-shadow:none !important;
+}
+.spot-input-label{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  color:#e9e9ee;font-size:19px;text-align:right;margin-bottom:2px;
+}
+.spot-input-label span{font-size:23px;color:#d8d8de}
+.hero .input-wrap{
+  display:flex;align-items:center;gap:10px;min-width:0;min-height:62px;
+  padding:6px !important;background:#ffffff03 !important;
+  border:1px solid #ffffff3a !important;border-radius:9px !important;
+  box-shadow:none !important;
+}
+.hero .input-wrap input{
+  flex:1;min-width:0;width:100%;height:48px;padding:12px !important;
+  border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:transparent !important;color:#f5f5f7 !important;
+  -webkit-text-fill-color:#f5f5f7 !important;text-align:right;font-size:16px;
+}
+.hero .input-wrap input::placeholder{
+  color:#a8a8b2 !important;-webkit-text-fill-color:#a8a8b2 !important;opacity:1;
+}
+.hero .paste{
+  position:static !important;transform:none !important;flex:0 0 auto;
+  padding:8px 18px !important;min-height:44px;
+  border:1px solid #ffffff24 !important;border-radius:6px !important;
+  background:#ffffff06 !important;color:#eeeeF3 !important;font-size:13px;
+}
+.hero .download-main{
+  width:100%;min-height:56px;margin:0 !important;
+  background:#fffc00 !important;color:#080808 !important;
+  border:0 !important;border-radius:8px !important;
+  box-shadow:none !important;font-size:19px;font-weight:800;
+}
+.hero .download-main:hover{background:#fffd68 !important}
+.hero .result{
+  max-width:100%;margin:0 !important;padding:0 26px 20px;
+  text-align:right;overflow-wrap:anywhere;
+}
+.hero .result:empty{display:none}
+.hero .result img,.hero .result video{max-width:100%;height:auto}
+.spot-action-bar{
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:18px;padding:17px 26px;
+  border-top:1px solid #ffffff12;
+}
+.hero .vooxor-share{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  justify-content:flex-start;max-width:none;width:auto;
+  padding:0;margin:0 !important;background:none;
+  border:0;border-radius:0;box-shadow:none;
+}
+.vooxor-share-label{color:#a9a9b3;font-size:11px}
+.vooxor-share-actions{display:flex;flex-wrap:wrap;gap:6px}
+.vooxor-share .share-btn{
+  min-height:44px;padding:0 10px;background:transparent;
+  border:1px solid #ffffff28;border-radius:50px;
+  color:#ededf1 !important;font-size:11px;
+}
+.vooxor-share .share-btn:hover{border-color:#fffc00;background:#ffffff05}
+.spot-install-area{
+  display:flex;align-items:center;justify-content:center;
+  flex-wrap:wrap;gap:12px;color:#aaaab4;font-size:12px;
+}
+.hero #install-app[hidden]{display:none !important}
+.hero .spot-install-area #install-app:not([hidden]){
+  display:inline-flex !important;align-items:center;justify-content:center;
+  width:auto !important;max-width:100%;min-height:44px;
+  padding:8px 16px !important;margin:0 !important;
+  border:1px solid #fffc00 !important;border-radius:7px !important;
+  background:transparent !important;color:#f3f3f5 !important;
+  font-size:13px;box-shadow:none !important;
+}
+.hero .vooxor-ad{max-width:100%;margin:18px auto 0 !important}
+.hero .notice{
+  color:#91919e !important;font-size:11px;line-height:1.8;
+  margin:14px 0 0 !important;
+}
+.section{
+  width:100%;max-width:none !important;
+  margin:0 !important;padding:34px 0 !important;
+  background:none !important;border:0 !important;border-radius:0 !important;
+}
+.section-head{text-align:center !important}
+.section-head>span{color:#a9a9b4 !important;font-size:11px;letter-spacing:1px}
+.section-head h2{
+  color:#f2f2f5 !important;font-size:28px;line-height:1.6;
+  margin:8px 0 24px;
+}
+#how .section-head>span{display:none}
+#how .section-head h2,.faq .section-head h2{
+  display:flex;align-items:center;justify-content:center;gap:20px;
+}
+#how .section-head h2::before,#how .section-head h2::after,
+.faq .section-head h2::before,.faq .section-head h2::after{
+  content:"";width:65px;height:1px;flex-shrink:1;background:#fffc0066;
+}
+#how .cards{
+  display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:0;margin:0;border:0;
+}
+#how .cards article{
+  position:relative;text-align:right;margin:0;padding:8px 24px !important;
+  border:0 !important;border-radius:0 !important;
+  background:none !important;box-shadow:none !important;transform:none !important;
+}
+#how .cards article+article{border-inline-start:1px solid #fffc0055 !important}
+#how .cards article>span{
+  display:inline-grid;place-items:center;width:32px;height:32px;
+  background:#fffc00;border-radius:50%;color:#101010 !important;
+  font-size:12px;font-weight:800;
+}
+#how .cards h3{display:inline;margin-inline-start:10px;color:#f0f0f5;font-size:20px}
+#how .cards p{margin:14px 0 0;color:#b9b9c4;line-height:1.85;font-size:14px}
+.spot-feature{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:36px;align-items:center;padding:48px 0;
+}
+.spot-kicker{font-size:11px;color:#a9a9b4}
+.spot-feature h2{font-size:36px;line-height:1.5;margin:10px 0 16px;color:#f4f4f6}
+.spot-feature h2 span{color:#fffc00}
+.spot-feature p{color:#b8b8c2;line-height:1.95;font-size:15px}
+.spot-feature a{display:inline-flex;align-items:center;min-height:44px;color:#e8e8ee;font-size:13px}
+.spot-light-art{
+  position:relative;isolation:isolate;overflow:hidden;height:250px;
+  border-radius:130px 130px 14px 14px;
+  border:1px solid #ffffff0c;
+  background:linear-gradient(135deg,#23262a,#0c0d10 65%);
+}
+.spot-light-art::before{
+  content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,transparent 0 49px,#ffffff05 50px 51px);
+}
+.spot-light-art::after{
+  content:"";position:absolute;inset:65% -20% -15%;
+  background:linear-gradient(125deg,transparent 28%,#fffc0040 48%,transparent 73%);
+  transform:skewY(-12deg);filter:blur(9px);
+}
+.spot-light-door{
+  position:absolute;left:44%;top:16%;width:23%;height:69%;
+  background:linear-gradient(90deg,#9b9b09,#fffc00 75%,#ffffaa);
+  box-shadow:0 0 50px #fffc0020;
+  transform:skewY(-8deg);
+}
+.seo-content{border-top:1px solid #ffffff10 !important}
+.seo-content .section-head{text-align:right !important}
+.seo-content .section-head h2{font-size:25px}
+.seo-text{max-width:850px;line-height:1.95;color:#b6b6c2;font-size:15px}
+.seo-text p{color:#b6b6c2 !important}
+.seo-text h3{color:#e6e6ef !important;margin:25px 0 8px}
+.section a{color:#e8e79c}
+.internal-links{line-height:2.2}
+.faq details{
+  padding:18px 0;margin:0 !important;
+  border:0 !important;border-bottom:1px solid #ffffff24 !important;
+  border-radius:0 !important;background:none !important;
+}
+.faq summary{color:#eeeeF4;font-size:17px;line-height:1.7;cursor:pointer}
+.faq details[open] summary{color:#fffc00 !important}
+.faq p{color:#b9b9c4;line-height:1.9;max-width:850px}
+footer{border-color:#ffffff24 !important;color:#a9a9b5 !important}
+footer a{color:#c9c9d4}
+button:focus-visible,a:focus-visible,summary:focus-visible{
+  outline:2px solid #fffc00;outline-offset:4px;
+}
+.hero .input-wrap:focus-within{outline:2px solid #fffc00;outline-offset:3px}
+@media(max-width:760px){
+  header{padding:16px 18px !important}
+  header nav{gap:14px}
+  header nav a{font-size:12px}
+  main{padding:0 18px}
+  .spot-intro{padding:28px 6px}
+  .hero h1{font-size:46px !important;letter-spacing:-1px}
+  .hero .eyebrow{font-size:9px;letter-spacing:2px;margin-bottom:18px !important}
+  .hero .lead{font-size:14px !important}
+  .hero .tool{padding:20px 14px !important;gap:12px}
+  .spot-input-label{font-size:16px}
+  .hero .input-wrap{gap:4px;padding:4px !important;min-height:56px}
+  .hero .input-wrap input{padding:8px !important;font-size:16px}
+  .hero .paste{padding:8px 12px !important}
+  .hero .download-main{font-size:17px;min-height:52px}
+  .hero .result{padding:0 14px 16px}
+  .spot-action-bar{padding:16px 12px;justify-content:center;gap:16px}
+  .hero .vooxor-share{justify-content:center;width:100%}
+  .vooxor-share-label{width:100%;text-align:center}
+  .vooxor-share-actions{justify-content:center}
+  .spot-install-area{width:100%;padding-top:12px;border-top:1px solid #ffffff0d}
+  .section{padding:26px 0 !important}
+  .section-head h2{font-size:24px}
+  #how .cards article{padding:4px 10px !important}
+  #how .cards article>span{width:28px;height:28px;font-size:11px}
+  #how .cards h3{display:block;margin:9px 0 0;font-size:16px}
+  #how .cards p{font-size:12px;margin-top:8px;line-height:1.85}
+  .spot-feature{grid-template-columns:1fr;gap:22px;padding:30px 0}
+  .spot-feature h2{font-size:30px}
+  .spot-light-art{height:180px;width:100%;max-width:380px;justify-self:center}
+  .seo-content .section-head h2{font-size:23px}
+}
+</style>
+
+<style id="spotlight-thin-arcs">
+.spot-intro::before{
+  width:145%;
+  top:0;
+  border:0 !important;
+  border-radius:0 !important;
+  box-shadow:none !important;
+  background:
+    radial-gradient(ellipse at 50% 48%,
+      transparent 0 48%,
+      #fffc0033 48.1% 48.3%,
+      transparent 48.4% 53%,
+      #fffc001c 53.1% 53.3%,
+      transparent 53.4% 58%,
+      #fffc0010 58.1% 58.3%,
+      transparent 58.4%) !important;
+}
+</style>
 </head>
 
 <body dir="rtl">
@@ -367,81 +549,61 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 </a>
 
   <nav>
-    <a href="#how">How it works</a>
-    <a href="#faq">FAQ</a>
-    <a href="/terms">Terms</a>
+    <a href="#download">الأداة</a><a href="#how">الخطوات</a>
+    <a href="#faq">الأسئلة</a>
+    <a href="/terms">الشروط</a>
   </nav>
 </header>
 
 <main>
 
-<section class="hero">
+<section class="hero"><div class="spot-breadcrumb"><a href="/ar/">الرئيسية</a><span>/</span>منصة الأضواء</div><div class="spot-intro">
 
-  <div class="eyebrow">FAST · SIMPLE · FREE</div>
+  <div class="eyebrow">SNAPCHAT SPOTLIGHT</div>
 
-  <h1>
-    تنزيل فيديوهات سناب شات من منصة الأضواء
-    <br>
-    <span>Snapchat Spotlight Downloader — نزّل مقاطع منصة الأضواء العامة المتوافقة بسهولة.</span>
-  </h1>
+  <h1>من <span>الأضواء</span><br>إلى جهازك.</h1>
 
-  <p class="lead">
-    نزّل فيديوهات سناب شات من منصة الأضواء العامة المتوافقة باستخدام VOOXOR.
-    انسخ رابط المقطع، الصقه في الأداة، واضغط تحميل.
-  </p>
+  <p class="lead">نزّل مقاطع منصة الأضواء العامة المتوافقة بسهولة.</p>
 
-  <div class="platform-icons" aria-label="Supported video platforms">
 
-    <div class="platform-icon tiktok">
-      <span>♪</span>
-      <small>TikTok</small>
-    </div>
 
-    <div class="platform-icon instagram">
-      <span>◎</span>
-      <small>Instagram</small>
-    </div>
-
-    <div class="platform-icon facebook">
-      <span>f</span>
-      <small>Facebook</small>
-    </div>
-
-    <div class="platform-icon snapchat">
-      <span>👻</span>
-      <small>Snapchat</small>
-    </div>
-
-  </div>
-
-  <div class="tool" role="search">
+  </div><div class="spot-panel" id="download"><div class="tool" role="search"><label class="spot-input-label" for="url">ابدأ برابط المقطع<span aria-hidden="true">↗</span></label>
 
     <div class="input-wrap">
       <input
         id="url"
         type="url"
-        placeholder="Paste video link here..."
+        placeholder="ألصق رابط منصة الأضواء"
         autocomplete="off"
-        aria-label="Video URL"
+        aria-label="رابط فيديو منصة الأضواء"
       >
 
       <button
         type="button"
         id="paste"
         class="paste"
-        aria-label="Paste from clipboard"
+        aria-label="لصق من الحافظة"
       >
-        📋 Paste
+        لصق
       </button>
     </div>
 
     <button id="go" class="download-main">
-      ↓ Download
+      تنزيل الفيديو ↓
     </button>
 
   </div>
 
-  <div id="result" class="result" aria-live="polite"></div>
+  <div id="result" class="result" aria-live="polite"></div><div class="spot-action-bar"><div id="vooxor-share" class="vooxor-share" aria-label="مشاركة صفحة VOOXOR">
+    <span class="vooxor-share-label">شارك هذه الصفحة مع أصدقائك</span>
+    <div class="vooxor-share-actions">
+      <button type="button" class="share-btn share-native" id="share-native">↗ مشاركة</button>
+      <a class="share-btn share-whatsapp" id="share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="share-btn share-telegram" id="share-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="share-btn share-facebook" id="share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <button type="button" class="share-btn share-copy" id="share-copy">نسخ الرابط</button>
+    </div>
+  </div><div class="spot-install-area"><span>يعمل من المتصفح</span><button id="install-app" class="install-app-btn" type="button" hidden>تثبيت VOOXOR ↓</button></div></div></div>
 
 <!-- Adsterra Banner 300x250 -->
 <div class="vooxor-ad" aria-label="Advertisement">
@@ -457,40 +619,23 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 </div>
 <!-- End Adsterra Banner 300x250 -->
 
-<button id="install-app" class="install-app-btn" type="button" hidden>
-  📱 Install VOOXOR on your device
-</button>
+
 
 
 
   <p class="notice">
-    Only download videos you own or have permission to download.
+    استخدم الأداة مع المقاطع التي تملكها أو لديك إذن بتنزيلها.
   </p>
 
 </section>
 
-<section class="trust">
-  <div>
-    <strong>⚡ Fast</strong>
-    <span>Quick download processing</span>
-  </div>
 
-  <div>
-    <strong>🎥 High Quality</strong>
-    <span>Keep the best available quality</span>
-  </div>
-
-  <div>
-    <strong>📱 Mobile Friendly</strong>
-    <span>Works smoothly on your phone</span>
-  </div>
-</section>
 
 <section id="how" class="section">
 
   <div class="section-head">
     <span>طريقة الاستخدام</span>
-    <h2>تنزيل فيديوهات منصة الأضواء بثلاث خطوات بسيطة</h2>
+    <h2>الطريقة باختصار</h2>
   </div>
 
   <div class="cards">
@@ -512,6 +657,19 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
   </div>
 
+</section>
+
+
+<section class="spot-feature">
+  <div class="spot-feature-copy">
+    <span class="spot-kicker">دليل الأضواء</span>
+    <h2>كل ما تحتاجه عن<br><span>منصة الأضواء</span></h2>
+    <p>ابدأ برابط المقطع نفسه من سناب شات. تعالج الأداة روابط الأضواء العامة المتوافقة، وتعتمد جودة التنزيل على الوسائط المتاحة من المصدر.</p>
+    <a href="#faq">استكشف الأسئلة الشائعة ↙</a>
+  </div>
+  <div class="spot-light-art" aria-hidden="true">
+    <div class="spot-light-door"></div>
+  </div>
 </section>
 
 <section class="section seo-content">
@@ -713,6 +871,67 @@ window.addEventListener("load", function () {
   document.documentElement.scrollLeft = 0;
   document.body.scrollLeft = 0;
 });
+</script>
+<script id="vooxor-share-script">
+(() => {
+  const pageUrl = document.querySelector('link[rel="canonical"]')?.href || window.location.href;
+  const shareText = "شاهد أداة VOOXOR لتنزيل فيديوهات منصة الأضواء";
+
+  const whatsapp = document.getElementById("share-whatsapp");
+  const telegram = document.getElementById("share-telegram");
+  const facebook = document.getElementById("share-facebook");
+  const copy = document.getElementById("share-copy");
+  const native = document.getElementById("share-native");
+
+  if (whatsapp) {
+    whatsapp.href =
+      "https://wa.me/?text=" +
+      encodeURIComponent(shareText + "\n" + pageUrl);
+  }
+
+  if (telegram) {
+    telegram.href =
+      "https://t.me/share/url?url=" +
+      encodeURIComponent(pageUrl) +
+      "&text=" +
+      encodeURIComponent(shareText);
+  }
+
+  if (facebook) {
+    facebook.href =
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(pageUrl);
+  }
+
+  if (copy) {
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        copy.textContent = "تم نسخ الرابط";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 1800);
+      } catch {
+        copy.textContent = "انسخ الرابط من شريط المتصفح";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 2200);
+      }
+    });
+  }
+
+  if (native) {
+    if (navigator.share) {
+      native.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: shareText,
+            url: pageUrl
+          });
+        } catch {}
+      });
+    } else {
+      native.style.display = "none";
+    }
+  }
+})();
 </script>
 </body>
 </html>
