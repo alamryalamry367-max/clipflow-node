@@ -210,59 +210,249 @@ iframe{
 </style>
 
 
-<style id="facebook-ad-position">
-/* Facebook page only — compact first-screen layout */
-.hero{
-  margin-top:28px !important;
-}
 
-.hero h1{
-  font-size:clamp(30px,7vw,48px) !important;
-  line-height:1.08 !important;
-  margin:12px 0 8px !important;
-}
-
-.hero h1 span{
-  font-family:Arial, Helvetica, sans-serif !important;
-  font-size:.58em !important;
-  font-weight:500 !important;
-  line-height:1.35 !important;
-  letter-spacing:0 !important;
-  display:inline-block;
-  margin-top:3px;
-}
-
-.hero .lead{
-  font-size:14px !important;
-  line-height:1.45 !important;
-  margin:0 auto 12px !important;
-  max-width:620px;
-}
-
-.hero .platform-icons{
-  margin-bottom:12px !important;
-}
-
-.hero .tool{
-  margin-top:0 !important;
-}
-
-.hero .result{
-  margin-top:6px !important;
-}
-
-.hero .vooxor-ad{
-  margin-top:-18px !important;
-  margin-bottom:0 !important;
-}
-
-.hero .notice{
-  margin-top:8px !important;
-}
-</style>
 
     <!-- Monetag In-Page Push -->
     <script>(function(s){s.dataset.zone='11931346',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<style id="vooxor-share-ui">
+.vooxor-share{
+  position:relative;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:14px auto 18px;
+  padding:10px 12px;
+  max-width:760px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+.vooxor-share-label{
+  color:#aaaab5;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.vooxor-share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+}
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;
+  background:#111117;
+  color:#e9e9ef !important;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none !important;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.share-btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(37,244,238,.30);
+  background:#17171e;
+}
+.share-native{color:#8cbcff !important;}
+.share-whatsapp:hover{border-color:rgba(37,244,238,.35);}
+.share-telegram:hover{border-color:rgba(37,244,238,.35);}
+.share-facebook:hover{border-color:rgba(139,92,246,.42);}
+.share-copy:hover{border-color:rgba(254,44,85,.38);}
+@media (max-width:600px){
+  .vooxor-share{
+    align-items:stretch;
+    margin-top:12px;
+    padding:10px;
+  }
+  .vooxor-share-label{
+    width:100%;
+    text-align:center;
+  }
+  .share-btn{
+    min-height:38px;
+    padding:0 10px;
+  }
+}
+</style>
+
+<style id="facebook-studio-v1">
+body{background:#080d16 !important;color:#f5f7fa}
+header{
+  background:#080d16 !important;border-bottom:1px solid #ffffff0c !important;
+  max-width:1120px;margin:auto;padding:20px !important;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+}
+header nav{display:flex;flex-wrap:wrap;gap:18px}
+header nav a{color:#aab7ca !important;font-size:13px}
+header nav a:hover{color:#fff !important}
+main{max-width:1120px;margin:auto;padding:0 24px}
+.hero{
+  width:100%;max-width:920px !important;margin:42px auto 28px !important;
+  padding:30px !important;text-align:right !important;
+  background:linear-gradient(135deg,#101c2d,#0b1422) !important;
+  border:1px solid #26354a !important;border-top:3px solid #1877f2 !important;
+  border-radius:12px !important;box-shadow:0 20px 65px #00000020 !important;
+  display:block !important;
+}
+.hero::before,.hero::after{display:none !important}
+.hero .eyebrow{
+  display:flex !important;align-items:center;gap:12px;
+  padding:0 !important;margin:0 0 24px !important;
+  background:none !important;border:0 !important;
+  color:#b2c8e7 !important;letter-spacing:1.5px;font-size:11px;
+}
+.fb-mark{
+  display:grid;place-items:center;width:40px;height:40px;flex:0 0 40px;
+  border-radius:10px;background:#1877f2;color:#fff;
+  font:bold 34px/1 Arial,sans-serif;letter-spacing:0;
+}
+.hero .eyebrow small{
+  display:block;margin-top:5px;color:#91a5bf;
+  font-size:12px;font-weight:400;letter-spacing:0;
+}
+.hero h1{
+  font-size:clamp(30px,4.5vw,50px) !important;line-height:1.4 !important;
+  margin:0 0 16px !important;color:#f5f7fa !important;letter-spacing:-.5px;
+}
+.hero h1 span{
+  display:inline !important;font:inherit !important;line-height:inherit !important;
+  background:none !important;color:#80b4ff !important;
+  -webkit-text-fill-color:#80b4ff !important;margin:0 !important;
+}
+.hero .lead{
+  max-width:610px;margin:0 0 24px !important;
+  color:#aab7ca !important;font-size:15px !important;line-height:1.9 !important;
+}
+.hero .tool{
+  display:grid !important;grid-template-columns:minmax(0,1fr) 180px;
+  gap:10px;max-width:none;width:100%;padding:0 !important;margin:0 !important;
+  background:none !important;border:0 !important;box-shadow:none !important;
+}
+.fb-field-label{grid-column:1 / -1;font-size:13px;color:#c9d7ea;margin-bottom:2px}
+.hero .input-wrap{
+  display:flex;align-items:center;gap:8px;min-width:0;
+  min-height:58px;padding:6px !important;
+  background:#080f1b !important;border:1px solid #30425d !important;
+  border-radius:8px !important;box-shadow:none !important;
+}
+.hero .input-wrap input{
+  flex:1;min-width:0;width:100%;height:44px;padding:10px !important;
+  border:0 !important;border-radius:0 !important;box-shadow:none !important;
+  background:transparent !important;color:#f5f7fa !important;
+  -webkit-text-fill-color:#f5f7fa !important;font-size:16px;text-align:right;
+}
+.hero .input-wrap input::placeholder{
+  color:#8e9fb7 !important;-webkit-text-fill-color:#8e9fb7 !important;opacity:1;
+}
+.hero .paste{
+  position:static !important;transform:none !important;
+  flex:0 0 auto;min-height:44px;padding:8px 16px !important;
+  background:#1c2b40 !important;color:#d6e5fb !important;
+  border:1px solid #30425d !important;border-radius:6px !important;font-size:13px;
+}
+.hero .download-main{
+  width:100%;min-height:58px;margin:0 !important;
+  background:#1877f2 !important;color:white !important;
+  border:0 !important;border-radius:8px !important;
+  box-shadow:none !important;font-size:16px;font-weight:700;
+}
+.hero .download-main:hover{background:#1166d6 !important}
+.hero .result{margin-top:16px !important;max-width:100%}
+.hero .result:empty{display:none}
+.hero .result img,.hero .result video{max-width:100%;height:auto}
+.hero .vooxor-share{
+  max-width:none;margin:20px 0 0;padding:16px 0 0;
+  justify-content:space-between;gap:10px;
+  border:0;border-top:1px solid #26354a;border-radius:0;
+  background:none;box-shadow:none;
+}
+.vooxor-share-label{color:#aab7ca;font-size:12px}
+.vooxor-share-actions{gap:6px}
+.vooxor-share .share-btn{
+  min-height:44px;padding:0 10px;font-size:11px;
+  border:1px solid #26354a;border-radius:6px;
+  background:#142136;color:#d6e5fb !important;
+}
+.vooxor-share .share-btn:hover{background:#20324d;border-color:#527bae}
+.hero .notice{color:#8d9db3 !important;font-size:11px;line-height:1.8;margin:16px 0 0 !important}
+.hero .vooxor-ad{margin:18px auto 0 !important;max-width:100%}
+.hero .install-app-btn:not([hidden]){
+  display:block;width:fit-content;max-width:100%;margin:18px auto 0 !important;
+  padding:10px 16px !important;font-size:13px;
+  background:#17263b !important;border:1px solid #30425d !important;
+  border-radius:8px !important;box-shadow:none !important;
+}
+.trust{
+  display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:16px;max-width:920px;margin:0 auto 36px !important;
+  padding:0 !important;background:none !important;border:0 !important;
+}
+.trust>div{text-align:right;padding:12px 16px;border-inline-start:2px solid #263d5b}
+.trust strong{display:block;font-size:14px;color:#d9e7fa}
+.trust span{display:block;margin-top:6px;font-size:12px;color:#95a8c1;line-height:1.7}
+.section{
+  max-width:920px !important;margin:26px auto !important;padding:28px 0 !important;
+  border:0 !important;border-top:1px solid #203047 !important;
+  background:none !important;border-radius:0 !important;
+}
+.section-head{text-align:right !important}
+.section-head span{color:#80b4ff !important;font-size:11px;letter-spacing:1px}
+.section-head h2{color:#f0f5fc !important;font-size:25px;line-height:1.5}
+.cards{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.cards article{
+  padding:22px !important;text-align:right;
+  background:#101b2c !important;border:1px solid #23354d !important;
+  border-radius:10px !important;box-shadow:none !important;
+}
+.cards article>span{color:#80b4ff !important;font-size:25px;font-weight:700}
+.cards h3,.seo-text h3{color:#d9e8fc !important}
+.cards p,.seo-text,.seo-text p{color:#aab7ca !important;line-height:1.95}
+.seo-text{max-width:800px;margin-inline:auto;font-size:15px}
+.seo-text h3{margin-top:26px;border-inline-start:2px solid #1877f2;padding-inline-start:12px}
+.section a{color:#8bbdff}
+.faq details{
+  padding:18px;margin:10px 0;background:#101b2c !important;
+  border:1px solid #23354d !important;border-radius:8px;
+}
+.faq summary{color:#e6effc;font-weight:700;line-height:1.7;cursor:pointer}
+.faq p{color:#aab7ca;line-height:1.9}
+footer{border-color:#203047 !important;color:#91a5bf !important}
+footer a{color:#b3c8e4}
+.hero .input-wrap:focus-within{outline:2px solid #80b4ff;outline-offset:3px}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid #80b4ff;outline-offset:4px}
+@media(max-width:700px){
+  main{padding:0 14px}
+  header{padding:16px !important}
+  header nav{gap:14px}
+  header nav a{font-size:12px}
+  .hero{margin:22px auto !important;padding:22px 16px !important}
+  .hero h1{font-size:32px !important}
+  .hero .lead{font-size:14px !important}
+  .hero .tool{grid-template-columns:1fr}
+  .hero .download-main{min-height:52px}
+  .hero .vooxor-share{justify-content:center}
+  .vooxor-share-label{width:100%;text-align:center}
+  .trust{grid-template-columns:1fr;gap:4px}
+  .trust>div{padding:10px 14px}
+  .cards{grid-template-columns:1fr}
+  .cards article{display:grid;grid-template-columns:36px minmax(0,1fr);gap:5px 14px}
+  .cards article>span{grid-column:1;grid-row:1 / span 2}
+  .cards h3,.cards p{grid-column:2;margin:0}
+  .section{padding:24px 2px !important}
+}
+</style>
 </head>
 
 <body>
@@ -301,71 +491,52 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
 <section class="hero">
 
-  <div class="eyebrow">FAST · SIMPLE · FREE</div>
+  <div class="eyebrow"><span class="fb-mark" aria-hidden="true">f</span><span>FACEBOOK DOWNLOADER<small>أداة مجانية من VOOXOR</small></span></div>
 
-  <h1>
-    تحميل فيديوهات فيسبوك أونلاين
-    <br>
-    <span>Facebook Video Downloader — حمّل فيديوهات Facebook العامة المتوافقة بسهولة وسرعة.</span>
-  </h1>
+  <h1>فيديوهات فيسبوك.<br><span>أقرب إلى جهازك.</span></h1>
 
-  <p class="lead">
-    حمّل فيديوهات Facebook العامة المتوافقة باستخدام VOOXOR. انسخ رابط الفيديو،
-    الصقه في الأداة، واضغط Download لبدء تجهيز الفيديو من الجوال أو الكمبيوتر.
-  </p>
+  <p class="lead">حمّل فيديوهات فيسبوك وريلز العامة المتوافقة. رابط واحد، وخطوات واضحة من المتصفح.</p>
 
-  <div class="platform-icons" aria-label="Supported video platforms">
 
-    <div class="platform-icon tiktok">
-      <span>♪</span>
-      <small>TikTok</small>
-    </div>
 
-    <div class="platform-icon instagram">
-      <span>◎</span>
-      <small>Instagram</small>
-    </div>
-
-    <div class="platform-icon facebook">
-      <span>f</span>
-      <small>Facebook</small>
-    </div>
-
-    <div class="platform-icon snapchat">
-      <span>👻</span>
-      <small>Snapchat</small>
-    </div>
-
-  </div>
-
-  <div class="tool" role="search">
+  <div class="tool" role="search"><label class="fb-field-label" for="url">رابط فيديو فيسبوك</label>
 
     <div class="input-wrap">
       <input
         id="url"
         type="url"
-        placeholder="Paste video link here..."
+        placeholder="ألصق رابط الفيديو هنا"
         autocomplete="off"
-        aria-label="Video URL"
+        aria-label="رابط فيديو فيسبوك"
       >
 
       <button
         type="button"
         id="paste"
         class="paste"
-        aria-label="Paste from clipboard"
+        aria-label="لصق من الحافظة"
       >
-        📋 Paste
+        لصق
       </button>
     </div>
 
     <button id="go" class="download-main">
-      ↓ Download
+      تحميل الفيديو ↓
     </button>
 
   </div>
 
   <div id="result" class="result" aria-live="polite"></div>
+<div id="vooxor-share" class="vooxor-share" aria-label="مشاركة صفحة VOOXOR">
+    <span class="vooxor-share-label">شارك هذه الصفحة مع أصدقائك</span>
+    <div class="vooxor-share-actions">
+      <button type="button" class="share-btn share-native" id="share-native">↗ مشاركة</button>
+      <a class="share-btn share-whatsapp" id="share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="share-btn share-telegram" id="share-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="share-btn share-facebook" id="share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <button type="button" class="share-btn share-copy" id="share-copy">نسخ الرابط</button>
+    </div>
+  </div>
 
 <!-- Adsterra Banner 300x250 -->
 <div class="vooxor-ad" aria-label="Advertisement">
@@ -382,31 +553,31 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 <!-- End Adsterra Banner 300x250 -->
 
 <button id="install-app" class="install-app-btn" type="button" hidden>
-  📱 Install VOOXOR on your device
+  تثبيت VOOXOR على جهازك
 </button>
 
 
 
   <p class="notice">
-    Only download videos you own or have permission to download.
+    حمّل المحتوى الذي تملكه أو لديك إذن بتحميله.
   </p>
 
 </section>
 
 <section class="trust">
   <div>
-    <strong>⚡ Fast</strong>
-    <span>Quick download processing</span>
+    <strong>01 — أضف الرابط</strong>
+    <span>من فيديو أو ريلز عام متوافق</span>
   </div>
 
   <div>
-    <strong>🎥 High Quality</strong>
-    <span>Keep the best available quality</span>
+    <strong>02 — جهّز الفيديو</strong>
+    <span>بالجودة المتاحة من المصدر</span>
   </div>
 
   <div>
-    <strong>📱 Mobile Friendly</strong>
-    <span>Works smoothly on your phone</span>
+    <strong>03 — احفظ نسختك</strong>
+    <span>على الجوال أو الكمبيوتر</span>
   </div>
 </section>
 
@@ -663,6 +834,67 @@ window.addEventListener("load", function () {
   document.documentElement.scrollLeft = 0;
   document.body.scrollLeft = 0;
 });
+</script>
+<script id="vooxor-share-script">
+(() => {
+  const pageUrl = document.querySelector('link[rel="canonical"]')?.href || window.location.href;
+  const shareText = "شاهد أداة VOOXOR لتحميل فيديوهات فيسبوك";
+
+  const whatsapp = document.getElementById("share-whatsapp");
+  const telegram = document.getElementById("share-telegram");
+  const facebook = document.getElementById("share-facebook");
+  const copy = document.getElementById("share-copy");
+  const native = document.getElementById("share-native");
+
+  if (whatsapp) {
+    whatsapp.href =
+      "https://wa.me/?text=" +
+      encodeURIComponent(shareText + "\n" + pageUrl);
+  }
+
+  if (telegram) {
+    telegram.href =
+      "https://t.me/share/url?url=" +
+      encodeURIComponent(pageUrl) +
+      "&text=" +
+      encodeURIComponent(shareText);
+  }
+
+  if (facebook) {
+    facebook.href =
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(pageUrl);
+  }
+
+  if (copy) {
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        copy.textContent = "تم نسخ الرابط";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 1800);
+      } catch {
+        copy.textContent = "انسخ الرابط من شريط المتصفح";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 2200);
+      }
+    });
+  }
+
+  if (native) {
+    if (navigator.share) {
+      native.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: shareText,
+            url: pageUrl
+          });
+        } catch {}
+      });
+    } else {
+      native.style.display = "none";
+    }
+  }
+})();
 </script>
 </body>
 </html>
