@@ -270,6 +270,318 @@ iframe{
 
     <!-- Monetag In-Page Push -->
     <script>(function(s){s.dataset.zone='11931346',s.src='https://nap5k.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+<style id="vooxor-share-ui">
+.vooxor-share{
+  position:relative;
+  z-index:4;
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:14px auto 18px;
+  padding:10px 12px;
+  max-width:760px;
+  border:1px solid rgba(255,255,255,.075);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+  box-shadow:0 12px 35px rgba(0,0,0,.12);
+}
+.vooxor-share-label{
+  color:#aaaab5;
+  font-size:13px;
+  font-weight:700;
+  white-space:nowrap;
+}
+.vooxor-share-actions{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:7px;
+}
+.share-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:36px;
+  padding:0 12px;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:10px;
+  background:#111117;
+  color:#e9e9ef !important;
+  font:inherit;
+  font-size:12px;
+  font-weight:800;
+  text-decoration:none !important;
+  cursor:pointer;
+  transition:transform .18s ease,border-color .18s ease,background .18s ease;
+}
+.share-btn:hover{
+  transform:translateY(-1px);
+  border-color:rgba(37,244,238,.30);
+  background:#17171e;
+}
+.share-native{color:#f0abfc !important;}
+.share-whatsapp:hover{border-color:rgba(37,244,238,.35);}
+.share-telegram:hover{border-color:rgba(37,244,238,.35);}
+.share-facebook:hover{border-color:rgba(139,92,246,.42);}
+.share-copy:hover{border-color:rgba(254,44,85,.38);}
+@media (max-width:600px){
+  .vooxor-share{
+    align-items:stretch;
+    margin-top:12px;
+    padding:10px;
+  }
+  .vooxor-share-label{
+    width:100%;
+    text-align:center;
+  }
+  .share-btn{
+    min-height:38px;
+    padding:0 10px;
+  }
+}
+</style>
+
+<style id="instagram-distinct-ui-v1">
+body{
+  background:
+    radial-gradient(ellipse at 95% 0%,#67274a55,transparent 42%),
+    radial-gradient(ellipse at 0% 25%,#743ac333,transparent 38%),
+    #160e20 !important;
+  color:#faf5ff;
+}
+header{
+  background:#190f25 !important;
+  border-bottom:1px solid #ffffff12 !important;
+}
+header nav{display:flex;flex-wrap:wrap;gap:14px}
+header nav a{color:#eddaef}
+main{max-width:1160px;margin:auto;padding:0 18px}
+.hero{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  column-gap:36px;
+  row-gap:16px;
+  align-items:start;
+  width:100% !important;
+  max-width:none !important;
+  margin:28px 0 !important;
+  padding:38px !important;
+  border:1px solid #e9b8ed28 !important;
+  border-radius:32px !important;
+  background:linear-gradient(135deg,#33203f,#23142d 65%,#392039) !important;
+  box-shadow:0 24px 65px #09051045;
+  text-align:right !important;
+}
+.hero::before,.hero::after{display:none !important}
+.hero>*{min-width:0}
+.hero .eyebrow{
+  grid-column:1;grid-row:1;
+  color:#f5b9dc !important;
+  font-size:12px;letter-spacing:2px;
+  margin:0 !important;
+}
+.hero h1{
+  grid-column:1;grid-row:2;
+  color:#fff7fc !important;
+  font-size:clamp(28px,3.3vw,42px) !important;
+  line-height:1.4 !important;
+  letter-spacing:0 !important;
+  margin:0 !important;
+}
+.hero h1 span{
+  display:block;
+  margin-top:12px;
+  font:400 14px/1.9 Arial,sans-serif !important;
+  color:#dfcce5 !important;
+}
+.hero .lead{
+  grid-column:1;grid-row:3;
+  color:#dfcce5 !important;
+  font-size:16px;line-height:1.95;
+  margin:0 !important;
+}
+.ig-tags{
+  grid-column:1;grid-row:4;
+  display:flex;flex-wrap:wrap;gap:8px;
+}
+.ig-tags span{
+  padding:7px 12px;border:1px solid #e8bbf02b;
+  border-radius:100px;background:#ffffff06;
+  font-size:12px;color:#efd7f0;
+}
+.hero .tool{
+  grid-column:2;grid-row:2;
+  display:flex !important;
+  flex-direction:column;
+  gap:14px;
+  width:100%;max-width:none;
+  margin:0 !important;padding:22px !important;
+  background:#fff8fc !important;
+  border:0 !important;border-radius:24px !important;
+  box-sizing:border-box;
+  box-shadow:0 18px 40px #10071b35;
+}
+.hero .tool::before{
+  content:"رابط الفيديو يبدأ من هنا";
+  color:#542c60;font-size:16px;font-weight:700;
+}
+.hero .input-wrap{
+  display:flex;align-items:center;gap:8px;
+  width:100%;min-width:0;
+  padding:6px !important;
+  background:#f3e9f4 !important;
+  border:1px solid #d9bedc !important;
+  border-radius:13px !important;
+  box-sizing:border-box;
+}
+.hero .input-wrap input{
+  flex:1;min-width:0;width:100%;
+  height:48px;
+  background:transparent !important;
+  color:#321b40 !important;
+  border:0;
+  font-size:15px;
+}
+.hero .input-wrap input::placeholder{color:#715878 !important;opacity:1}
+.hero .paste{
+  position:static !important;
+  transform:none !important;
+  flex:0 0 auto;
+  min-height:44px;
+  padding:8px 12px;
+  border:0 !important;border-radius:10px !important;
+  background:#e8d8ec !important;color:#552568 !important;
+}
+.hero .download-main{
+  width:100%;min-height:54px;margin:0 !important;
+  border:0 !important;border-radius:13px !important;
+  background:linear-gradient(110deg,#7928a1,#af246d) !important;
+  color:#fff !important;font-size:17px;font-weight:800;
+  box-shadow:0 8px 20px #852d9228;
+}
+.hero .result{
+  grid-column:2;grid-row:3 / span 2;
+  width:100%;margin:0 !important;
+}
+.hero .result:empty{display:none}
+.hero .result img,.hero .result video{max-width:100%;height:auto}
+.hero .vooxor-share{
+  grid-column:1 / -1;
+  width:100%;max-width:none;
+  margin:8px 0 0 !important;
+  padding:16px;box-sizing:border-box;
+  background:#160d2299;
+  border:1px solid #e4a9dc30;
+  border-radius:18px;
+}
+.vooxor-share-label{color:#edcee9}
+.vooxor-share .share-btn{
+  min-height:44px;
+  background:#38213f;
+  border-color:#ffffff18;
+}
+.vooxor-share .share-btn:hover{
+  background:#4b2851;border-color:#ee9dce;
+}
+.hero .vooxor-ad,
+.hero .install-app-btn,
+.hero .notice{grid-column:1 / -1;justify-self:center}
+.hero .notice{
+  color:#d4bbdc !important;
+  text-align:center;margin:0 !important;
+  font-size:12px;line-height:1.8;
+}
+.trust{
+  display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;padding:12px 0 30px !important;
+  background:transparent !important;border:0 !important;
+}
+.trust>div{
+  padding:16px;
+  border-inline-start:3px solid #b967b1;
+  text-align:right;
+}
+.trust strong{display:block;color:#f6daec;font-size:16px}
+.trust span{display:block;color:#cdb6d4;font-size:13px;line-height:1.8;margin-top:5px}
+.section{
+  max-width:none !important;
+  margin:22px 0 !important;padding:30px !important;
+  border:1px solid #e7bbef1c !important;
+  border-radius:24px;background:#21152b !important;
+}
+.section-head{text-align:right !important}
+.section-head span{color:#edadd7 !important;font-size:12px;letter-spacing:1px}
+.section-head h2{color:#fff1fa !important;line-height:1.5}
+#how{
+  display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);
+  gap:28px;align-items:start;
+}
+#how .cards{display:grid !important;grid-template-columns:1fr !important;gap:12px}
+#how .cards article{
+  display:grid;grid-template-columns:42px minmax(0,1fr);
+  gap:4px 14px;
+  padding:18px !important;
+  border:1px solid #e0add820 !important;
+  border-radius:16px !important;background:#2c1a36 !important;
+  text-align:right;
+}
+#how .cards article>span{
+  grid-column:1;grid-row:1 / span 2;
+  color:#f1acd3 !important;font-size:24px;font-weight:800;
+}
+#how .cards h3{grid-column:2;margin:0;color:#f8eafa}
+#how .cards p{grid-column:2;margin:0;color:#d5bddc;line-height:1.85}
+.seo-text{max-width:850px;margin-inline:auto;line-height:1.95;color:#ddcce3}
+.seo-text h3{color:#f3c5e6 !important;margin-top:26px}
+.seo-text p{color:#ddcce3 !important}
+.section a{color:#f2b1dc}
+.internal-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.internal-links a{
+  padding:8px 12px;border-radius:10px;
+  background:#38223e;text-decoration:none;
+}
+.faq details{
+  padding:16px 18px;margin:10px 0;
+  background:#2d1c37 !important;
+  border:1px solid #e6b1e025 !important;border-radius:14px;
+}
+.faq summary{color:#f7e9fa;font-weight:700;cursor:pointer;line-height:1.7}
+.faq p{color:#dac3e1;line-height:1.9}
+footer{border-color:#ffffff16 !important;color:#c3a9cc}
+footer a{color:#e3c7e9}
+.hero button:focus-visible,.hero a:focus-visible,
+.faq summary:focus-visible{
+  outline:3px solid #f5b6dc;outline-offset:4px;
+}
+.hero .input-wrap:focus-within{outline:3px solid #a54bb9;outline-offset:3px}
+@media(max-width:760px){
+  main{padding:0 12px}
+  .hero{
+    display:block !important;
+    padding:24px 16px !important;
+    margin:16px 0 !important;border-radius:24px !important;
+  }
+  .hero .eyebrow{margin-bottom:12px !important}
+  .hero h1{font-size:28px !important;margin-bottom:12px !important}
+  .hero .lead{font-size:15px !important;margin-bottom:14px !important}
+  .ig-tags{margin-bottom:18px}
+  .hero .tool{padding:16px !important}
+  .hero .result:not(:empty){margin-top:16px !important}
+  .hero .vooxor-share{margin-top:18px !important}
+  .hero .vooxor-ad{margin:18px auto}
+  .hero .notice{margin-top:14px !important}
+  .trust{grid-template-columns:1fr;gap:4px}
+  .trust>div{padding:10px 16px}
+  .section{padding:22px 16px !important}
+  #how{grid-template-columns:1fr;gap:16px}
+  header{flex-wrap:wrap;gap:14px}
+  header nav{gap:12px}
+  header nav a{font-size:12px}
+}
+</style>
+
 </head>
 
 <body>
@@ -298,9 +610,9 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 </a>
 
   <nav>
-    <a href="#how">How it works</a>
-    <a href="#faq">FAQ</a>
-    <a href="/terms">Terms</a>
+    <a href="#how">طريقة الاستخدام</a>
+    <a href="#faq">الأسئلة الشائعة</a>
+    <a href="/terms">الشروط</a>
   </nav>
 </header>
 
@@ -308,7 +620,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
 <section class="hero">
 
-  <div class="eyebrow">FAST · SIMPLE · FREE</div>
+  <div class="eyebrow">INSTAGRAM · VOOXOR</div>
 
   <h1>
     تحميل فيديوهات إنستقرام أونلاين
@@ -321,29 +633,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
     الصقه في الأداة، واضغط Download لبدء تجهيز الفيديو من الجوال أو الكمبيوتر.
   </p>
 
-  <div class="platform-icons" aria-label="Supported video platforms">
-
-    <div class="platform-icon tiktok">
-      <span>♪</span>
-      <small>TikTok</small>
-    </div>
-
-    <div class="platform-icon instagram">
-      <span>◎</span>
-      <small>Instagram</small>
-    </div>
-
-    <div class="platform-icon facebook">
-      <span>f</span>
-      <small>Facebook</small>
-    </div>
-
-    <div class="platform-icon snapchat">
-      <span>👻</span>
-      <small>Snapchat</small>
-    </div>
-
-  </div>
+  <div class="ig-tags"><span>روابط عامة متوافقة</span><span>من المتصفح مباشرة</span></div>
 
   <div class="tool" role="search">
 
@@ -351,28 +641,38 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
       <input
         id="url"
         type="url"
-        placeholder="Paste video link here..."
+        placeholder="الصق رابط فيديو إنستقرام هنا..."
         autocomplete="off"
-        aria-label="Video URL"
+        aria-label="رابط فيديو إنستقرام"
       >
 
       <button
         type="button"
         id="paste"
         class="paste"
-        aria-label="Paste from clipboard"
+        aria-label="لصق الرابط من الحافظة"
       >
-        📋 Paste
+        📋 لصق
       </button>
     </div>
 
     <button id="go" class="download-main">
-      ↓ Download
+      ↓ تحميل الفيديو
     </button>
 
   </div>
 
   <div id="result" class="result" aria-live="polite"></div>
+<div id="vooxor-share" class="vooxor-share" aria-label="مشاركة صفحة VOOXOR">
+    <span class="vooxor-share-label">شارك هذه الصفحة مع أصدقائك</span>
+    <div class="vooxor-share-actions">
+      <button type="button" class="share-btn share-native" id="share-native">↗ مشاركة</button>
+      <a class="share-btn share-whatsapp" id="share-whatsapp" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      <a class="share-btn share-telegram" id="share-telegram" target="_blank" rel="noopener noreferrer">Telegram</a>
+      <a class="share-btn share-facebook" id="share-facebook" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <button type="button" class="share-btn share-copy" id="share-copy">نسخ الرابط</button>
+    </div>
+  </div>
 
 <!-- Adsterra Banner 300x250 -->
 <div class="vooxor-ad" aria-label="Advertisement">
@@ -395,25 +695,25 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
 
   <p class="notice">
-    Only download videos you own or have permission to download.
+    حمّل فقط الفيديوهات التي تملكها أو لديك إذن بتحميلها.
   </p>
 
 </section>
 
 <section class="trust">
   <div>
-    <strong>⚡ Fast</strong>
-    <span>Quick download processing</span>
+    <strong>خطوات واضحة</strong>
+    <span>انسخ الرابط، الصقه، وابدأ المعالجة</span>
   </div>
 
   <div>
-    <strong>🎥 High Quality</strong>
-    <span>Keep the best available quality</span>
+    <strong>جودة المصدر المتاحة</strong>
+    <span>تعتمد النتيجة على الوسائط المتوفرة</span>
   </div>
 
   <div>
-    <strong>📱 Mobile Friendly</strong>
-    <span>Works smoothly on your phone</span>
+    <strong>على جهازك</strong>
+    <span>واجهة للهاتف والكمبيوتر</span>
   </div>
 </section>
 
@@ -421,27 +721,27 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
   <div class="section-head">
     <span>HOW IT WORKS</span>
-    <h2>Three simple steps.</h2>
+    <h2>من إنستقرام إلى جهازك</h2>
   </div>
 
   <div class="cards">
 
     <article>
       <span>01</span>
-      <h3>Copy</h3>
-      <p>Copy the video link from a supported platform.</p>
+      <h3>انسخ رابط الفيديو</h3>
+      <p>افتح الفيديو العام في إنستقرام وانسخ رابطه من خيارات المشاركة.</p>
     </article>
 
     <article>
       <span>02</span>
-      <h3>Paste</h3>
-      <p>Paste the link into the VOOXOR download box.</p>
+      <h3>أضف الرابط هنا</h3>
+      <p>ارجع إلى هذه الصفحة والصق الرابط كاملًا في مربع التحميل.</p>
     </article>
 
     <article>
       <span>03</span>
-      <h3>Download</h3>
-      <p>Press Download and save your video.</p>
+      <h3>جهّز الفيديو واحفظه</h3>
+      <p>اضغط تحميل الفيديو، ثم احفظ الملف المتاح عندما تظهر النتيجة.</p>
     </article>
 
   </div>
@@ -665,6 +965,67 @@ window.addEventListener("load", function () {
   document.documentElement.scrollLeft = 0;
   document.body.scrollLeft = 0;
 });
+</script>
+<script id="vooxor-share-script">
+(() => {
+  const pageUrl = document.querySelector('link[rel="canonical"]')?.href || window.location.href;
+  const shareText = "شاهد أداة VOOXOR لتحميل فيديوهات إنستقرام";
+
+  const whatsapp = document.getElementById("share-whatsapp");
+  const telegram = document.getElementById("share-telegram");
+  const facebook = document.getElementById("share-facebook");
+  const copy = document.getElementById("share-copy");
+  const native = document.getElementById("share-native");
+
+  if (whatsapp) {
+    whatsapp.href =
+      "https://wa.me/?text=" +
+      encodeURIComponent(shareText + "\n" + pageUrl);
+  }
+
+  if (telegram) {
+    telegram.href =
+      "https://t.me/share/url?url=" +
+      encodeURIComponent(pageUrl) +
+      "&text=" +
+      encodeURIComponent(shareText);
+  }
+
+  if (facebook) {
+    facebook.href =
+      "https://www.facebook.com/sharer/sharer.php?u=" +
+      encodeURIComponent(pageUrl);
+  }
+
+  if (copy) {
+    copy.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(pageUrl);
+        copy.textContent = "تم نسخ الرابط";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 1800);
+      } catch {
+        copy.textContent = "انسخ الرابط من شريط المتصفح";
+        setTimeout(() => copy.textContent = "نسخ الرابط", 2200);
+      }
+    });
+  }
+
+  if (native) {
+    if (navigator.share) {
+      native.addEventListener("click", async () => {
+        try {
+          await navigator.share({
+            title: document.title,
+            text: shareText,
+            url: pageUrl
+          });
+        } catch {}
+      });
+    } else {
+      native.style.display = "none";
+    }
+  }
+})();
 </script>
 </body>
 </html>
