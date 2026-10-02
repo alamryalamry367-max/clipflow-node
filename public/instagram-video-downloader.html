@@ -759,6 +759,132 @@ footer a{color:#bdbdcd !important}
 }
 </style>
 
+
+<style id="instagram-clean-layout">
+body{background:#09090b !important}
+header{
+  background:#09090b !important;
+  padding:18px 16px !important;
+  border-bottom:1px solid #ffffff0d !important;
+}
+main{max-width:1040px;padding:0 20px}
+.hero{
+  display:flex !important;flex-direction:column;
+  align-items:stretch;gap:0;
+  max-width:760px !important;
+  margin:38px auto 26px !important;
+  padding:0 !important;
+  background:transparent !important;
+  border:0 !important;border-radius:0 !important;
+  box-shadow:none !important;
+  text-align:center !important;
+}
+.hero .eyebrow{
+  align-self:center;
+  margin:0 0 18px !important;
+  padding:0 !important;
+  border:0 !important;background:none !important;
+  color:#bb94ae !important;
+  font-size:10px !important;letter-spacing:2px !important;
+}
+.hero h1{
+  margin:0 0 12px !important;
+  font-size:clamp(26px,4vw,40px) !important;
+  line-height:1.5 !important;
+}
+.hero .lead{
+  margin:0 0 26px !important;
+  max-width:none !important;
+  font-size:14px !important;
+  color:#a3a3ae !important;
+}
+.hero .tool{
+  padding:20px !important;
+  background:#141417 !important;
+  border:1px solid #ffffff12 !important;
+  border-radius:16px !important;
+  box-shadow:0 16px 40px #00000020 !important;
+}
+.hero .tool::before{display:none !important}
+.hero .input-wrap{
+  padding:5px !important;
+  min-height:58px;
+  border-radius:9px !important;
+  background:#09090c !important;
+}
+.hero .input-wrap input{
+  border:0 !important;border-radius:0 !important;
+  outline:none !important;box-shadow:none !important;
+  padding:10px !important;height:46px !important;
+  text-align:right;min-width:0;
+}
+.hero .paste{
+  padding:8px 12px !important;
+  background:#222227 !important;
+  border:0 !important;
+}
+.hero .download-main{
+  min-height:52px !important;
+  background:linear-gradient(105deg,#8346bd,#b43976) !important;
+  border-radius:9px !important;
+  font-size:16px !important;
+}
+.hero .vooxor-share{
+  display:flex !important;flex-direction:column;
+  gap:10px;
+  margin:20px 0 0 !important;padding:0 !important;
+  background:none !important;
+  border:0 !important;border-radius:0 !important;
+  box-shadow:none !important;
+}
+.vooxor-share-label{
+  font-size:11px !important;color:#94949f !important;
+}
+.hero .vooxor-share-actions{
+  display:flex !important;flex-wrap:wrap;
+  justify-content:center;gap:6px;width:100%;
+}
+.hero .vooxor-share .share-btn{
+  flex:0 1 auto;
+  min-height:44px;padding:0 10px !important;
+  border:1px solid #ffffff0d !important;
+  background:#141417 !important;border-radius:8px !important;
+  font-size:11px !important;
+}
+.hero .vooxor-ad{align-self:center;max-width:100%}
+.hero .notice{margin-top:18px !important;font-size:11px !important}
+.hero .install-app-btn:not([hidden]){
+  align-self:center;
+  width:auto !important;max-width:100%;
+  margin:20px 0 0 !important;padding:10px 16px !important;
+  background:#19191f !important;
+  border:1px solid #ffffff15 !important;
+  box-shadow:none !important;font-size:13px !important;
+}
+.trust{
+  border-top:1px solid #ffffff0d !important;
+  border-bottom:1px solid #ffffff0d !important;
+  padding:18px 0 !important;
+}
+.trust>div{border:0;text-align:center}
+.trust strong{font-size:14px}
+.trust span{font-size:12px}
+.section{
+  background:transparent !important;
+  border:0 !important;
+  border-top:1px solid #ffffff0d !important;
+  border-radius:0 !important;
+  padding:30px 0 !important;
+}
+@media(max-width:760px){
+  .hero{margin:26px auto 22px !important;padding:0 !important}
+  .hero h1{font-size:26px !important}
+  .hero .tool{padding:14px !important}
+  .trust{grid-template-columns:1fr !important;gap:12px}
+  .trust>div{padding:0}
+  .section{padding:26px 0 !important}
+}
+</style>
 </head>
 
 <body>
@@ -799,18 +925,11 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
 
   <div class="eyebrow">INSTAGRAM · VOOXOR</div>
 
-  <h1>
-    تحميل فيديوهات إنستقرام أونلاين
-    <br>
-    <span>Instagram Video Downloader — حمّل فيديوهات Instagram العامة المتوافقة بسهولة وسرعة.</span>
-  </h1>
+  <h1>تحميل فيديوهات إنستقرام</h1>
 
-  <p class="lead">
-    حمّل فيديوهات Instagram العامة المتوافقة باستخدام VOOXOR. انسخ رابط الفيديو،
-    الصقه في الأداة، واضغط Download لبدء تجهيز الفيديو من الجوال أو الكمبيوتر.
-  </p>
+  <p class="lead">ألصق رابط الفيديو العام، وجهّز نسختك للتحميل.</p>
 
-  <div class="ig-tags"><span>روابط عامة متوافقة</span><span>من المتصفح مباشرة</span></div>
+
 
   <div class="tool" role="search">
 
@@ -818,7 +937,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
       <input
         id="url"
         type="url"
-        placeholder="رابط إنستقرام هنا..."
+        placeholder="ألصق رابط إنستقرام"
         autocomplete="off"
         aria-label="رابط فيديو إنستقرام"
       >
