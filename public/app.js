@@ -126,6 +126,27 @@ async function startDownload() {
     'loading'
   );
 
+  try {
+    const response = await fetch('/api/resolve', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok || !data.ok) {
+      throw new Error(data.error || 'Could not process this video.');
+    }
+  } catch (error) {
+    show(error.message || 'Could not process this video.', 'error');
+    btn.disabled = false;
+    btn.textContent = 'Download video';
+    return;
+  }
+
+  window.open('https://omg10.com/4/11934145', '_blank', 'noopener,noreferrer');
+
   await maybePromptInstall();
 
   setTimeout(() => {
