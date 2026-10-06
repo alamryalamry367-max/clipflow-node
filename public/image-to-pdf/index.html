@@ -338,6 +338,17 @@ html[dir="ltr"] #vxLanguageButton{right:auto;left:12px}
 }
 </style>
 
+
+<!-- Google Analytics 4 - VOOXOR -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-W35FH3238B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-W35FH3238B');
+</script>
+<!-- End Google Analytics 4 -->
+
 </head>
 
 <body>
@@ -1704,6 +1715,106 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+</script>
+
+
+<script id="vooxor-pdf-ga4-events">
+(function () {
+  function track(name, params) {
+    if (typeof gtag !== 'function') return;
+
+    gtag('event', name, Object.assign({
+      tool: 'image_to_pdf',
+      page_path: window.location.pathname
+    }, params || {}));
+  }
+
+  const fileInput  = document.getElementById('fileInput');
+  const cameraBtn  = document.getElementById('cameraBtn');
+  const convertBtn = document.getElementById('convertBtn');
+  const download   = document.getElementById('pdfDownload');
+  const preview    = document.getElementById('previewPdfBtn');
+  const share      = document.getElementById('sharePdfBtn');
+  const newPdf     = document.getElementById('newPdfBtn');
+  const result     = document.getElementById('pdfResult');
+
+  if (fileInput) {
+    fileInput.addEventListener('change', function () {
+      if (!this.files || !this.files.length) return;
+
+      track('pdf_images_selected', {
+        image_count: this.files.length
+      });
+    });
+  }
+
+  if (cameraBtn) {
+    cameraBtn.addEventListener('click', function () {
+      track('pdf_camera_click');
+    });
+  }
+
+  if (convertBtn) {
+    convertBtn.addEventListener('click', function () {
+      if (convertBtn.disabled) return;
+
+      track('pdf_create_click', {
+        image_count: document.querySelectorAll('#files .item').length
+      });
+    });
+  }
+
+  if (download) {
+    download.addEventListener('click', function () {
+      track('pdf_download');
+    });
+  }
+
+  if (preview) {
+    preview.addEventListener('click', function () {
+      track('pdf_preview');
+    });
+  }
+
+  if (share) {
+    share.addEventListener('click', function () {
+      track('pdf_share');
+    });
+  }
+
+  if (newPdf) {
+    newPdf.addEventListener('click', function () {
+      track('pdf_new_file');
+    });
+  }
+
+  if (result) {
+    let successSent = false;
+
+    const observer = new MutationObserver(function () {
+      const visible =
+        result.classList.contains('show') ||
+        result.offsetParent !== null;
+
+      if (visible && !successSent) {
+        successSent = true;
+
+        track('pdf_create_success', {
+          image_count: document.querySelectorAll('#files .item').length
+        });
+      }
+
+      if (!visible) {
+        successSent = false;
+      }
+    });
+
+    observer.observe(result, {
+      attributes: true,
+      attributeFilter: ['class', 'style']
+    });
+  }
+})();
 </script>
 
 </body>
