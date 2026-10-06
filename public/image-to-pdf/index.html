@@ -1645,7 +1645,7 @@ document.addEventListener('DOMContentLoaded', function () {
     promptAttempted = true;
 
     if(installBox){
-      installBox.style.display = 'none';
+      installBox.style.display = 'flex';
     }
 
     if(typeof gtag === 'function'){
@@ -1659,7 +1659,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   async function showInstallPrompt(){
     if(isStandalone()){
-      if(installBox) installBox.style.display = 'none';
       return;
     }
 
@@ -1700,8 +1699,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }, true);
   }
 
-  if(isStandalone() && installBox){
-    installBox.style.display = 'none';
+  if(installBox){
+    installBox.style.display = 'flex';
   }
 })();
 </script>
