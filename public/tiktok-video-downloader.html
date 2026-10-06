@@ -174,9 +174,89 @@ html{scroll-behavior:smooth}body{margin:0!important;color:#f8f6fc!important;back
 <style id="vx-tiktok-seo-v1">
 .vx-seo-links{display:flex;flex-wrap:wrap;gap:10px;line-height:1.7;margin:16px 0}.vx-seo-links a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border:1px solid #60618c;border-radius:12px;color:#dfd4ff;text-decoration:underline;text-underline-offset:4px;max-width:100%;overflow-wrap:anywhere}.vx-seo-links a:focus-visible{outline:2px solid #c084fc;outline-offset:3px}.vx-seo-links a[aria-current=page]{border-color:#c084fc}.vx-seo-languages{max-width:1100px;margin:24px auto;padding:0 18px}.seo-content .seo-text{line-height:1.9;overflow-wrap:anywhere}.seo-content .seo-text h3{margin-top:24px}.seo-content .seo-text li{margin-block:12px}.seo-content .seo-text ul{padding-inline-start:24px}.seo-content[id],#faq{scroll-margin-top:24px}
 </style>
+
+<style id="vooxor-pdf-link-card-style">
+.vooxor-pdf-link-card{
+  box-sizing:border-box;
+  width:min(700px,calc(100% - 24px));
+  min-height:92px;
+  margin:18px auto;
+  padding:13px 16px;
+  display:flex;
+  direction:ltr;
+  align-items:center;
+  gap:14px;
+  text-align:left;
+  text-decoration:none!important;
+  border:1px solid #6237a8;
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 10% 20%,#a82cff33,transparent 30%),
+    linear-gradient(120deg,#17152f,#090f18 65%);
+  box-shadow:inset 0 0 3px #ffffff18,0 8px 25px #5d20aa18;
+  color:#fff!important;
+}
+.vooxor-pdf-link-card img{
+  width:62px;
+  height:62px;
+  flex:0 0 62px;
+  object-fit:cover;
+  border-radius:14px;
+}
+.vooxor-pdf-link-copy{
+  min-width:0;
+  flex:1;
+}
+.vooxor-pdf-link-copy strong{
+  display:block;
+  color:#fff!important;
+  font-size:18px;
+  line-height:1.3;
+  margin-bottom:5px;
+}
+.vooxor-pdf-link-copy span{
+  display:block;
+  color:#aab4ca!important;
+  font-size:13px;
+  line-height:1.45;
+}
+.vooxor-pdf-link-card>b{
+  flex-shrink:0;
+  color:#dca8ff!important;
+  font-size:13px;
+  white-space:nowrap;
+}
+.vooxor-pdf-link-card:hover{
+  border-color:#a65cff;
+  transform:translateY(-1px);
+}
+@media(max-width:600px){
+  .vooxor-pdf-link-card{
+    width:calc(100% - 20px);
+    min-height:76px;
+    margin:14px auto;
+    padding:10px;
+    gap:10px;
+    border-radius:17px;
+  }
+  .vooxor-pdf-link-card img{
+    width:52px;
+    height:52px;
+    flex-basis:52px;
+    border-radius:12px;
+  }
+  .vooxor-pdf-link-copy strong{font-size:14px}
+  .vooxor-pdf-link-copy span{font-size:10px}
+  .vooxor-pdf-link-card>b{font-size:10px}
+}
+</style>
+
 </head>
 
 <body>
+
+
+
 
 <header class="ig-header"><button class="ig-menu" type="button" aria-label="القائمة" aria-controls="ig-nav" aria-expanded="false"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16"/></svg></button><a href="/ar/" class="ig-brand" aria-label="VOOXOR الرئيسية"><svg class="ig-art " viewBox="236 17 239 54" aria-hidden="true" focusable="false"><image href="/assets/vooxor-tiktok-neon-v1/reference.jpg" width="706" height="1536"/></svg></a><details class="ig-lang"><summary aria-label="اللغة"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0M3 12h18M12 3c-5 5-5 13 0 18 5-5 5-13 0-18"/></svg><span>⌄</span></summary><a href="/ar/">الرئيسية العربية</a><a href="/" lang="en" dir="ltr">English home</a></details><nav id="ig-nav" hidden><a href="/ar/">الرئيسية</a><a href="#how">طريقة الاستخدام</a><a href="#faq">الأسئلة الشائعة</a><a href="/terms">الشروط</a></nav></header>
 
@@ -188,7 +268,18 @@ html{scroll-behavior:smooth}body{margin:0!important;color:#f8f6fc!important;back
         placeholder="الصق رابط فيديو تيك توك هنا..."
         autocomplete="off"
         aria-label="رابط فيديو تيك توك"
-      ><button type="button" id="paste" class="paste"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5v17h14V4h-4M9 2h6v5H9z"/></svg><span>لصق</span></button><button class="ig-clear" type="button" aria-label="مسح الرابط">×</button></div><button id="go" class="download-main"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تحميل الفيديو</span></button></div><div id="result" class="result" aria-live="polite"></div></div></section><section class="ig-benefits" aria-label="مميزات التحميل"><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 16H2V3h17v7M7 16v5m-4 0h10m3-9h6v10h-6z"/></svg><strong>يعمل على</strong><span>الجوال والكمبيوتر</span></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 22v-3a8 8 0 0 1 16 0v3"/></svg><strong>بدون تسجيل</strong><span>روابط عامة متوافقة</span></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg><strong>بدون علامة مائية</strong><span>للروابط المتوافقة</span></div><div><b class="ig-hd">HD</b><strong>جودة المصدر</strong><span>حسب الفيديو الأصلي</span></div></section><section class="tt-proof"><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 22v-3a8 8 0 0 1 16 0v3"/></svg><p><strong>مجاني بدون اشتراك</strong><span>لا تحتاج إلى إنشاء حساب</span></p></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 16H2V3h17v7M7 16v5m-4 0h10m3-9h6v10h-6z"/></svg><p><strong>مباشرة من المتصفح</strong><span>على هاتفك أو الكمبيوتر</span></p></div></section><section class="ig-install"><div class="ig-install-main"><img src="/vooxor-logo.png" alt="شعار VOOXOR" width="72" height="72"><div><h2>تطبيق VOOXOR</h2><p>وصول أسرع وتجربة أفضل</p></div><button type="button" data-ig-install><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تثبيت التطبيق</span></button></div><div class="ig-devices" dir="ltr"><span>Android</span><span>iPhone</span><span>Windows</span><span>macOS</span></div><p class="ig-install-help" role="status" hidden></p><div hidden><button id="install-app" class="install-app-btn" type="button" hidden>
+      ><button type="button" id="paste" class="paste"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4H5v17h14V4h-4M9 2h6v5H9z"/></svg><span>لصق</span></button><button class="ig-clear" type="button" aria-label="مسح الرابط">×</button></div><button id="go" class="download-main"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تحميل الفيديو</span></button></div><div id="result" class="result" aria-live="polite"></div></div></section>
+<a class="vooxor-pdf-link-card" href="/image-to-pdf/"
+   aria-label="VOOXOR Image to PDF Converter">
+  <img src="/image-to-pdf/image-to-pdf-icon.png"
+       alt="VOOXOR Image to PDF Converter">
+  <div class="vooxor-pdf-link-copy">
+    <strong>Image to PDF</strong>
+    <span>Convert JPG, PNG & WebP images to PDF</span>
+  </div>
+  <b>Open Tool →</b>
+</a>
+<section class="ig-benefits" aria-label="مميزات التحميل"><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 16H2V3h17v7M7 16v5m-4 0h10m3-9h6v10h-6z"/></svg><strong>يعمل على</strong><span>الجوال والكمبيوتر</span></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 22v-3a8 8 0 0 1 16 0v3"/></svg><strong>بدون تسجيل</strong><span>روابط عامة متوافقة</span></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 11 7-11 7z"/></svg><strong>بدون علامة مائية</strong><span>للروابط المتوافقة</span></div><div><b class="ig-hd">HD</b><strong>جودة المصدر</strong><span>حسب الفيديو الأصلي</span></div></section><section class="tt-proof"><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0M4 22v-3a8 8 0 0 1 16 0v3"/></svg><p><strong>مجاني بدون اشتراك</strong><span>لا تحتاج إلى إنشاء حساب</span></p></div><div><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 16H2V3h17v7M7 16v5m-4 0h10m3-9h6v10h-6z"/></svg><p><strong>مباشرة من المتصفح</strong><span>على هاتفك أو الكمبيوتر</span></p></div></section><section class="ig-install"><div class="ig-install-main"><img src="/vooxor-logo.png" alt="شعار VOOXOR" width="72" height="72"><div><h2>تطبيق VOOXOR</h2><p>وصول أسرع وتجربة أفضل</p></div><button type="button" data-ig-install><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تثبيت التطبيق</span></button></div><div class="ig-devices" dir="ltr"><span>Android</span><span>iPhone</span><span>Windows</span><span>macOS</span></div><p class="ig-install-help" role="status" hidden></p><div hidden><button id="install-app" class="install-app-btn" type="button" hidden>
   📱 Install VOOXOR on your device
 </button></div></section>
 

@@ -218,6 +218,126 @@ html[dir="ltr"] #vxLanguageButton{right:auto;left:12px}
 .vxLangChoice{min-height:61px;border:1px solid #293960;border-radius:13px;background:#0b1530;color:#fff;padding:9px 12px;text-align:start;font-weight:900;touch-action:manipulation}
 .vxLangChoice small{display:block;margin-top:4px;color:#929dbd;font-size:10px}.vxLangChoice.active{border-color:#ef28e6;box-shadow:inset 0 0 0 1px #812dff;background:#181345}
 </style>
+
+<style id="vooxor-page-share-style">
+.vxPageShare{
+  margin:0 0 14px;
+  padding:13px;
+  border:1px solid #344365;
+  border-radius:18px;
+  background:linear-gradient(120deg,#10182c,#0a1020 58%,#1a1030);
+  box-shadow:inset 0 1px 2px #ffffff10;
+  text-align:center;
+}
+.vxShareTitle{
+  margin-bottom:11px;
+  color:#f2edff;
+  font-size:15px;
+  font-weight:800;
+}
+.vxShareActions{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  direction:ltr;
+}
+.vxShareBtn{
+  min-width:0;
+  min-height:42px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:8px 5px;
+  border:1px solid #ffffff20;
+  border-radius:11px;
+  color:#fff !important;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:800;
+  cursor:pointer;
+}
+.vxWhatsApp{background:#087f4c;}
+.vxFacebook{background:#1558ce;}
+.vxTelegram{background:#087fb9;}
+.vxCopy{background:#343c55;}
+@media(max-width:420px){
+  .vxPageShare{padding:11px 8px}
+  .vxShareActions{gap:5px}
+  .vxShareBtn{font-size:9.5px;padding:7px 2px}
+  .vxShareTitle{font-size:13px}
+}
+</style>
+
+
+<style id="vooxor-pdf-install-style">
+.pdfInstallBox{
+  width:100%;
+  margin:14px 0 0;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  border:1px solid #6542a8;
+  border-radius:18px;
+  background:linear-gradient(120deg,#17152f,#0a1019);
+  box-shadow:0 8px 24px #5d20aa18;
+}
+.pdfInstallCopy{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.pdfInstallCopy strong{
+  color:#fff;
+  font-size:15px;
+}
+.pdfInstallCopy span{
+  color:#aab4ca;
+  font-size:12px;
+  line-height:1.5;
+}
+.pdfInstallBtn{
+  flex-shrink:0;
+  border:1px solid #9b78ff;
+  border-radius:14px;
+  padding:11px 17px;
+  color:#fff;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(115deg,#c321ed,#5930ff 48%,#087cff);
+  box-shadow:inset 0 1px 3px #ffffff55,0 5px 18px #6c2aff33;
+}
+@media(max-width:600px){
+  .pdfInstallBox{
+    padding:11px;
+    gap:9px;
+    border-radius:15px;
+  }
+  .pdfInstallCopy strong{font-size:12px}
+  .pdfInstallCopy span{font-size:10px}
+  .pdfInstallBtn{
+    padding:10px 12px;
+    font-size:11px;
+  }
+}
+</style>
+
+<link rel="manifest" href="/manifest.webmanifest">
+
+<style id="vooxor-pdf-ad-style">
+.vooxorPdfAd{
+  width:300px;
+  min-height:250px;
+  max-width:calc(100% - 20px);
+  margin:22px auto;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+</style>
+
 </head>
 
 <body>
@@ -234,7 +354,27 @@ html[dir="ltr"] #vxLanguageButton{right:auto;left:12px}
  <div class="hero"><span class="pill">IMAGE TO PDF</span><h1>تحويل الصور إلى PDF</h1><p>حوّل صورك إلى ملف PDF واحد بسرعة وسهولة وجودة عالية.</p>
   <div class="formats"><div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 5 3"/></svg><span>JPG</span></div><div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 5 3"/></svg><span>PNG</span></div><div class="fmt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 5 3"/></svg><span>WEBP</span></div><div class="arrow">←</div><div class="fmt pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2h8l4 4v16H6z"/><path d="M14 2v5h5M9 13h6M9 17h6"/></svg><span>PDF</span></div></div>
  </div>
- <div class="dropFrame" id="dropZone"><div class="drop"><div class="cloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 9.5 4.5 4.5 0 0 0 7 18z"/><path d="M12 16V9m0 0-3 3m3-3 3 3"/></svg></div><h2>اسحب الصور هنا</h2><p>أو اضغط لاختيار الصور</p><button id="chooseBtn" class="primary" type="button">اختيار الصور</button><div class="types">JPG · PNG · WEBP — يمكنك اختيار عدة صور دفعة واحدة</div></div></div>
+
+<div id="vooxor-page-share" class="vxPageShare" aria-label="شارك صفحة VOOXOR">
+  <div class="vxShareTitle">شارك هذه الصفحة مع أصدقائك</div>
+
+  <div class="vxShareActions">
+    <a id="vxShareWhatsApp" class="vxShareBtn vxWhatsApp"
+       target="_blank" rel="noopener noreferrer">WhatsApp</a>
+
+    <a id="vxShareFacebook" class="vxShareBtn vxFacebook"
+       target="_blank" rel="noopener noreferrer">Facebook</a>
+
+    <a id="vxShareTelegram" class="vxShareBtn vxTelegram"
+       target="_blank" rel="noopener noreferrer">Telegram</a>
+
+    <button id="vxShareCopy" class="vxShareBtn vxCopy" type="button">
+      نسخ الرابط
+    </button>
+  </div>
+</div>
+
+<div class="dropFrame" id="dropZone"><div class="drop"><div class="cloud"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18h10a4 4 0 0 0 .5-8A6 6 0 0 0 6 9.5 4.5 4.5 0 0 0 7 18z"/><path d="M12 16V9m0 0-3 3m3-3 3 3"/></svg></div><h2>اسحب الصور هنا</h2><p>أو اضغط لاختيار الصور</p><button id="chooseBtn" class="primary" type="button">اختيار الصور</button><div class="types">JPG · PNG · WEBP — يمكنك اختيار عدة صور دفعة واحدة</div></div></div>
  <input id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple><input id="cameraInput" type="file" accept="image/*" capture="environment">
  <button id="cameraBtn" class="camera" type="button">التقاط صورة بالكاميرا</button>
   <section class="vxDirectory vxDirectoryRaised" aria-label="أدوات وصفحات VOOXOR">
@@ -308,10 +448,38 @@ html[dir="ltr"] #vxLanguageButton{right:auto;left:12px}
   <div class="proField fullField"><label>خيارات إضافية</label><div class="checkRow"><input id="pageNumbers" type="checkbox"><span>إضافة أرقام الصفحات</span></div></div>
  </div></div>
  <button id="convertBtn" class="primary" disabled>إنشاء PDF</button>
+<div class="pdfInstallBox" id="pdfInstallBox">
+  <div class="pdfInstallCopy">
+    <strong>ثبّت VOOXOR على جهازك</strong>
+    <span>وصول أسرع إلى أدوات VOOXOR من الشاشة الرئيسية</span>
+  </div>
+  <button type="button" id="pdf-install-app" class="pdfInstallBtn">
+    ↓ تثبيت التطبيق
+  </button>
+</div>
+
  <div id="pdfResult" class="pdfResult"><div class="success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m6 12 4 4 8-9"/></svg></div><strong>تم إنشاء ملف PDF بنجاح!</strong><span id="pdfInfo"></span><div class="pdfStats"><span id="pdfPagesStat" class="pdfStat">0 صفحة</span><span id="pdfSizeStat" class="pdfStat">0 MB</span><span id="pdfCompressionStat" class="pdfStat">متوازن</span></div><div class="pdfResultActions"><button id="previewPdfBtn" class="pdfActionBtn">معاينة</button><a id="pdfDownload" class="pdfActionBtn primary" download>تحميل PDF</a><button id="sharePdfBtn" class="pdfActionBtn">مشاركة</button><button id="newPdfBtn" class="pdfActionBtn newPdfBtn">＋ إنشاء ملف جديد</button></div><div id="pdfPreviewWrap" class="pdfPreviewWrap"><div class="pdfPreviewHeader"><span>معاينة ملف PDF</span><button id="pdfPreviewClose" class="pdfPreviewClose">إغلاق</button></div><iframe id="pdfPreview" class="pdfPreview"></iframe></div></div>
  <div id="status" class="status"></div>
 </section>
 </main>
+
+
+<!-- VOOXOR Ad 300x250 -->
+<div id="vooxor-pdf-ad-300x250"
+     class="vooxorPdfAd"
+     aria-label="Advertisement">
+  <script>
+    atOptions = {
+      'key' : 'c4c06ebc3b6b353ed9603feb319ce9a6',
+      'format' : 'iframe',
+      'height' : 250,
+      'width' : 300,
+      'params' : {}
+    };
+  </script>
+  <script src="https://www.highrevenueformat.com/c4c06ebc3b6b353ed9603feb319ce9a6/invoke.js"></script>
+</div>
+<!-- End VOOXOR Ad 300x250 -->
 
 <section class="seoContent" aria-label="دليل VOOXOR لتحويل الصور إلى PDF">
   <article class="seoBlock">
@@ -363,7 +531,7 @@ html[dir="ltr"] #vxLanguageButton{right:auto;left:12px}
     <p>Use it for document photos, scanned pages, receipts, notes and other images that you want to combine into one convenient PDF file.</p>
   </article>
 
-  
+
 
 <section class="vxDirectory vxLegalOnly" aria-label="الخصوصية والشروط">
   <div class="vxLegalBox">
@@ -1383,6 +1551,161 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 </script>
 
+
+<script id="vooxor-page-share-script">
+(function(){
+  const url = window.location.href.split("#")[0];
+  const title = document.title;
+
+  const wa = document.getElementById("vxShareWhatsApp");
+  const fb = document.getElementById("vxShareFacebook");
+  const tg = document.getElementById("vxShareTelegram");
+  const cp = document.getElementById("vxShareCopy");
+
+  if(wa) wa.href =
+    "https://wa.me/?text=" + encodeURIComponent(title + "\n" + url);
+
+  if(fb) fb.href =
+    "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url);
+
+  if(tg) tg.href =
+    "https://t.me/share/url?url=" + encodeURIComponent(url) +
+    "&text=" + encodeURIComponent(title);
+
+  if(cp){
+    cp.addEventListener("click", async function(){
+      try{
+        await navigator.clipboard.writeText(url);
+        cp.textContent = "تم النسخ ✓";
+        setTimeout(() => cp.textContent = "نسخ الرابط", 1800);
+      }catch(e){
+        const ta = document.createElement("textarea");
+        ta.value = url;
+        ta.style.position = "fixed";
+        ta.style.opacity = "0";
+        document.body.appendChild(ta);
+        ta.select();
+
+        try{
+          document.execCommand("copy");
+          cp.textContent = "تم النسخ ✓";
+        }catch(_){
+          cp.textContent = "انسخ الرابط";
+        }
+
+        ta.remove();
+        setTimeout(() => cp.textContent = "نسخ الرابط", 1800);
+      }
+    });
+  }
+})();
+</script>
+
+
+<script id="vooxor-pdf-pwa-install">
+(function(){
+  let deferredInstallPrompt = null;
+  let promptAttempted = false;
+
+  const installBtn = document.getElementById('pdf-install-app');
+  const convertBtn = document.getElementById('convertBtn');
+  const installBox = document.getElementById('pdfInstallBox');
+
+  function isStandalone(){
+    return window.matchMedia('(display-mode: standalone)').matches ||
+           window.navigator.standalone === true;
+  }
+
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferredInstallPrompt = e;
+
+    if(installBox && !isStandalone()){
+      installBox.style.display = 'flex';
+    }
+  });
+
+  window.addEventListener('appinstalled', function(){
+    deferredInstallPrompt = null;
+    promptAttempted = true;
+
+    if(installBox){
+      installBox.style.display = 'none';
+    }
+
+    if(typeof gtag === 'function'){
+      gtag('event','pwa_installed',{
+        page_path:window.location.pathname,
+        page_title:document.title || '',
+        platform:'image_to_pdf'
+      });
+    }
+  });
+
+  async function showInstallPrompt(){
+    if(isStandalone()){
+      if(installBox) installBox.style.display = 'none';
+      return;
+    }
+
+    if(!deferredInstallPrompt){
+      return;
+    }
+
+    const prompt = deferredInstallPrompt;
+    deferredInstallPrompt = null;
+    promptAttempted = true;
+
+    try{
+      prompt.prompt();
+      const choice = await prompt.userChoice;
+
+      if(typeof gtag === 'function'){
+        gtag('event','pwa_install_prompt_result',{
+          page_path:window.location.pathname,
+          platform:'image_to_pdf',
+          outcome:choice.outcome
+        });
+      }
+    }catch(err){
+      console.warn('VOOXOR install prompt:',err);
+    }
+  }
+
+  if(installBtn){
+    installBtn.addEventListener('click', function(){
+      showInstallPrompt();
+    });
+  }
+
+  if(convertBtn){
+    convertBtn.addEventListener('click', function(){
+      if(convertBtn.disabled || promptAttempted) return;
+      showInstallPrompt();
+    }, true);
+  }
+
+  if(isStandalone() && installBox){
+    installBox.style.display = 'none';
+  }
+})();
+</script>
+
+
+<script id="vooxor-pdf-sw-register">
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("/sw.js")
+      .then(function () {
+        console.log("VOOXOR Service Worker registered");
+      })
+      .catch(function (error) {
+        console.warn("VOOXOR Service Worker registration failed:", error);
+      });
+  });
+}
+</script>
+
 </body>
 </html>
 <style id="vooxor-globe-fixed-left">
@@ -1392,4 +1715,56 @@ document.addEventListener('DOMContentLoaded', function () {
   right:auto !important;
   top:12px !important;
 }
+</style>
+
+<style id="vooxor-tools-icons-fix">
+
+/* إصلاح زر السهم أسفل بطاقات الأدوات */
+.vxTool i{
+  background:#ffffff !important;
+  color:#111827 !important;
+  font-weight:900 !important;
+  font-family:Arial,sans-serif !important;
+  box-shadow:0 2px 8px #0005 !important;
+}
+
+/* Snapchat icon */
+.vxSnapIcon{
+  width:64px !important;
+  height:64px !important;
+  display:grid !important;
+  place-items:center !important;
+  position:relative !important;
+  font-size:0 !important;
+  background:#fffc00 !important;
+  border-radius:15px !important;
+  box-shadow:0 4px 16px #0005 !important;
+}
+
+.vxSnapIcon:before{
+  content:"👻" !important;
+  width:auto !important;
+  height:auto !important;
+  display:block !important;
+  position:static !important;
+  background:none !important;
+  border:0 !important;
+  border-radius:0 !important;
+  clip-path:none !important;
+  font-size:39px !important;
+  line-height:1 !important;
+  filter:grayscale(1) brightness(4) drop-shadow(0 0 1px #000) !important;
+}
+
+@media(max-width:600px){
+  .vxSnapIcon{
+    width:52px !important;
+    height:52px !important;
+    border-radius:12px !important;
+  }
+  .vxSnapIcon:before{
+    font-size:32px !important;
+  }
+}
+
 </style>
