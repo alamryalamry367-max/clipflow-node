@@ -1,0 +1,124 @@
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#030615"><title>عائلة VOOXOR | رصيد VX والمكافآت والإحالات</title><meta name="description" content="تابع رصيد VX ومكافآتك وشارك رابط دعوتك إلى عائلة VOOXOR. مكافأة الإحالة 50 VX للداعي و25 VX للصديق."><link rel="canonical" href="https://vooxor.com/rewards/"><link rel="stylesheet" href="/rewards/rewards-family.css?v=20261007"></head><body><header class="familyTop"><a class="familyBrand" href="/ar/"><img src="/vooxor-logo.png" alt=""><span>VOOXOR</span></a><a class="familyTools" href="/image-to-pdf/">أداة PDF ←</a></header><main class="familyMain"><section class="familyHero"><span class="familyEyebrow">VOOXOR REWARDS</span><h1>عائلة <span>VOOXOR</span></h1><p>استخدم أدواتك، واجمع مكافآتك.</p><div class="familyCoins" aria-hidden="true"><i class="vxFamilyCoin sideCoin">V</i><i class="vxFamilyCoin heroCoin">V</i><i class="vxFamilyCoin sideCoin">V</i></div></section><section id="authForm" class="familyGlass familyAuth" aria-labelledby="familyAuthTitle"><h2 id="familyAuthTitle">مرحبًا بك في العائلة</h2><p>سجّل الدخول لعرض رصيد VX ورابط الإحالة.</p><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com" dir="ltr"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور"><div class="familyAuthActions"><button id="login" class="familyPrimary" type="button">تسجيل الدخول</button><button id="signup" class="familySecondary" type="button">إنشاء حساب</button></div></section><section id="walletPanel" class="familyGlass familyWallet" hidden aria-label="رصيدك"><div class="familyMember"><span>حسابك</span><span id="userEmail"></span><button id="refreshWallet" type="button" aria-label="تحديث الرصيد">↻</button></div><div class="familyWalletMain"><i class="vxFamilyCoin walletCoin" aria-hidden="true">V</i><div><h2>رصيدك الحالي</h2><strong class="familyBalance"><span id="familyBalance">—</span> <small>VX</small></strong><p>إجمالي المكتسب <b id="familyLifetime">—</b></p></div></div><nav class="familyEarn" aria-label="طرق جمع VX"><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+10 VX</b><span>تثبيت التطبيق</span><small>مرة واحدة</small></a><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+4 VX</b><span>استخدام PDF</span><small>أول تحويل ناجح</small></a><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+4 VX</b><span>فتح الإعلان</span><small>مقابل كل ضغطة</small></a></nav></section><section class="familyGlass familyReferral" aria-labelledby="familyReferralTitle"><span class="familyEyebrow">العائلة تكبر بدعوتك</span><h2 id="familyReferralTitle">ادعُ أصدقاءك إلى عائلة VOOXOR</h2><p>شارك رابط الإحالة الخاص بك مع أصدقائك.</p><div class="familyReferralAmounts"><div><i class="vxFamilyCoin">V</i><strong>50 <small>VX</small></strong><span>لك لكل إحالة</span></div><div><i class="vxFamilyCoin">V</i><strong>25 <small>VX</small></strong><span>لصديقك</span></div></div><label for="referralUrl">رابط دعوتك</label><div class="familyLink"><input id="referralUrl" type="text" readonly dir="ltr" placeholder="سجّل الدخول لعرض رابطك"><button id="referralCopy" type="button" aria-label="نسخ رابط الإحالة" disabled>▣</button></div><button id="referralShare" class="familyGold" type="button" disabled>مشاركة رابط الإحالة ↥</button></section><p id="status" role="status" aria-live="polite">جاري تحميل حسابك…</p><a class="familyPrimary familyExplore" href="/ar/">استكشف أدوات VOOXOR ←</a><button id="logout" class="familyLogout" type="button">تسجيل الخروج</button></main><footer class="familyFooter"><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a><span>© VOOXOR</span></footer><script type="module">
+import { createClient } from
+'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+const supabase = createClient(
+  'https://eiyvhdgcsgawxdphtvqx.supabase.co',
+  'sb_publishable__hZCyLkEo_zc4absaCd2Kg_EDEWel_N'
+);
+
+// Capture referral code automatically from ?ref=CODE
+const referralCode = new URLSearchParams(window.location.search)
+  .get('ref')
+  ?.trim()
+  .toUpperCase();
+
+if (referralCode && /^[A-Z0-9]{8}$/.test(referralCode)) {
+  localStorage.setItem('vooxor_referral_code', referralCode);
+}
+
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const login = document.getElementById('login');
+const signup = document.getElementById('signup');
+const logout = document.getElementById('logout');
+const authForm = document.getElementById('authForm');
+const status = document.getElementById('status');
+
+let currentReferral = '';
+let accountLoadVersion = 0;
+async function showUser(session){
+  const version=++accountLoadVersion;
+  authForm.style.display=session?.user?'none':'block';
+  logout.style.display=session?.user?'inline-flex':'none';
+  document.getElementById('walletPanel').hidden=!session?.user;
+  currentReferral='';
+  document.getElementById('referralUrl').value='';
+  document.getElementById('referralShare').disabled=true;
+  document.getElementById('referralCopy').disabled=true;
+  if(!session?.user){status.textContent='سجّل الدخول لعرض رصيدك ورابط دعوتك.';return;}
+  document.getElementById('userEmail').textContent=session.user.email||'عضو عائلة VOOXOR';
+  document.getElementById('familyBalance').textContent='—';
+  document.getElementById('familyLifetime').textContent='—';
+  status.textContent='جاري تحميل رصيدك…';
+  try {
+    const {data:profile,error}=await supabase.from('vooxor_profiles').select('vx_balance,lifetime_vx,referral_code').eq('user_id',session.user.id).maybeSingle();
+    if(version!==accountLoadVersion)return;
+    if(error)throw error;
+    if(!profile){status.textContent='تعذر العثور على بيانات مكافآت حسابك. أعد تحميل الرصيد أو تواصل معنا.';return;}
+    document.getElementById('familyBalance').textContent=String(profile.vx_balance??0);
+    document.getElementById('familyLifetime').textContent=String(profile.lifetime_vx??0)+' VX';
+    if(profile.referral_code){currentReferral='https://vooxor.com/rewards/?ref='+encodeURIComponent(profile.referral_code);document.getElementById('referralUrl').value=currentReferral;document.getElementById('referralShare').disabled=false;document.getElementById('referralCopy').disabled=false;}
+    status.textContent='رصيدك محدّث.';
+  }catch(error){if(version===accountLoadVersion)status.textContent='تعذر تحميل الرصيد: '+error.message;}
+}
+const {data:{session}} = await supabase.auth.getSession();
+showUser(session);
+
+login.onclick = async () => {
+  if(!email.value || !password.value){
+    status.textContent = '⚠️ أدخل البريد وكلمة المرور';
+    return;
+  }
+
+  status.textContent = 'جاري تسجيل الدخول...';
+
+  const {data,error} = await supabase.auth.signInWithPassword({
+    email: email.value.trim(),
+    password: password.value
+  });
+
+  if(error){
+    status.textContent = '❌ ' + error.message;
+    return;
+  }
+
+  showUser(data.session);
+};
+
+signup.onclick = async () => {
+  if(!email.value || password.value.length < 6){
+    status.textContent = '⚠️ أدخل بريدًا صحيحًا وكلمة مرور 6 أحرف على الأقل';
+    return;
+  }
+
+  status.textContent = 'جاري إنشاء الحساب...';
+
+  const {data,error} = await supabase.auth.signUp({
+    email: email.value.trim(),
+    password: password.value
+  });
+
+  if(error){
+    status.textContent = '❌ ' + error.message;
+    return;
+  }
+
+  if(data.session){
+    showUser(data.session);
+  }else{
+    status.textContent =
+      '✅ تم إنشاء الحساب — تحقق من بريدك الإلكتروني لتأكيد الحساب';
+  }
+};
+
+logout.onclick = async () => {
+  await supabase.auth.signOut();
+  showUser(null);
+};
+
+supabase.auth.onAuthStateChange((_event,session) => {
+  setTimeout(()=>showUser(session),0);
+});
+
+async function copyFamilyReferral(){
+  if(!currentReferral)return;
+  try{if(navigator.clipboard){await navigator.clipboard.writeText(currentReferral);status.textContent='تم نسخ رابط الإحالة.';}else{document.getElementById('referralUrl').select();status.textContent='حدّد الرابط وانسخه من الحقل.';}}catch{document.getElementById('referralUrl').select();status.textContent='يمكنك نسخ الرابط من الحقل.';}
+}
+document.getElementById('referralCopy').onclick=copyFamilyReferral;
+document.getElementById('referralShare').onclick=async()=>{
+ if(!currentReferral)return;
+ try{if(navigator.share)await navigator.share({title:'VOOXOR Rewards',text:'انضم إلى عائلة VOOXOR من رابط دعوتي',url:currentReferral});else await copyFamilyReferral();}catch(error){if(error.name!=='AbortError')status.textContent='تعذرت المشاركة. يمكنك نسخ الرابط.';}
+};
+document.getElementById('refreshWallet').onclick=async()=>{const {data:{session}}=await supabase.auth.getSession();await showUser(session);};
+</script></body></html>
