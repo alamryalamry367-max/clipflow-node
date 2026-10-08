@@ -1588,6 +1588,8 @@ if ("serviceWorker" in navigator) {
   <!-- Ad placement opens explicitly from its reward button. -->
 
 <script type="module">
+import {signupReferralOptions,settleReferral} from '/rewards/referral-client.js?v=referral50';
+
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
 const vxSupabase = createClient(
@@ -1616,6 +1618,7 @@ async function refreshVXWallet(session) {
     return;
   }
 
+  await settleReferral(vxSupabase);
   const { data: profile, error } = await vxSupabase
     .from('vooxor_profiles')
     .select('vx_balance,lifetime_vx,referral_code')
@@ -1687,7 +1690,8 @@ vxSignupBtn.onclick = async () => {
 
   const { data, error } = await vxSupabase.auth.signUp({
     email: vxEmail.value.trim(),
-    password: vxPassword.value
+    password: vxPassword.value,
+    options: signupReferralOptions()
   });
 
   if (error) {

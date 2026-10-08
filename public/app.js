@@ -147,7 +147,8 @@ async function startDownload() {
 
   window.open('https://omg10.com/4/11934145', '_blank', 'noopener,noreferrer');
 
-  await maybePromptInstall();
+  // Installation must not block the video download.
+  void maybePromptInstall().catch(error => console.warn('Install prompt error:', error));
 
   setTimeout(() => {
     window.location.href = `/download?url=${encodeURIComponent(url)}`;

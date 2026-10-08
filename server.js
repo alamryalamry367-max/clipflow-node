@@ -265,27 +265,34 @@ app.post('/api/resolve', async (req, res) => {
     const platform = detectPlatform(url);
 
     if (platform === 'tiktok') {
-      const normalizedUrl = await normalizeTikTokUrl(url);
-      const meta = await fetch(
-        `https://www.tiktok.com/oembed?url=${encodeURIComponent(normalizedUrl)}`,
-        {
-          headers: {
-            'User-Agent': 'VOOXOR/1.0'
-          },
-          signal: AbortSignal.timeout(15000)
+      let title = 'TikTok Video';
+      // Metadata is optional; /download still validates and downloads the video.
+      try {
+        const normalizedUrl = await normalizeTikTokUrl(url);
+        const meta = await fetch(
+          `https://www.tiktok.com/oembed?url=${encodeURIComponent(normalizedUrl)}`,
+          {
+            headers: {
+              'User-Agent': 'VOOXOR/1.0'
+            },
+            signal: AbortSignal.timeout(5000)
+          }
+        );
+  
+        if (!meta.ok) {
+          throw new Error(`TikTok metadata returned HTTP ${meta.status}.`);
         }
-      );
-
-      if (!meta.ok) {
-        throw new Error(`TikTok metadata returned HTTP ${meta.status}.`);
+  
+        const data = await meta.json();
+        title = typeof data.title === 'string' && data.title.trim() ? data.title : title;
+      } catch (_) {
+        console.warn('TikTok title unavailable; continuing to the existing download route.');
       }
-
-      const data = await meta.json();
 
       return res.json({
         ok: true,
         platform,
-        title: data.title || 'TikTok Video',
+        title,
         contentType: 'video/mp4',
         contentLength: null
       });
