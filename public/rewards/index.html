@@ -1,147 +1,59 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#030615"><title>مكاسب VOOXOR | رصيد VX والمكافآت والإحالات</title><meta name="description" content="تابع رصيد VX ومكافآتك وشارك رابط دعوتك إلى عائلة VOOXOR. مكافأة الإحالة 50 VX للداعي و25 VX للصديق."><link rel="canonical" href="https://vooxor.com/rewards/"><link rel="stylesheet" href="/rewards/rewards-family.css?v=vxcoin1"></head><body><header class="familyTop"><a class="familyBrand" href="/ar/"><img src="/vooxor-logo.png" alt=""><span>VOOXOR</span></a><a class="familyTools" href="/ar/">رجوع ←</a></header><main class="familyMain"><section class="familyHero"><span class="familyEyebrow">VOOXOR REWARDS</span><h1>مكاسب <span>VOOXOR</span></h1><p>اجمع VX اليوم… وكن جزءًا مما يأتي.</p><div class="familyCoins" aria-hidden="true"><i class="vxFamilyCoin sideCoin">V</i><i class="vxFamilyCoin heroCoin">V</i><i class="vxFamilyCoin sideCoin">V</i></div></section><section id="authForm" class="familyGlass familyAuth" aria-labelledby="familyAuthTitle"><h2 id="familyAuthTitle">مرحبًا بك في العائلة</h2><p>سجّل الدخول لعرض رصيد VX ورابط الإحالة.</p><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" placeholder="name@example.com" dir="ltr"><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" placeholder="كلمة المرور"><div class="familyAuthActions"><button id="login" class="familyPrimary" type="button">تسجيل الدخول</button><button id="signup" class="familySecondary" type="button">إنشاء حساب</button></div></section><section id="walletPanel" class="familyGlass familyWallet" hidden aria-label="رصيدك"><div class="familyMember"><span>حسابك</span><span id="userEmail"></span><button id="refreshWallet" type="button" aria-label="تحديث الرصيد">↻</button></div><section id="accountLevel" class="accountLevel" hidden aria-label="مستوى الحساب"><div class="levelHeading"><span>مستوى حسابك</span><strong id="levelName"></strong></div><div id="levelBar" class="levelBar" role="progressbar" aria-label="التقدم للمستوى التالي" aria-valuemin="0" aria-valuemax="100"><i id="levelFill"></i></div><p id="levelHint"></p><small>المستوى حسب إجمالي VX المكتسب</small></section><div class="familyWalletMain"><i class="vxFamilyCoin walletCoin" aria-hidden="true">V</i><div><h2>رصيدك الحالي</h2><strong class="familyBalance"><span id="familyBalance">—</span> <small>VX</small></strong><p>إجمالي المكتسب <b id="familyLifetime">—</b></p><p class="familyFuture">رصيدك يكبر مع نشاطك، وطموحنا أن تتوسع استخداماته مستقبلًا.</p></div></div><nav class="familyEarn" aria-label="طرق جمع VX"><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+10 VX</b><span>تثبيت التطبيق</span><small>مرة واحدة</small></a><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+4 VX</b><span>استخدام PDF</span><small>أول تحويل ناجح</small></a><a href="/image-to-pdf/"><i class="vxFamilyCoin">V</i><b>+4 VX</b><span>فتح الإعلان</span><small>مقابل كل ضغطة</small></a></nav></section><section id="walletHistory" class="familyGlass" hidden aria-labelledby="historyTitle"><div class="historyHead"><div><h2 id="historyTitle">سجل العملات</h2><p>كل مكافأة أُضيفت إلى حسابك</p></div><button id="historyRefresh" type="button" aria-label="تحديث سجل العملات">↻</button></div><p id="historyStatus" role="status" aria-live="polite"></p><ul id="historyList"></ul><button id="historyMore" type="button" hidden>عرض المزيد</button></section><section class="familyGlass familyReferral" aria-labelledby="familyReferralTitle"><span class="familyEyebrow">العائلة تكبر بدعوتك</span><h2 id="familyReferralTitle">ادعُ أصدقاءك إلى عائلة VOOXOR</h2><p>شارك رابط الإحالة الخاص بك مع أصدقائك.</p><div class="familyReferralAmounts"><div><i class="vxFamilyCoin">V</i><strong>50 <small>VX</small></strong><span>لك لكل إحالة</span></div><div><i class="vxFamilyCoin">V</i><strong>25 <small>VX</small></strong><span>لصديقك</span></div></div><label for="referralUrl">رابط دعوتك</label><div class="familyLink"><input id="referralUrl" type="text" readonly dir="ltr" placeholder="سجّل الدخول لعرض رابطك"><button id="referralCopy" type="button" aria-label="نسخ رابط الإحالة" disabled>▣</button></div><button id="referralShare" class="familyGold" type="button" disabled>مشاركة رابط الإحالة ↥</button></section><p id="status" role="status" aria-live="polite">جاري تحميل حسابك…</p><a class="familyPrimary familyExplore" href="/ar/">استكشف أدوات VOOXOR ←</a><button id="logout" class="familyLogout" type="button">تسجيل الخروج</button></main><footer class="familyFooter"><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a><span>© VOOXOR</span></footer><script type="module">
-import {loadWalletHistory} from "/rewards/wallet-history.js?v=history1";
-import {signupReferralOptions,settleReferral} from '/rewards/referral-client.js?v=referral50';
-
-import { createClient } from
-'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
-
-const supabase = createClient(
-  'https://eiyvhdgcsgawxdphtvqx.supabase.co',
-  'sb_publishable__hZCyLkEo_zc4absaCd2Kg_EDEWel_N'
-);
-
-// Capture referral code automatically from ?ref=CODE
-const referralCode = new URLSearchParams(window.location.search)
-  .get('ref')
-  ?.trim()
-  .toUpperCase();
-
-if (referralCode && /^[A-Z0-9]{8}$/.test(referralCode)) {
-  localStorage.setItem('vooxor_referral_code', referralCode);
-}
-
-const email = document.getElementById('email');
-const password = document.getElementById('password');
-const login = document.getElementById('login');
-const signup = document.getElementById('signup');
-const logout = document.getElementById('logout');
-const authForm = document.getElementById('authForm');
-const status = document.getElementById('status');
-
-let currentReferral = '';
-let accountLoadVersion = 0;
-function vooxorLevel(value){
- const total=Math.max(0,Number(value)||0);
- const levels=[{name:'🌱 مبتدئ',start:0},{name:'🥉 برونزي',start:100},{name:'🥈 فضي',start:500},{name:'🥇 ذهبي',start:1500},{name:'👑 نخبة',start:5000}];
- let index=0;while(index+1<levels.length&&total>=levels[index+1].start)index++;
- const current=levels[index],next=levels[index+1];
- return {name:current.name,next:next?.name,remaining:next?next.start-total:0,percent:next?Math.min(100,Math.floor(100*(total-current.start)/(next.start-current.start))):100};
-}
-function renderVooxorLevel(value){
- const box=document.getElementById('accountLevel');box.hidden=value==null;if(value==null)return;
- const level=vooxorLevel(value);document.getElementById('levelName').textContent=level.name;
- document.getElementById('levelFill').style.width=level.percent+'%';
- document.getElementById('levelBar').setAttribute('aria-valuenow',String(level.percent));
- const hint=level.next?'باقي '+level.remaining+' VX للوصول إلى '+level.next:'وصلت إلى أعلى مستوى — نخبة VOOXOR';
- document.getElementById('levelHint').textContent=hint;document.getElementById('levelBar').setAttribute('aria-valuetext',hint);
-}
-async function showUser(session){
-  renderVooxorLevel(null);
-  loadWalletHistory(supabase,session);
-  const version=++accountLoadVersion;
-  authForm.style.display=session?.user?'none':'block';
-  logout.style.display=session?.user?'inline-flex':'none';
-  document.getElementById('walletPanel').hidden=!session?.user;
-  currentReferral='';
-  document.getElementById('referralUrl').value='';
-  document.getElementById('referralShare').disabled=true;
-  document.getElementById('referralCopy').disabled=true;
-  if(!session?.user){status.textContent='سجّل الدخول لعرض رصيدك ورابط دعوتك.';return;}
-  document.getElementById('userEmail').textContent=session.user.email||'عضو عائلة VOOXOR';
-  document.getElementById('familyBalance').textContent='—';
-  document.getElementById('familyLifetime').textContent='—';
-  status.textContent='جاري تحميل رصيدك…';
-  try {
-  await settleReferral(supabase);
-    const {data:profile,error}=await supabase.from('vooxor_profiles').select('vx_balance,lifetime_vx,referral_code').eq('user_id',session.user.id).maybeSingle();
-    if(version!==accountLoadVersion)return;
-    if(error)throw error;
-    if(!profile){status.textContent='تعذر العثور على بيانات مكافآت حسابك. أعد تحميل الرصيد أو تواصل معنا.';return;}
-    document.getElementById('familyBalance').textContent=String(profile.vx_balance??0);
-    document.getElementById('familyLifetime').textContent=String(profile.lifetime_vx??0)+' VX';
-    renderVooxorLevel(profile.lifetime_vx??0);
-    if(profile.referral_code){currentReferral='https://vooxor.com/rewards/?ref='+encodeURIComponent(profile.referral_code);document.getElementById('referralUrl').value=currentReferral;document.getElementById('referralShare').disabled=false;document.getElementById('referralCopy').disabled=false;}
-    status.textContent='رصيدك محدّث.';
-  }catch(error){if(version===accountLoadVersion)status.textContent='تعذر تحميل الرصيد: '+error.message;}
-}
-const {data:{session}} = await supabase.auth.getSession();
-showUser(session);
-
-login.onclick = async () => {
-  if(!email.value || !password.value){
-    status.textContent = '⚠️ أدخل البريد وكلمة المرور';
-    return;
-  }
-
-  status.textContent = 'جاري تسجيل الدخول...';
-
-  const {data,error} = await supabase.auth.signInWithPassword({
-    email: email.value.trim(),
-    password: password.value
-  });
-
-  if(error){
-    status.textContent = '❌ ' + error.message;
-    return;
-  }
-
-  showUser(data.session);
-};
-
-signup.onclick = async () => {
-  if(!email.value || password.value.length < 6){
-    status.textContent = '⚠️ أدخل بريدًا صحيحًا وكلمة مرور 6 أحرف على الأقل';
-    return;
-  }
-
-  status.textContent = 'جاري إنشاء الحساب...';
-
-  const {data,error} = await supabase.auth.signUp({
-    email: email.value.trim(),
-    password: password.value,
-    options: signupReferralOptions()
-  });
-
-  if(error){
-    status.textContent = '❌ ' + error.message;
-    return;
-  }
-
-  if(data.session){
-    showUser(data.session);
-  }else{
-    status.textContent =
-      '✅ تم إنشاء الحساب — تحقق من بريدك الإلكتروني لتأكيد الحساب';
-  }
-};
-
-logout.onclick = async () => {
-  await supabase.auth.signOut();
-  showUser(null);
-};
-
-supabase.auth.onAuthStateChange((_event,session) => {
-  setTimeout(()=>showUser(session),0);
-});
-
-async function copyFamilyReferral(){
-  if(!currentReferral)return;
-  try{if(navigator.clipboard){await navigator.clipboard.writeText(currentReferral);status.textContent='تم نسخ رابط الإحالة.';}else{document.getElementById('referralUrl').select();status.textContent='حدّد الرابط وانسخه من الحقل.';}}catch{document.getElementById('referralUrl').select();status.textContent='يمكنك نسخ الرابط من الحقل.';}
-}
-document.getElementById('referralCopy').onclick=copyFamilyReferral;
-document.getElementById('referralShare').onclick=async()=>{
- if(!currentReferral)return;
- try{if(navigator.share)await navigator.share({title:'VOOXOR Rewards',text:'انضم إلى عائلة VOOXOR من رابط دعوتي',url:currentReferral});else await copyFamilyReferral();}catch(error){if(error.name!=='AbortError')status.textContent='تعذرت المشاركة. يمكنك نسخ الرابط.';}
-};
-document.getElementById('refreshWallet').onclick=async()=>{const {data:{session}}=await supabase.auth.getSession();await showUser(session);};
-</script></body></html>
+<!doctype html>
+<html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080912"><title>محفظة VOOXOR | رصيد VX والمكافآت</title>
+<meta name="description" content="تابع رصيد VX ومستوى حسابك وسجل مكافآتك في محفظة VOOXOR، واطّلع على خطط VOX الرقمية المستقبلية.">
+<link rel="canonical" href="https://vooxor.com/rewards/">
+<link rel="stylesheet" href="/rewards/wallet-fonts.css?v=wallet-final1"><link rel="stylesheet" href="/rewards/wallet-v3.css?v=wallet-final1">
+<script id="vooxor-referral-home-redirect">(()=>{const code=new URLSearchParams(location.search).get('ref');if(code&&/^[A-Za-z0-9]{8}$/.test(code)){try{localStorage.setItem('vooxor_referral_code',code)}catch{}location.replace('/ar/?ref='+encodeURIComponent(code))}})();</script>
+</head><body><svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h17v13H3zM3 7l13-4v4M16 11h5v5h-5z"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-4a6 6 0 0 1 12 0v4M16 3a4 4 0 0 1 0 8M18 14a6 6 0 0 1 3 7"/></symbol><symbol id="i-adduser" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M19 7v8M15 11h8"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 10h18v4H3zM5 14v7h14v-7M12 10v11"/><path d="M12 10C2 10 5 0 9 4l3 6c10 0 7-10 3-6z"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 14v7h16v-7"/></symbol><symbol id="i-receive" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol><symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 7h16l-4-4M20 17H4l4 4M20 7l-4 4M4 17l4-4"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><path d="m9 3 1-1h4l1 3 3 1 3-1 2 4-2 2v3l2 2-2 4-3-1-3 1-1 2h-4l-1-2-3-1-2 1-2-4 2-2v-3L2 9l2-4 3 1 2-1z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M5 16h14l-2-4V8a5 5 0 0 0-10 0v4zM10 20h4"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M9 5h12M9 12h12M9 19h12"/><circle cx="3" cy="5" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="19" r="1"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol><symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path d="m3 6 5 4 4-7 4 7 5-4-2 14H5z"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><path d="m8 10 8-4m-8 8 8 4"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7a9 9 0 1 0 1 7M20 2v5h-5"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="7" width="13" height="15" rx="2"/><path d="M16 7V2H3v15h5"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v13c0 4 16 4 16 0V5M4 11c0 4 16 4 16 0"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 6v1"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="m2 11 10-9 10 9M5 9v13h14V9M9 22v-8h6v8"/></symbol></svg>
+<div class="walletShell">
+<header class="walletHeader" dir="ltr">
+<button class="iconButton avatar" data-account aria-label="حسابي"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><i></i></button>
+<a href="/ar/" class="wordmark" aria-label="VOOXOR الرئيسية">VOO<span>X</span>OR<small>W A L L E T</small></a>
+<div class="headerButtons"><button class="iconButton" data-dialog="updatesDialog" aria-label="تحديثات المحفظة"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></button><button class="iconButton" data-account aria-label="إعدادات الحساب"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></button></div>
+</header>
+<main id="walletHome">
+<section id="walletPanel" class="glass balanceCard" aria-label="رصيد المحفظة">
+<div class="balanceCopy"><div class="balanceLabel"><h1>رصيدك من VX</h1><button id="balancePrivacy" class="eyeButton" aria-label="إخفاء الرصيد" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button></div>
+<div class="balanceValue" dir="ltr"><strong id="familyBalance" data-sensitive>—</strong><span>VX</span></div>
+<p class="lifetimeLabel">إجمالي المكتسب</p><b class="lifetimeValue" id="familyLifetime" dir="ltr" data-sensitive>— VX</b>
+</div><div class="heroVisual"><span class="art art-hero" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span></div>
+</section>
+<div id="guestNotice" class="guestNotice" hidden>سجّل الدخول لعرض محفظتك ومكافآتك <button data-dialog="authDialog">تسجيل الدخول</button></div>
+<nav class="glass walletActions" aria-label="إجراءات المحفظة">
+<button disabled><span class="actionIcon"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg><small>قريبًا</small></span><b>إرسال</b></button>
+<button disabled><span class="actionIcon"><svg class="icon" aria-hidden="true"><use href="#i-receive"/></svg><small>قريبًا</small></span><b>استقبال</b></button>
+<button disabled><span class="actionIcon"><svg class="icon" aria-hidden="true"><use href="#i-swap"/></svg><small>قريبًا</small></span><b>استبدال</b></button>
+<button class="rewardAction" data-dialog="rewardsDialog"><span class="actionIcon"><svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg></span><b>المكافآت</b></button>
+</nav>
+<section id="assetsPanel" class="glass assetsPanel" aria-label="الأصول">
+<nav class="assetTabs" aria-label="أقسام المحفظة"><a href="#assetsPanel" class="selected"><svg class="icon" aria-hidden="true"><use href="#i-coins"/></svg> الأصول</a><a href="#walletHistory"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg> النشاط</a></nav>
+<div class="assetRow" dir="ltr"><span class="art art-vx" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span><div class="assetName"><strong>VX</strong><p dir="rtl">رصيد المكافآت</p></div><b class="assetValue" dir="ltr"><span id="assetBalance" data-sensitive>—</span> VX</b><button class="rowArrow" data-dialog="vxDialog" aria-label="تفاصيل رصيد VX"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button></div>
+<div class="assetRow" dir="ltr"><span class="art art-vox" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span><div class="assetName"><div class="assetTitle"><strong>VOX</strong><span class="pill" dir="rtl">قيد التطوير</span></div><p class="voxDescription" dir="rtl">العملة الرقمية<br>المستقبلية</p></div><span class="assetValue muted">—</span><button class="rowArrow" data-dialog="voxDialog" aria-label="عن عملة VOX المستقبلية"><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button></div>
+</section>
+<section class="glass futureCard" aria-labelledby="futureHeading">
+<div class="futureCoin futureVX"><span class="art art-vx" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span></div><div class="futureCoin futureVOX"><span class="art art-vox" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span></div><div class="orbit orbitOne"></div><div class="orbit orbitTwo"></div>
+<div class="futureCopy"><h2 id="futureHeading">اجمع <b dir="ltr">VX</b> اليوم…<br><span>واستعد لآفاق <b dir="ltr">VOX</b> الرقمية</span></h2><p>نخطط لإتاحة تحويل VX إلى VOX مستقبلًا</p><button class="development pill" data-dialog="voxDialog"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg> الميزة قيد التطوير</button></div>
+</section>
+<section id="accountLevel" class="glass levelCard" hidden aria-labelledby="levelName">
+<div class="levelMain" dir="ltr"><div id="mainMedal"><span class="medal medal-1"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span></div><div class="levelContent" dir="rtl"><div class="levelTop"><h2 id="levelName">—</h2><p id="levelHint"></p></div><div class="progressRow" dir="ltr"><div id="levelBar" role="progressbar" aria-label="التقدم للمستوى التالي" aria-valuemin="0" aria-valuemax="100"><i id="levelFill"></i></div><b id="levelPercent">—</b></div></div></div>
+<ol class="tiers" dir="ltr"><li data-tier="0"><span class="medal medal-0"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg></span><span>مبتدئ</span></li><li data-tier="1"><span class="medal medal-1"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><span>برونزي</span></li><li data-tier="2"><span class="medal medal-2"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><span>فضي</span></li><li data-tier="3"><span class="medal medal-3"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></span><span>ذهبي</span></li><li data-tier="4"><span class="medal medal-4"><svg class="icon" aria-hidden="true"><use href="#i-crown"/></svg></span><span>نخبة</span></li></ol>
+</section>
+<section id="familyReferral" class="glass referralCard" aria-labelledby="referralTitle"><div class="referralIllustration"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></div><div class="referralCopy"><h2 id="referralTitle">ادعُ صديقًا</h2><p><b dir="ltr">50 VX</b> لك <em>│</em> <b dir="ltr">25 VX</b> لصديقك</p></div><button id="referralShare" class="primaryButton"><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg> مشاركة الدعوة</button><div class="referralField" id="referralField" hidden><label class="srOnly" for="referralUrl">رابط دعوتك</label><input id="referralUrl" readonly dir="ltr"><button id="referralCopy" class="iconButton" aria-label="نسخ رابط الدعوة"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg></button></div></section>
+<section id="walletHistory" class="glass historyPanel" aria-labelledby="historyTitle"><div class="historyHead"><h2 id="historyTitle">آخر العمليات</h2><div class="filters" aria-label="تصفية العمليات"><button data-filter="all" class="selected" aria-pressed="true">الكل</button><button data-filter="rewards" aria-pressed="false">المكافآت</button><button data-filter="referrals" aria-pressed="false">الإحالات</button></div><button id="historyRefresh" class="refreshSmall" aria-label="تحديث سجل العمليات"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg></button></div><p id="historyStatus" role="status" aria-live="polite"></p><ul id="historyList"></ul><button id="historyMore" class="secondaryButton" hidden>عرض المزيد</button></section>
+<button class="glass settingsRow" data-account><span class="settingsIcon"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></span><span><b>إعدادات الحساب</b><small>الحساب، التفضيلات، والمزيد</small></span><svg class="icon" aria-hidden="true"><use href="#i-chevron"/></svg></button>
+<p id="status" role="status" aria-live="polite">جاري تحميل حسابك…</p>
+<footer class="walletFooter"><a href="/ar/">رجوع إلى المنصة</a><a href="/privacy">الخصوصية</a><a href="/terms">الشروط</a></footer>
+</main>
+<nav class="bottomNav" aria-label="التنقل في المحفظة"><a href="#walletHome" class="selected" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-wallet"/></svg><span>المحفظة</span></a><button data-dialog="rewardsDialog"><svg class="icon" aria-hidden="true"><use href="#i-gift"/></svg><span>المكافآت</span></button><a href="#walletHistory"><svg class="icon" aria-hidden="true"><use href="#i-list"/></svg><span>النشاط</span></a><button data-account><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>حسابي</span></button></nav>
+</div>
+<dialog id="authDialog" aria-labelledby="authTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><h2 id="authTitle">مرحبًا بك في محفظتك</h2><p>سجّل الدخول لمتابعة رصيد VX ومستواك.</p><form id="authForm"><label for="email">البريد الإلكتروني</label><input id="email" type="email" autocomplete="email" dir="ltr" required><label for="password">كلمة المرور</label><input id="password" type="password" autocomplete="current-password" minlength="6" required><div class="authActions"><button id="login" class="primaryButton" type="submit">تسجيل الدخول</button><button id="signup" class="secondaryButton" type="button">إنشاء حساب</button></div><p id="authStatus" role="status" aria-live="polite"></p></form></dialog>
+<dialog id="settingsDialog" aria-labelledby="settingsTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><h2 id="settingsTitle">إعدادات الحساب</h2><p id="userEmail" dir="ltr"></p><button id="refreshWallet" class="secondaryButton"><svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg> تحديث الرصيد</button><label class="privacySetting"><input id="privacySetting" type="checkbox"> إخفاء الرصيد على الشاشة</label><button id="logout" class="secondaryButton">تسجيل الخروج</button></dialog>
+<dialog id="rewardsDialog" aria-labelledby="rewardsTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><h2 id="rewardsTitle">اجمع مكافآت VX</h2><p>استخدم أدوات VOOXOR وتابع رصيدك هنا.</p><a class="rewardLink" href="/ar/">تثبيت التطبيق <b dir="ltr">+10 VX</b><small>مرة واحدة</small></a><a class="rewardLink" href="/image-to-pdf/">تحويل الصور إلى PDF <b dir="ltr">+4 VX</b><small>أول تحويل ناجح</small></a><a class="rewardLink" href="/ar/">مكافأة الإعلان <b dir="ltr">+4 VX</b><small>من بطاقة المكافآت في المنصة</small></a></dialog>
+<dialog id="vxDialog" aria-labelledby="vxTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><span class="art art-vx" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span><h2 id="vxTitle">VX · رصيد المكافآت</h2><p>رصيد تجمعه من الأنشطة المؤهلة داخل VOOXOR. يمكنك متابعة كل إضافة في سجل العمليات.</p><a class="primaryButton" href="#walletHistory" data-close>عرض سجل العمليات</a></dialog>
+<dialog id="voxDialog" aria-labelledby="voxTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><span class="art art-vox" aria-hidden="true"><img src="/rewards/wallet-assets/wallet-artwork.png?v=wallet-final1" alt="" width="736" height="2138"></span><h2 id="voxTitle">VOX · العملة الرقمية المستقبلية</h2><span class="pill">قيد التطوير</span><p>نخطط لإتاحة تحويل VX إلى VOX مستقبلًا. التحويل غير متاح حاليًا، وسنعلن التفاصيل والشروط عند جاهزية الميزة.</p></dialog>
+<dialog id="updatesDialog" aria-labelledby="updatesTitle"><button class="closeDialog" data-close aria-label="إغلاق"><svg class="icon" aria-hidden="true"><use href="#i-close"/></svg></button><h2 id="updatesTitle">تحديثات المحفظة</h2><p>خطط VOX الرقمية والإرسال والاستقبال والاستبدال قيد التطوير. يمكنك الآن جمع VX ومتابعة مكافآتك ومستواك.</p></dialog>
+<noscript><p>فعّل JavaScript لعرض رصيدك وتسجيل الدخول.</p></noscript>
+<script type="module" src="/rewards/wallet-v3.js?v=wallet-final1"></script>
+</body></html>
