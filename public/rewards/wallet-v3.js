@@ -35,8 +35,10 @@ function renderLevel(total){
 }
 async function showUser(nextSession){
  const version=++requestVersion;session=nextSession;profile=null;currentReferral='';renderBalances();renderLevel(null);history.load(null);
- $('guestNotice').hidden=Boolean(session?.user);$('referralField').hidden=true;$('referralUrl').value='';$('userEmail').textContent=session?.user?.email||'';
- if(!session?.user){status('سجّل الدخول لعرض رصيدك ومكافآتك.');return;}
+ $('guestNotice').hidden=Boolean(session?.user);
+ document.querySelectorAll('[data-account]').forEach(b=>b.setAttribute('aria-label',session?.user?'حسابي':'تسجيل الدخول أو إنشاء حساب'));
+ if(!session?.user&&$('authDialog').open)$('authDialog').close();$('referralField').hidden=true;$('referralUrl').value='';$('userEmail').textContent=session?.user?.email||'';
+ if(!session?.user){status('سجّل الدخول لعرض رصيدك. تصفّح المحفظة بحرية وفعّل المكافآت متى أردت.');return;}
  status('جاري تحديث محفظتك…');$('refreshWallet').disabled=true;
  try{
   await settleReferral(client);if(version!==requestVersion)return;history.load(session);
