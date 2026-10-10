@@ -557,6 +557,341 @@ app.get('/debug/bgutil', async (_, res) => {
   }
 });
 
+
+// VOOXOR YouTube: local yt-dlp metadata extraction.
+const youtubeLookupTimes = new Map();
+
+app.get('/api/youtube/info', async (req, res) => {
+  const ip = req.ip || req.socket.remoteAddress || 'unknown';
+  const now = Date.now();
+
+  if (now - (youtubeLookupTimes.get(ip) || 0) < 5000) {
+    return res.status(429).json({error:'Please wait 5 seconds.'});
+  }
+  youtubeLookupTimes.set(ip, now);
+
+  if (youtubeLookupTimes.size > 3000) {
+    for (const [key, time] of youtubeLookupTimes) {
+      if (now - time > 60000) youtubeLookupTimes.delete(key);
+    }
+  }
+
+  let u;
+  try {
+    u = new URL(String(req.query.url || ''));
+  } catch {
+    return res.status(400).json({error:'Invalid YouTube URL'});
+  }
+
+  const host = u.hostname.toLowerCase();
+  if (
+    u.protocol !== 'https:' ||
+    !['youtube.com','www.youtube.com','m.youtube.com','youtu.be',
+      'www.youtu.be','youtube-nocookie.com',
+      'www.youtube-nocookie.com'].includes(host) ||
+    u.href.length > 500
+  ) {
+    return res.status(400).json({error:'Use a public YouTube HTTPS link.'});
+  }
+
+  const {execFile} = require('node:child_process');
+
+  execFile('yt-dlp', [
+    '--no-playlist',
+    '--skip-download',
+    '--no-warnings',
+    '--dump-single-json',
+    '--',
+    u.href
+  ], {
+    timeout: 35000,
+    maxBuffer: 2 * 1024 * 1024
+  }, (error, stdout) => {
+    if (res.destroyed) return;
+
+    if (error) {
+      return res.status(502).json({
+        error:'Unable to extract this YouTube video'
+      });
+    }
+
+    try {
+      const data = JSON.parse(stdout);
+
+      return res.set('Cache-Control','no-store').json({
+        title:String(data.title || 'YouTube video').slice(0,250),
+        author:String(data.uploader || '').slice(0,120),
+        thumbnail:typeof data.thumbnail === 'string' &&
+          data.thumbnail.startsWith('https://')
+          ? data.thumbnail : null,
+        videoUrl:null,
+        videoId:String(data.id || '').slice(0,30),
+        platform:'YouTube'
+      });
+    } catch {
+      return res.status(502).json({
+        error:'Invalid video metadata'
+      });
+    }
+  });
+});
+
+// VOOXOR YouTube direct MP4 download
+let youtubeVideoActive = 0;
+const youtubeVideoQueue = [];
+const YOUTUBE_MAX_ACTIVE = 1;
+const YOUTUBE_MAX_WAITING = 3;
+const YOUTUBE_WAIT_TIMEOUT = 60000;
+
+function releaseYoutubeSlot() {
+  youtubeVideoActive--;
+
+  while (youtubeVideoQueue.length) {
+    const job = youtubeVideoQueue.shift();
+    if (job.cancelled) continue;
+
+    clearTimeout(job.timer);
+    job.res.off('close', job.onClose);
+
+    youtubeVideoActive++;
+    job.resolve(true);
+    break;
+  }
+}
+
+function acquireYoutubeSlot(res) {
+  if (youtubeVideoActive < YOUTUBE_MAX_ACTIVE &&
+      youtubeVideoQueue.length === 0) {
+    youtubeVideoActive++;
+    return Promise.resolve(true);
+  }
+
+  if (youtubeVideoQueue.length >= YOUTUBE_MAX_WAITING) {
+    res.setHeader('Retry-After', '15');
+    res.status(503).send('Download queue full');
+    return Promise.resolve(false);
+  }
+
+  return new Promise(resolve => {
+    const job = {
+      res,
+      resolve,
+      cancelled: false,
+      timer: null,
+      onClose: null
+    };
+
+    const cancel = () => {
+      if (job.cancelled) return;
+      job.cancelled = true;
+      clearTimeout(job.timer);
+      const index = youtubeVideoQueue.indexOf(job);
+      if (index !== -1) youtubeVideoQueue.splice(index, 1);
+      resolve(false);
+    };
+
+    job.onClose = cancel;
+    res.once('close', job.onClose);
+
+    job.timer = setTimeout(() => {
+      res.off('close', job.onClose);
+      cancel();
+      if (!res.destroyed && !res.headersSent) {
+        res.status(503).send('Download queue timeout');
+      }
+    }, YOUTUBE_WAIT_TIMEOUT);
+
+    youtubeVideoQueue.push(job);
+  });
+}
+
+// YouTube MP4: bounded temporary download and merge.
+app.get('/api/youtube/download', async (req, res) => {
+  const { spawn } = require('node:child_process');
+  const fs = require('node:fs');
+  const fsp = require('node:fs/promises');
+  const os = require('node:os');
+  const path = require('node:path');
+
+  const id = String(req.query.id || '');
+
+  if (!/^[A-Za-z0-9_-]{11}$/.test(id)) {
+    return res.status(400).send('Invalid video ID');
+  }
+
+  const slotAcquired = await acquireYoutubeSlot(res);
+  if (!slotAcquired) return;
+
+  let dir = null;
+  let child = null;
+  let stream = null;
+  let stopped = false;
+  let timer = null;
+  let diskMonitor = null;
+  let diskLimitExceeded = false;
+
+  const stop = () => {
+    stopped = true;
+    if (child && child.pid && child.exitCode === null) {
+      try { process.kill(-child.pid, 'SIGTERM'); }
+      catch (_) {}
+    }
+    if (stream) stream.destroy();
+  };
+
+  res.once('close', stop);
+
+  try {
+    if (res.destroyed) return;
+
+    dir = await fsp.mkdtemp(
+      path.join(os.tmpdir(), 'vooxor-yt-')
+    );
+
+    const output = path.join(dir, 'video.%(ext)s');
+
+    const args = [
+      '--no-playlist',
+      '--no-warnings',
+      '--no-progress',
+      '--max-filesize', '50M',
+      '--socket-timeout', '15',
+      '--retries', '2',
+      '--fragment-retries', '2',
+      '-f',
+      'b[ext=mp4][filesize<50M]/' +
+      'bv[ext=mp4][filesize<50M]+' +
+      'ba[ext=m4a]',
+      '--merge-output-format', 'mp4',
+      '-o', output,
+      '--',
+      'https://www.youtube.com/watch?v=' + id
+    ];
+
+    const result = await new Promise(resolve => {
+      child = spawn('yt-dlp', args, {
+        stdio: ['ignore', 'ignore', 'pipe'],
+        detached: true
+      });
+
+      let finished = false;
+      const finish = code => {
+        if (finished) return;
+        finished = true;
+        resolve(code);
+      };
+
+      child.stderr.on('data', () => {});
+
+      // Monitor total temporary disk usage, including partial files.
+      let checkingDisk = false;
+      diskMonitor = setInterval(async () => {
+        if (checkingDisk || finished || !dir) return;
+        checkingDisk = true;
+        try {
+          const entries = await fsp.readdir(dir, {
+            recursive: true,
+            withFileTypes: true
+          });
+          let total = 0;
+          for (const entry of entries) {
+            if (!entry.isFile()) continue;
+            const filePath = path.join(entry.parentPath, entry.name);
+            const stat = await fsp.stat(filePath).catch(() => null);
+            if (stat) total += stat.size;
+          }
+          if (total > 120 * 1024 * 1024) {
+            diskLimitExceeded = true;
+            if (child && child.pid && child.exitCode === null) {
+              try { process.kill(-child.pid, 'SIGKILL'); }
+              catch (_) {}
+            }
+          }
+        } catch (_) {
+          // Files may disappear while yt-dlp is merging.
+        } finally {
+          checkingDisk = false;
+        }
+      }, 1000);
+
+      child.on('error', () => finish(-1));
+      child.on('close', code => finish(code));
+
+      timer = setTimeout(() => {
+        if (child && child.pid && child.exitCode === null) {
+          try { process.kill(-child.pid, 'SIGKILL'); }
+          catch (_) {}
+        }
+        // Wait for the child close event before cleanup.
+        // The close handler will release the waiting request.
+      }, 90000);
+    });
+
+    clearTimeout(timer);
+    timer = null;
+    if (diskMonitor) clearInterval(diskMonitor);
+    diskMonitor = null;
+
+    if (stopped || res.destroyed) return;
+    if (diskLimitExceeded) {
+      return res.status(413).send('Temporary download size exceeded');
+    }
+
+    if (result !== 0) {
+      return res.status(502).send(
+        'Unable to prepare MP4 video'
+      );
+    }
+
+    const file = path.join(dir, 'video.mp4');
+    const stat = await fsp.stat(file);
+
+    if (stat.size > 50 * 1024 * 1024) {
+      return res.status(413).send('Video too large');
+    }
+
+    res.setHeader('Content-Type', 'video/mp4');
+    res.setHeader(
+      'Content-Disposition',
+      'attachment; filename="VOOXOR-video.mp4"'
+    );
+    res.setHeader('Content-Length', stat.size);
+    res.setHeader('Cache-Control', 'no-store');
+
+    const { pipeline } = require('node:stream/promises');
+    stream = fs.createReadStream(file);
+    await pipeline(stream, res);
+
+  } catch (error) {
+    if (!res.headersSent && !res.destroyed) {
+      res.status(502).send('Video download failed');
+    } else if (!res.destroyed) {
+      res.destroy();
+    }
+  } finally {
+    if (timer) clearTimeout(timer);
+    if (diskMonitor) clearInterval(diskMonitor);
+    res.off('close', stop);
+    if (child && child.pid && child.exitCode === null) {
+      try { process.kill(-child.pid, 'SIGTERM'); }
+      catch (_) {}
+    }
+    if (dir) {
+      await fsp.rm(dir, {
+        recursive: true,
+        force: true
+      }).catch(() => {});
+    }
+    releaseYoutubeSlot();
+  }
+});
+
+app.all('/api/youtube/audio', (req, res) => {
+  res.status(404).json({ error: 'Audio downloads are disabled' });
+});
+
+app.get('/youtube-video-downloader', (_,res) => res.sendFile(path.join(PUBLIC,'youtube-video-downloader','index.html')));
+
 app.get('/privacy', (_, res) =>
   res.sendFile(path.join(PUBLIC, 'privacy.html'))
 );
