@@ -6,6 +6,49 @@
 <link rel="canonical" href="https://vooxor.com/rewards/">
 <link rel="stylesheet" href="/rewards/wallet-fonts.css?v=wallet-final1"><link rel="stylesheet" href="/rewards/wallet-v3.css?v=wallet-guest1">
 <script id="vooxor-referral-home-redirect">(()=>{const code=new URLSearchParams(location.search).get('ref');if(code&&/^[A-Za-z0-9]{8}$/.test(code)){try{localStorage.setItem('vooxor_referral_code',code)}catch{}location.replace('/ar/?ref='+encodeURIComponent(code))}})();</script>
+
+<style id="vooxor-cleaning-style">
+a.vooxor-cleaning-card{box-sizing:border-box;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 10px;min-width:0;max-width:100%;height:auto!important;background:#102b27!important;border:1px solid #50c2a1!important;border-radius:18px;color:#fff!important;text-decoration:none!important;text-align:center;font:inherit;line-height:1.45}
+a.vooxor-cleaning-card img{display:block!important;width:72px!important;height:72px!important;max-width:100%;object-fit:cover;object-position:50% 55%;border-radius:14px}
+a.vooxor-cleaning-card strong{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+a.vooxor-cleaning-card small{font-size:12px;color:#b2eadb!important;white-space:normal}
+a.vooxor-cleaning-card:focus-visible{outline:3px solid #fff;outline-offset:3px}
+a.vooxor-cleaning-card:hover{border-color:#b2eadb!important}
+#walletHome>a.vooxor-cleaning-card{margin:16px auto;max-width:360px}
+</style>
+
+<style id="vooxor-cleaning-compact">
+a.vooxor-cleaning-card{
+  padding:10px 6px!important;
+  gap:6px!important;
+  align-self:start;
+}
+a.vooxor-cleaning-card img{
+  width:48px!important;
+  height:48px!important;
+  border-radius:12px!important;
+}
+a.vooxor-cleaning-card strong{
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+a.vooxor-cleaning-card small{display:none!important}
+</style>
+
+<style id="vooxor-cleaning-discount-style">
+a.vooxor-cleaning-card{
+  position:relative;overflow:visible!important;
+}
+a.vooxor-cleaning-card .cleaning-discount{
+  position:absolute;top:-13px;left:50%;
+  transform:translateX(-50%);
+  display:block!important;width:max-content;
+  padding:4px 10px;border-radius:20px;
+  background:#dc2626!important;color:#fff!important;
+  font-size:12px;font-weight:700;line-height:1.4;
+  white-space:nowrap;z-index:2;
+}
+</style>
 </head><body><svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><symbol id="i-wallet" viewBox="0 0 24 24"><path d="M3 7h17v13H3zM3 7l13-4v4M16 11h5v5h-5z"/></symbol><symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M4 22v-3a8 8 0 0 1 16 0v3"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-4a6 6 0 0 1 12 0v4M16 3a4 4 0 0 1 0 8M18 14a6 6 0 0 1 3 7"/></symbol><symbol id="i-adduser" viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M19 7v8M15 11h8"/></symbol><symbol id="i-gift" viewBox="0 0 24 24"><path d="M3 10h18v4H3zM5 14v7h14v-7M12 10v11"/><path d="M12 10C2 10 5 0 9 4l3 6c10 0 7-10 3-6z"/></symbol><symbol id="i-send" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 14v7h16v-7"/></symbol><symbol id="i-receive" viewBox="0 0 24 24"><path d="M12 3v13m-5-5 5 5 5-5M4 17v4h16v-4"/></symbol><symbol id="i-swap" viewBox="0 0 24 24"><path d="M4 7h16l-4-4M20 17H4l4 4M20 7l-4 4M4 17l4-4"/></symbol><symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-gear" viewBox="0 0 24 24"><path d="m9 3 1-1h4l1 3 3 1 3-1 2 4-2 2v3l2 2-2 4-3-1-3 1-1 2h-4l-1-2-3-1-2 1-2-4 2-2v-3L2 9l2-4 3 1 2-1z"/><circle cx="12" cy="12" r="3"/></symbol><symbol id="i-bell" viewBox="0 0 24 24"><path d="M5 16h14l-2-4V8a5 5 0 0 0-10 0v4zM10 20h4"/></symbol><symbol id="i-list" viewBox="0 0 24 24"><path d="M9 5h12M9 12h12M9 19h12"/><circle cx="3" cy="5" r="1"/><circle cx="3" cy="12" r="1"/><circle cx="3" cy="19" r="1"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L20 5"/></symbol><symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></symbol><symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3 6 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></symbol><symbol id="i-crown" viewBox="0 0 24 24"><path d="m3 6 5 4 4-7 4 7 5-4-2 14H5z"/></symbol><symbol id="i-share" viewBox="0 0 24 24"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="5" r="3"/><circle cx="19" cy="19" r="3"/><path d="m8 10 8-4m-8 8 8 4"/></symbol><symbol id="i-refresh" viewBox="0 0 24 24"><path d="M20 7a9 9 0 1 0 1 7M20 2v5h-5"/></symbol><symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="7" width="13" height="15" rx="2"/><path d="M16 7V2H3v15h5"/></symbol><symbol id="i-close" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"/></symbol><symbol id="i-coins" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v13c0 4 16 4 16 0V5M4 11c0 4 16 4 16 0"/></symbol><symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 6v1"/></symbol><symbol id="i-home" viewBox="0 0 24 24"><path d="m2 11 10-9 10 9M5 9v13h14V9M9 22v-8h6v8"/></symbol></svg>
 <div class="walletShell">
 <header class="walletHeader" dir="ltr">
@@ -14,6 +57,8 @@
 <div class="headerButtons"><button class="iconButton" data-dialog="updatesDialog" aria-label="تحديثات المحفظة"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></button><button class="iconButton" data-account aria-label="إعدادات الحساب"><svg class="icon" aria-hidden="true"><use href="#i-gear"/></svg></button></div>
 </header>
 <main id="walletHome">
+<a id="vooxor-cleaning-card" class="vooxor-cleaning-card" href="https://wa.me/966539930789?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85+%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C+%D9%88%D8%B5%D9%84%D8%AA+%D9%84%D9%83%D9%85+%D9%85%D9%86+%D9%85%D9%88%D9%82%D8%B9+VOOXOR%D8%8C+%D9%88%D8%A3%D8%A8%D8%BA%D9%89+%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1+%D8%B9%D9%86+%D8%AE%D8%AF%D9%85%D8%A9+%D8%AA%D9%86%D8%B8%D9%8A%D9%81+%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B2%D9%84+%D9%88%D8%A7%D9%84%D9%81%D9%84%D9%84+%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1.+%D9%83%D9%88%D8%AF+%D8%AE%D8%B5%D9%85+VOOXOR%3A+%5B+VO25+%5D+%E2%80%94+%D8%AE%D8%B5%D9%85+25%25." target="_blank" rel="noopener noreferrer" aria-label="تنظيف المنازل والفلل — تواصل عبر واتساب"><span class="cleaning-discount">خصم 25%</span><img src="/assets/cleaning-service-logo.jpg" alt="Cleaner" width="72" height="72" loading="lazy"><strong>تنظيف المنازل</strong><small>تواصل عبر واتساب</small></a>
+
 <section id="walletPanel" class="glass balanceCard" aria-label="رصيد المحفظة">
 <div class="balanceCopy"><div class="balanceLabel"><h1>رصيدك من VX</h1><button id="balancePrivacy" class="eyeButton" aria-label="إخفاء الرصيد" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button></div>
 <div class="balanceValue" dir="ltr"><strong id="familyBalance" data-sensitive>—</strong><span>VX</span></div>

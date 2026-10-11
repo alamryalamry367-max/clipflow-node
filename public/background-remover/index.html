@@ -1,0 +1,1486 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#070817">
+
+<title>إزالة خلفية الصور مجانًا | VOOXOR</title>
+<meta name="description" content="أزل خلفية الصور بسهولة واحصل على صورة PNG بخلفية شفافة باستخدام VOOXOR.">
+<meta name="robots" content="noindex,nofollow">
+
+<style>
+:root{
+  --bg:#070817;
+  --bg2:#0b0d20;
+  --card:#101329;
+  --line:rgba(255,255,255,.09);
+  --text:#f8f8ff;
+  --muted:#9ca3c3;
+  --purple:#7c3aed;
+  --violet:#9b5cff;
+  --pink:#e946d5;
+  --blue:#4776ff;
+}
+
+*{box-sizing:border-box}
+
+html{
+  scroll-behavior:smooth;
+  background:var(--bg);
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  color:var(--text);
+  font-family:Arial,Tahoma,sans-serif;
+  background:
+    radial-gradient(circle at 100% 9%,rgba(124,58,237,.18),transparent 25%),
+    radial-gradient(circle at 0 28%,rgba(37,99,235,.12),transparent 28%),
+    linear-gradient(180deg,#070817 0%,#080a19 55%,#060714 100%);
+  overflow-x:hidden;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+button,input{font:inherit}
+
+.container{
+  width:min(1120px,calc(100% - 32px));
+  margin:auto;
+}
+
+/* NAV */
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(7,8,23,.76);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav{
+  height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.brand{
+  direction:ltr;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:.4px;
+}
+
+.brand span{
+  background:linear-gradient(135deg,#fff 10%,#c4a3ff 45%,#ec5ee2);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  color:#c6c9db;
+  font-size:14px;
+}
+
+.navlinks a{
+  transition:.2s;
+}
+
+.navlinks a:hover{
+  color:#fff;
+}
+
+/* HERO */
+.hero{
+  padding:70px 0 32px;
+  text-align:center;
+  position:relative;
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  width:500px;
+  height:300px;
+  left:50%;
+  top:-40px;
+  transform:translateX(-50%);
+  background:#702cff;
+  opacity:.11;
+  filter:blur(120px);
+  pointer-events:none;
+}
+
+.eyebrow{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 14px;
+  border-radius:999px;
+  color:#d7c2ff;
+  font-size:13px;
+  border:1px solid rgba(167,139,250,.24);
+  background:rgba(124,58,237,.08);
+}
+
+.hero h1{
+  position:relative;
+  max-width:850px;
+  margin:20px auto 16px;
+  font-size:clamp(40px,7vw,68px);
+  line-height:1.08;
+  letter-spacing:-2px;
+}
+
+.hero h1 em{
+  font-style:normal;
+  background:linear-gradient(90deg,#a989ff,#e55bdc);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.hero p{
+  position:relative;
+  max-width:670px;
+  margin:0 auto;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:17px;
+}
+
+.pills{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:23px;
+}
+
+.pill{
+  padding:9px 13px;
+  border-radius:12px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.07);
+  color:#d9dbea;
+  font-size:13px;
+}
+
+/* MAIN TOOL */
+.tool-wrap{
+  max-width:930px;
+  margin:25px auto 0;
+  padding:0 16px;
+}
+
+.tool-frame{
+  position:relative;
+  padding:1px;
+  border-radius:29px;
+  background:linear-gradient(
+    120deg,
+    rgba(74,116,255,.9),
+    rgba(139,92,246,.9),
+    rgba(236,72,153,.8)
+  );
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.35),
+    0 0 60px rgba(124,58,237,.13);
+}
+
+.tool-card{
+  position:relative;
+  min-height:355px;
+  border-radius:28px;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 115%,rgba(124,58,237,.18),transparent 42%),
+    linear-gradient(145deg,#0e1229,#090b1c);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:34px;
+}
+
+.tool-card::after{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1.5px dashed rgba(184,157,255,.3);
+  border-radius:21px;
+  pointer-events:none;
+}
+
+.upload-content{
+  position:relative;
+  z-index:3;
+  text-align:center;
+  width:100%;
+}
+
+.upload-icon{
+  width:76px;
+  height:76px;
+  margin:0 auto 18px;
+  border-radius:23px;
+  display:grid;
+  place-items:center;
+  background:
+    linear-gradient(145deg,rgba(99,102,241,.28),rgba(168,85,247,.16));
+  border:1px solid rgba(196,181,253,.18);
+  box-shadow:inset 0 1px rgba(255,255,255,.08);
+}
+
+.upload-icon svg{
+  width:38px;
+  height:38px;
+  stroke:#fff;
+}
+
+.upload-content h2{
+  margin:0 0 9px;
+  font-size:25px;
+}
+
+.upload-content p{
+  margin:0 0 24px;
+  color:#8f97b5;
+  font-size:14px;
+}
+
+#imageInput{
+  display:none;
+}
+
+.select-btn{
+  width:min(320px,90%);
+  min-height:54px;
+  border:0;
+  border-radius:15px;
+  color:#fff;
+  cursor:pointer;
+  font-weight:800;
+  font-size:16px;
+  background:linear-gradient(90deg,#6258f5,#963fe8,#e34bd0);
+  box-shadow:0 12px 35px rgba(132,62,226,.28);
+  transition:.2s ease;
+}
+
+.select-btn:active{
+  transform:scale(.98);
+}
+
+.drop-note{
+  margin-top:14px!important;
+  margin-bottom:0!important;
+  font-size:12px!important;
+  color:#69718e!important;
+}
+
+/* TRUST */
+.trust{
+  max-width:930px;
+  margin:16px auto 0;
+  padding:0 16px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+}
+
+.trust-card{
+  min-height:105px;
+  padding:18px 12px;
+  border-radius:18px;
+  text-align:center;
+  background:rgba(15,19,42,.75);
+  border:1px solid rgba(255,255,255,.06);
+}
+
+.trust-icon{
+  width:38px;
+  height:38px;
+  margin:0 auto 10px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,#5748e8,#923de1);
+  font-size:17px;
+  box-shadow:0 8px 25px rgba(94,57,214,.2);
+}
+
+.trust-card strong{
+  display:block;
+  font-size:14px;
+  margin-bottom:5px;
+}
+
+.trust-card small{
+  color:#7f87a4;
+  font-size:11px;
+  line-height:1.5;
+}
+
+/* HOW */
+.how{
+  padding:75px 0 65px;
+}
+
+.section-head{
+  text-align:center;
+  margin-bottom:28px;
+}
+
+.section-head span{
+  color:#9f7aea;
+  font-size:13px;
+}
+
+.section-head h2{
+  margin:7px 0 0;
+  font-size:31px;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+
+.step{
+  position:relative;
+  padding:27px 20px;
+  border-radius:21px;
+  background:linear-gradient(145deg,rgba(18,23,49,.82),rgba(10,13,31,.82));
+  border:1px solid rgba(255,255,255,.065);
+}
+
+.number{
+  width:38px;
+  height:38px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  margin-bottom:18px;
+  font-weight:900;
+  background:rgba(124,58,237,.14);
+  color:#c9b1ff;
+  border:1px solid rgba(168,85,247,.2);
+}
+
+.step h3{
+  margin:0 0 8px;
+  font-size:17px;
+}
+
+.step p{
+  margin:0;
+  color:#858da9;
+  font-size:13px;
+  line-height:1.7;
+}
+
+/* OTHER TOOLS */
+.other{
+  padding:0 0 75px;
+}
+
+.other-box{
+  border-radius:27px;
+  padding:30px;
+  background:
+    radial-gradient(circle at 100% 100%,rgba(37,99,235,.12),transparent 34%),
+    radial-gradient(circle at 0 0,rgba(124,58,237,.14),transparent 36%),
+    rgba(10,14,34,.78);
+  border:1px solid rgba(122,101,255,.17);
+}
+
+.other-title{
+  text-align:center;
+  margin:0 0 25px;
+  font-size:27px;
+}
+
+.tools-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:11px;
+}
+
+.link-card{
+  min-height:125px;
+  padding:20px 12px;
+  border-radius:18px;
+  background:rgba(18,23,49,.75);
+  border:1px solid rgba(255,255,255,.065);
+  text-align:center;
+  transition:.2s ease;
+}
+
+.link-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(168,85,247,.45);
+}
+
+.social-icon{
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  margin:0 auto 12px;
+  border-radius:13px;
+  font-size:20px;
+  font-weight:900;
+  background:linear-gradient(145deg,#4934b7,#7d2cc4);
+}
+
+.link-card strong{
+  display:block;
+  margin-bottom:5px;
+  font-size:14px;
+}
+
+.link-card small{
+  color:#7f87a5;
+  font-size:11px;
+}
+
+/* FOOTER */
+footer{
+  padding:28px 16px;
+  text-align:center;
+  color:#626a86;
+  border-top:1px solid rgba(255,255,255,.055);
+  font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:760px){
+  .container{
+    width:min(100% - 26px,1120px);
+  }
+
+  .nav{
+    height:61px;
+  }
+
+  .brand{
+    font-size:22px;
+  }
+
+  .navlinks{
+    display:none;
+  }
+
+  .hero{
+    padding:43px 0 25px;
+  }
+
+  .hero h1{
+    font-size:42px;
+    letter-spacing:-1px;
+    margin-top:17px;
+  }
+
+  .hero p{
+    font-size:14px;
+    max-width:93%;
+  }
+
+  .pills{
+    margin-top:18px;
+  }
+
+  .pill{
+    font-size:11px;
+    padding:8px 10px;
+  }
+
+  .tool-wrap{
+    margin-top:15px;
+    padding:0 13px;
+  }
+
+  .tool-card{
+    min-height:315px;
+    padding:25px 18px;
+  }
+
+  .tool-card::after{
+    inset:13px;
+  }
+
+  .upload-icon{
+    width:67px;
+    height:67px;
+  }
+
+  .upload-content h2{
+    font-size:21px;
+  }
+
+  .trust{
+    padding:0 13px;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .trust-card{
+    min-height:115px;
+    padding:17px 8px;
+  }
+
+  .how{
+    padding:60px 0 55px;
+  }
+
+  .section-head h2{
+    font-size:26px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+    gap:10px;
+  }
+
+  .step{
+    padding:22px 18px;
+  }
+
+  .other-box{
+    padding:26px 13px;
+  }
+
+  .other-title{
+    font-size:24px;
+  }
+
+  .tools-grid{
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+
+  .link-card{
+    min-height:120px;
+    padding:18px 8px;
+  }
+}
+
+@media(max-width:380px){
+  .hero h1{
+    font-size:37px;
+  }
+}
+</style>
+
+<style id="vooxor-cleaning-style">
+a.vooxor-cleaning-card{box-sizing:border-box;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 10px;min-width:0;max-width:100%;height:auto!important;background:#102b27!important;border:1px solid #50c2a1!important;border-radius:18px;color:#fff!important;text-decoration:none!important;text-align:center;font:inherit;line-height:1.45}
+a.vooxor-cleaning-card img{display:block!important;width:72px!important;height:72px!important;max-width:100%;object-fit:cover;object-position:50% 55%;border-radius:14px}
+a.vooxor-cleaning-card strong{font-size:14px;white-space:normal;overflow-wrap:anywhere}
+a.vooxor-cleaning-card small{font-size:12px;color:#b2eadb!important;white-space:normal}
+a.vooxor-cleaning-card:focus-visible{outline:3px solid #fff;outline-offset:3px}
+a.vooxor-cleaning-card:hover{border-color:#b2eadb!important}
+#walletHome>a.vooxor-cleaning-card{margin:16px auto;max-width:360px}
+</style>
+
+<style id="vooxor-cleaning-compact">
+a.vooxor-cleaning-card{
+  padding:10px 6px!important;
+  gap:6px!important;
+  align-self:start;
+}
+a.vooxor-cleaning-card img{
+  width:48px!important;
+  height:48px!important;
+  border-radius:12px!important;
+}
+a.vooxor-cleaning-card strong{
+  font-size:12px!important;
+  line-height:1.4!important;
+}
+a.vooxor-cleaning-card small{display:none!important}
+</style>
+
+<style id="vooxor-cleaning-discount-style">
+a.vooxor-cleaning-card{
+  position:relative;overflow:visible!important;
+}
+a.vooxor-cleaning-card .cleaning-discount{
+  position:absolute;top:-13px;left:50%;
+  transform:translateX(-50%);
+  display:block!important;width:max-content;
+  padding:4px 10px;border-radius:20px;
+  background:#dc2626!important;color:#fff!important;
+  font-size:12px;font-weight:700;line-height:1.4;
+  white-space:nowrap;z-index:2;
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="/" class="brand">VOO<span>XOR</span></a>
+
+    <nav class="navlinks">
+      <a href="/">الرئيسية</a>
+      <a href="/tiktok-video-downloader">تيك توك</a>
+      <a href="/instagram-video-downloader">إنستقرام</a>
+      <a href="/facebook-video-downloader">فيسبوك</a>
+      <a href="/snapchat-video-downloader">سناب شات</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+
+    <div class="eyebrow">
+      ✦ VOOXOR Image Tools
+    </div>
+
+    <h1>
+      إزالة خلفية الصور<br>
+      <em>بسهولة واحترافية</em>
+    </h1>
+
+    <p>
+      ارفع صورتك واحصل على نسخة بخلفية شفافة جاهزة للاستخدام.
+      واجهة بسيطة وسريعة مصممة للجوال والكمبيوتر.
+    </p>
+
+    <div class="pills">
+      <span class="pill">⚡ سريع</span>
+      <span class="pill">✓ مجاني</span>
+      <span class="pill">◉ بدون تسجيل</span>
+      <span class="pill">▣ PNG شفاف</span>
+    </div>
+
+  </div>
+</section>
+
+<section class="tool-wrap">
+
+  <div class="tool-frame">
+    <div class="tool-card" id="dropZone">
+
+      <div class="upload-content">
+
+        <div class="upload-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <path d="M12 16V4"/>
+            <path d="M7.5 8.5 12 4l4.5 4.5"/>
+            <path d="M5 13.5a4 4 0 0 0 .5 8h13a3.5 3.5 0 0 0 .5-7"/>
+          </svg>
+        </div>
+
+        <h2>اختر صورة لإزالة الخلفية</h2>
+
+        <p>يدعم JPG و JPEG و PNG و WebP</p>
+
+        <input
+          id="imageInput"
+          type="file"
+          accept="image/png,image/jpeg,image/webp"
+        >
+
+        <button id="chooseBtn" class="select-btn" type="button">
+          اختيار صورة
+        </button>
+
+        <p class="drop-note">
+          يمكنك أيضًا سحب الصورة وإفلاتها هنا
+        </p>
+
+      </div>
+
+    </div>
+  </div>
+
+
+</section>
+
+<section id="resultSection" style="display:none;max-width:930px;margin:20px auto;padding:0 16px">
+  <div style="background:#101329;border:1px solid rgba(255,255,255,.09);border-radius:24px;padding:20px;text-align:center">
+    <div id="processStatus" style="color:#c4b5fd;margin-bottom:12px;font-weight:700">
+      جاهز لمعالجة الصورة
+    </div>
+
+    <div id="progressWrap" style="display:none;width:100%;height:8px;background:rgba(255,255,255,.08);border-radius:999px;overflow:hidden;margin:0 auto 16px">
+      <div id="progressBar" style="width:0%;height:100%;border-radius:999px;background:linear-gradient(90deg,#6258f5,#963fe8,#e34bd0);transition:width .35s ease"></div>
+    </div>
+
+    <div style="border-radius:18px;padding:12px;overflow:hidden;background-color:#fff;background-image:linear-gradient(45deg,#ddd 25%,transparent 25%),linear-gradient(-45deg,#ddd 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#ddd 75%),linear-gradient(-45deg,transparent 75%,#ddd 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0">
+      <img id="resultImage" alt="الصورة بعد إزالة الخلفية" style="display:none;max-width:100%;max-height:600px;margin:auto">
+    </div>
+
+    <a id="downloadResult" download="vooxor-background-removed.png"
+       style="display:none;margin:18px auto 0;width:min(320px,90%);min-height:54px;border-radius:15px;color:#fff;font-weight:800;align-items:center;justify-content:center;background:linear-gradient(90deg,#6258f5,#963fe8,#e34bd0)">
+       تنزيل PNG الشفاف
+    </a>
+  </div>
+</section>
+
+<section class="trust">
+
+  <div class="trust-card">
+    <div class="trust-icon">⚡</div>
+    <strong>سريع</strong>
+    <small>تجربة خفيفة ومباشرة</small>
+  </div>
+
+  <div class="trust-card">
+    <div class="trust-icon">◇</div>
+    <strong>خصوصية</strong>
+    <small>مصمم للمعالجة داخل المتصفح</small>
+  </div>
+
+  <div class="trust-card">
+    <div class="trust-icon">HD</div>
+    <strong>جودة عالية</strong>
+    <small>نحافظ على دقة الصورة قدر الإمكان</small>
+  </div>
+
+  <div class="trust-card">
+    <div class="trust-icon">▣</div>
+    <strong>PNG شفاف</strong>
+    <small>جاهز للتصميم والاستخدام</small>
+  </div>
+
+</section>
+
+<section class="how">
+  <div class="container">
+
+    <div class="section-head">
+      <span>ثلاث خطوات فقط</span>
+      <h2>كيف تعمل الأداة؟</h2>
+    </div>
+
+    <div class="steps">
+
+      <article class="step">
+        <div class="number">1</div>
+        <h3>اختر الصورة</h3>
+        <p>
+          اختر الصورة التي تريد إزالة خلفيتها من هاتفك أو جهاز الكمبيوتر.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="number">2</div>
+        <h3>إزالة الخلفية</h3>
+        <p>
+          ستتم معالجة الصورة وعرض النتيجة قبل التنزيل.
+        </p>
+      </article>
+
+      <article class="step">
+        <div class="number">3</div>
+        <h3>نزّل النتيجة</h3>
+        <p>
+          احفظ الصورة النهائية بصيغة PNG بخلفية شفافة.
+        </p>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="other">
+  <div class="container">
+
+    <div class="other-box">
+
+      <h2 class="other-title">اكتشف أدوات VOOXOR</h2>
+
+      <div class="tools-grid">
+<a id="vooxor-cleaning-card" class="vooxor-cleaning-card" href="https://wa.me/966539930789?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85+%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C+%D9%88%D8%B5%D9%84%D8%AA+%D9%84%D9%83%D9%85+%D9%85%D9%86+%D9%85%D9%88%D9%82%D8%B9+VOOXOR%D8%8C+%D9%88%D8%A3%D8%A8%D8%BA%D9%89+%D8%A3%D8%B3%D8%AA%D9%81%D8%B3%D8%B1+%D8%B9%D9%86+%D8%AE%D8%AF%D9%85%D8%A9+%D8%AA%D9%86%D8%B8%D9%8A%D9%81+%D8%A7%D9%84%D9%85%D9%86%D8%A7%D8%B2%D9%84+%D9%88%D8%A7%D9%84%D9%81%D9%84%D9%84+%D9%88%D8%A7%D9%84%D8%A3%D8%B3%D8%B9%D8%A7%D8%B1.+%D9%83%D9%88%D8%AF+%D8%AE%D8%B5%D9%85+VOOXOR%3A+%5B+VO25+%5D+%E2%80%94+%D8%AE%D8%B5%D9%85+25%25." target="_blank" rel="noopener noreferrer" aria-label="تنظيف المنازل والفلل — تواصل عبر واتساب"><span class="cleaning-discount">خصم 25%</span><img src="/assets/cleaning-service-logo.jpg" alt="Cleaner" width="72" height="72" loading="lazy"><strong>تنظيف المنازل</strong><small>تواصل عبر واتساب</small></a>
+
+
+        <a class="link-card" href="/tiktok-video-downloader">
+          <div class="social-icon">♪</div>
+          <strong>TikTok</strong>
+          <small>تحميل فيديوهات تيك توك</small>
+        </a>
+
+        <a class="link-card" href="/instagram-video-downloader">
+          <div class="social-icon">◎</div>
+          <strong>Instagram</strong>
+          <small>تحميل فيديوهات إنستقرام</small>
+        </a>
+
+        <a class="link-card" href="/facebook-video-downloader">
+          <div class="social-icon">f</div>
+          <strong>Facebook</strong>
+          <small>تحميل فيديوهات فيسبوك</small>
+        </a>
+
+        <a class="link-card" href="/snapchat-video-downloader">
+          <div class="social-icon">◻</div>
+          <strong>Snapchat</strong>
+          <small>تحميل فيديوهات سناب شات</small>
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © VOOXOR — أدوات مجانية وسريعة
+</footer>
+
+<script type="module">
+import * as ort from "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0-dev.20250409-89f8206ba4/dist/ort.min.mjs";
+
+ort.env.wasm.wasmPaths =
+  location.origin + "/background-remover/engine/wasm/";
+ort.env.wasm.numThreads = 1;
+ort.env.wasm.proxy = false;
+
+const input = document.getElementById('imageInput');
+const button = document.getElementById('chooseBtn');
+const dropZone = document.getElementById('dropZone');
+const resultSection = document.getElementById('resultSection');
+const status = document.getElementById('processStatus');
+const resultImage = document.getElementById('resultImage');
+const download = document.getElementById('downloadResult');
+const progressWrap = document.getElementById('progressWrap');
+const progressBar = document.getElementById('progressBar');
+
+let encoder = null;
+let decoder = null;
+
+let originalBitmap = null;
+let imageEmbeddings = null;
+let imagePositionalEmbeddings = null;
+
+let sourceCanvas = null;
+let sourceCtx = null;
+let sourceURL = null;
+let resultURL = null;
+
+let points = [];
+let labels = [];
+let busy = false;
+
+const base =
+  "/background-remover/engine/slimsam/onnx/";
+
+button.addEventListener('click', () => {
+  if (!busy) input.click();
+});
+
+async function loadModels() {
+  if (encoder && decoder) return;
+
+  status.textContent = 'جاري تجهيز المحرك السريع...';
+  progressBar.style.width = '12%';
+
+  encoder = await ort.InferenceSession.create(
+    base + "vision_encoder_quantized.onnx",
+    {
+      executionProviders: ["wasm"],
+      graphOptimizationLevel: "all"
+    }
+  );
+
+  progressBar.style.width = '22%';
+
+  decoder = await ort.InferenceSession.create(
+    base + "prompt_encoder_mask_decoder_quantized.onnx",
+    {
+      executionProviders: ["wasm"],
+      graphOptimizationLevel: "all"
+    }
+  );
+
+  console.log("SlimSAM ready");
+}
+
+function makePixelTensor(bitmap) {
+  const SIZE = 1024;
+
+  const c = document.createElement('canvas');
+  c.width = SIZE;
+  c.height = SIZE;
+
+  const ctx = c.getContext(
+    '2d',
+    { willReadFrequently: true }
+  );
+
+  /*
+   * SAM image processor:
+   * resize longest edge to 1024 while preserving aspect ratio,
+   * then pad right/bottom to 1024.
+   */
+  const scale =
+    Math.min(
+      SIZE / bitmap.width,
+      SIZE / bitmap.height
+    );
+
+  const rw = Math.round(bitmap.width * scale);
+  const rh = Math.round(bitmap.height * scale);
+
+  ctx.clearRect(0, 0, SIZE, SIZE);
+  ctx.drawImage(bitmap, 0, 0, rw, rh);
+
+  const px =
+    ctx.getImageData(0, 0, SIZE, SIZE).data;
+
+  const area = SIZE * SIZE;
+  const data = new Float32Array(area * 3);
+
+  const mean = [0.485, 0.456, 0.406];
+  const std  = [0.229, 0.224, 0.225];
+
+  for (let i = 0; i < area; i++) {
+    const q = i * 4;
+
+    data[i] =
+      ((px[q] / 255) - mean[0]) / std[0];
+
+    data[area + i] =
+      ((px[q + 1] / 255) - mean[1]) / std[1];
+
+    data[(area * 2) + i] =
+      ((px[q + 2] / 255) - mean[2]) / std[2];
+  }
+
+  return {
+    tensor: new ort.Tensor(
+      'float32',
+      data,
+      [1, 3, SIZE, SIZE]
+    ),
+    scale,
+    resizedWidth: rw,
+    resizedHeight: rh
+  };
+}
+
+let preprocessInfo = null;
+
+async function encodeImage(bitmap) {
+  const prep = makePixelTensor(bitmap);
+  preprocessInfo = prep;
+
+  const out = await encoder.run({
+    pixel_values: prep.tensor
+  });
+
+  imageEmbeddings = out.image_embeddings;
+  imagePositionalEmbeddings =
+    out.image_positional_embeddings;
+}
+
+function imagePointToModel(x, y) {
+  /*
+   * User coordinates are in original-image pixels.
+   * SAM expects coordinates in the resized 1024-space.
+   */
+  return [
+    x * preprocessInfo.scale,
+    y * preprocessInfo.scale
+  ];
+}
+
+async function decodeMask() {
+  if (
+    !decoder ||
+    !imageEmbeddings ||
+    !imagePositionalEmbeddings ||
+    !points.length
+  ) return;
+
+  status.textContent =
+    'جاري تحديد العنصر...';
+
+  const modelPoints =
+    points.map(p =>
+      imagePointToModel(p[0], p[1])
+    );
+
+  const coords =
+    new Float32Array(modelPoints.length * 2);
+
+  for (let i = 0; i < modelPoints.length; i++) {
+    coords[i * 2] = modelPoints[i][0];
+    coords[i * 2 + 1] = modelPoints[i][1];
+  }
+
+  const labelData =
+    BigInt64Array.from(
+      labels.map(v => BigInt(v))
+    );
+
+  const pointTensor = new ort.Tensor(
+    'float32',
+    coords,
+    [1, 1, modelPoints.length, 2]
+  );
+
+  const labelTensor = new ort.Tensor(
+    'int64',
+    labelData,
+    [1, 1, modelPoints.length]
+  );
+
+  const outputs = await decoder.run({
+    input_points: pointTensor,
+    input_labels: labelTensor,
+    image_embeddings: imageEmbeddings,
+    image_positional_embeddings:
+      imagePositionalEmbeddings
+  });
+
+  const scores = outputs.iou_scores.data;
+  const masks = outputs.pred_masks.data;
+
+  let best = 0;
+
+  for (let i = 1; i < 3; i++) {
+    if (scores[i] > scores[best]) {
+      best = i;
+    }
+  }
+
+  console.log(
+    "SlimSAM IoU:",
+    Array.from(scores),
+    "selected:",
+    best
+  );
+
+  renderMask(masks, best);
+}
+
+function renderMask(allMasks, maskIndex) {
+  const MASK = 256;
+  const singleSize = MASK * MASK;
+  const offset = maskIndex * singleSize;
+
+  const small = document.createElement('canvas');
+  small.width = MASK;
+  small.height = MASK;
+
+  const sctx = small.getContext('2d');
+  const id = sctx.createImageData(MASK, MASK);
+
+  /*
+   * pred_masks are logits.
+   * > 0 = foreground.
+   * Add a tiny feather around zero for smoother edges.
+   */
+  for (let i = 0; i < singleSize; i++) {
+    const logit = Number(allMasks[offset + i]);
+
+    let alpha =
+      1 / (1 + Math.exp(-logit));
+
+    /*
+     * Sharpen the probability while preserving
+     * a small antialiased edge.
+     */
+    alpha =
+      Math.max(
+        0,
+        Math.min(
+          1,
+          (alpha - 0.42) / 0.16
+        )
+      );
+
+    alpha =
+      alpha * alpha * (3 - 2 * alpha);
+
+    const a = Math.round(alpha * 255);
+    const p = i * 4;
+
+    id.data[p] = a;
+    id.data[p + 1] = a;
+    id.data[p + 2] = a;
+    id.data[p + 3] = 255;
+  }
+
+  sctx.putImageData(id, 0, 0);
+
+  /*
+   * SAM's 256 mask represents the complete
+   * padded 1024x1024 input.
+   *
+   * Crop the padded area before scaling back
+   * to the original image.
+   */
+  const validW =
+    preprocessInfo.resizedWidth / 4;
+
+  const validH =
+    preprocessInfo.resizedHeight / 4;
+
+  const maskFull = document.createElement('canvas');
+  maskFull.width = originalBitmap.width;
+  maskFull.height = originalBitmap.height;
+
+  const mctx = maskFull.getContext('2d');
+
+  mctx.imageSmoothingEnabled = true;
+  mctx.imageSmoothingQuality = 'high';
+
+  mctx.drawImage(
+    small,
+    0,
+    0,
+    validW,
+    validH,
+    0,
+    0,
+    maskFull.width,
+    maskFull.height
+  );
+
+  const output = document.createElement('canvas');
+  output.width = originalBitmap.width;
+  output.height = originalBitmap.height;
+
+  const ctx = output.getContext('2d');
+
+  ctx.drawImage(
+    originalBitmap,
+    0,
+    0
+  );
+
+  ctx.globalCompositeOperation =
+    'destination-in';
+
+  ctx.drawImage(
+    maskFull,
+    0,
+    0
+  );
+
+  ctx.globalCompositeOperation =
+    'source-over';
+
+  output.toBlob(blob => {
+    if (!blob) return;
+
+    if (resultURL) {
+      URL.revokeObjectURL(resultURL);
+    }
+
+    resultURL =
+      URL.createObjectURL(blob);
+
+    resultImage.src = resultURL;
+    resultImage.style.display = 'block';
+
+    download.href = resultURL;
+    download.download =
+      'vooxor-background-removed.png';
+
+    download.style.display = 'flex';
+
+    status.style.direction = 'rtl';
+    status.style.textAlign = 'center';
+    status.style.fontSize = '';
+    status.style.wordBreak = '';
+
+    status.textContent =
+      'تم تحديد العنصر ✓ — اضغط مرة أخرى لتحسين التحديد';
+
+  }, 'image/png');
+}
+
+function installInteractiveCanvas() {
+  /*
+   * Reuse the result area as the interactive
+   * image before a mask is produced.
+   */
+  if (sourceCanvas) {
+    sourceCanvas.remove();
+  }
+
+  sourceCanvas =
+    document.createElement('canvas');
+
+  sourceCanvas.width =
+    originalBitmap.width;
+
+  sourceCanvas.height =
+    originalBitmap.height;
+
+  sourceCanvas.style.width = '100%';
+  sourceCanvas.style.height = 'auto';
+  sourceCanvas.style.display = 'block';
+  sourceCanvas.style.cursor = 'crosshair';
+  sourceCanvas.style.touchAction = 'manipulation';
+  sourceCanvas.style.borderRadius = '18px';
+
+  sourceCtx =
+    sourceCanvas.getContext('2d');
+
+  sourceCtx.drawImage(
+    originalBitmap,
+    0,
+    0
+  );
+
+  resultImage.style.display = 'none';
+
+  resultImage.parentElement.insertBefore(
+    sourceCanvas,
+    resultImage
+  );
+
+  sourceCanvas.addEventListener(
+    'pointerdown',
+    async e => {
+      if (busy) return;
+
+      const rect =
+        sourceCanvas.getBoundingClientRect();
+
+      const x =
+        (e.clientX - rect.left) *
+        sourceCanvas.width /
+        rect.width;
+
+      const y =
+        (e.clientY - rect.top) *
+        sourceCanvas.height /
+        rect.height;
+
+      /*
+       * Normal tap = foreground.
+       * Hold Shift on desktop = background.
+       * Mobile starts with positive points,
+       * which is the fastest workflow.
+       */
+      const label =
+        e.shiftKey ? 0 : 1;
+
+      points.push([x, y]);
+      labels.push(label);
+
+      drawPoints();
+
+      try {
+        busy = true;
+        await decodeMask();
+      } catch (err) {
+        console.error(err);
+
+        status.textContent =
+          'تعذر تحديد العنصر: ' +
+          (err?.message || String(err));
+      } finally {
+        busy = false;
+      }
+    }
+  );
+}
+
+function drawPoints() {
+  sourceCtx.clearRect(
+    0,
+    0,
+    sourceCanvas.width,
+    sourceCanvas.height
+  );
+
+  sourceCtx.drawImage(
+    originalBitmap,
+    0,
+    0
+  );
+
+  const radius =
+    Math.max(
+      8,
+      sourceCanvas.width / 100
+    );
+
+  for (let i = 0; i < points.length; i++) {
+    const [x, y] = points[i];
+
+    sourceCtx.beginPath();
+    sourceCtx.arc(
+      x,
+      y,
+      radius,
+      0,
+      Math.PI * 2
+    );
+
+    sourceCtx.fillStyle =
+      labels[i] === 1
+        ? '#22c55e'
+        : '#ef4444';
+
+    sourceCtx.fill();
+
+    sourceCtx.lineWidth =
+      Math.max(2, radius / 4);
+
+    sourceCtx.strokeStyle = '#ffffff';
+    sourceCtx.stroke();
+  }
+}
+
+async function processImage(file) {
+  if (!file || busy) return;
+
+  if (!/^image\/(png|jpeg|webp)$/.test(file.type)) {
+    alert('اختر صورة JPG أو PNG أو WebP');
+    return;
+  }
+
+  if (file.size > 10 * 1024 * 1024) {
+    alert('حجم الصورة يجب ألا يتجاوز 10MB');
+    return;
+  }
+
+  busy = true;
+  button.disabled = true;
+
+  resultSection.style.display = 'block';
+  download.style.display = 'none';
+  resultImage.style.display = 'none';
+
+  progressWrap.style.display = 'block';
+  progressBar.style.width = '5%';
+
+  points = [];
+  labels = [];
+
+  try {
+    const buf =
+      await file.arrayBuffer();
+
+    const blob =
+      new Blob(
+        [buf],
+        { type: file.type || 'image/jpeg' }
+      );
+
+    if (originalBitmap) {
+      try {
+        originalBitmap.close();
+      } catch {}
+    }
+
+    originalBitmap =
+      await createImageBitmap(blob);
+
+    progressBar.style.width = '10%';
+
+    await loadModels();
+
+    progressBar.style.width = '30%';
+
+    status.textContent =
+      'جاري تحليل الصورة مرة واحدة...';
+
+    await encodeImage(originalBitmap);
+
+    progressBar.style.width = '100%';
+
+    installInteractiveCanvas();
+
+    status.style.direction = 'rtl';
+    status.style.textAlign = 'center';
+
+    status.textContent =
+      'المس العنصر الذي تريد الاحتفاظ به';
+
+    button.textContent =
+      'اختيار صورة أخرى';
+
+    setTimeout(() => {
+      progressWrap.style.display = 'none';
+      progressBar.style.width = '0%';
+    }, 350);
+
+  } catch (err) {
+    console.error(
+      'VOOXOR SlimSAM:',
+      err
+    );
+
+    status.textContent =
+      'ERROR: ' +
+      (err?.message || String(err));
+
+    status.style.direction = 'ltr';
+    status.style.textAlign = 'left';
+    status.style.fontSize = '11px';
+    status.style.wordBreak = 'break-word';
+
+    progressWrap.style.display = 'none';
+
+    button.textContent =
+      'إعادة المحاولة';
+
+  } finally {
+    busy = false;
+    button.disabled = false;
+  }
+}
+
+input.addEventListener('change', () => {
+  if (
+    input.files &&
+    input.files[0]
+  ) {
+    processImage(input.files[0]);
+  }
+
+  input.value = '';
+});
+
+['dragenter', 'dragover', 'dragleave', 'drop']
+.forEach(name => {
+  dropZone.addEventListener(name, e => {
+    e.preventDefault();
+  });
+});
+
+dropZone.addEventListener('drop', e => {
+  if (
+    e.dataTransfer.files &&
+    e.dataTransfer.files[0]
+  ) {
+    processImage(
+      e.dataTransfer.files[0]
+    );
+  }
+});
+</script>
+
+</body>
+</html>
