@@ -52,3 +52,53 @@ body:before{content:"";position:fixed;inset:0;transform:none;z-index:-2;backgrou
 .team-grid,.faq,.steps li{background:#ffffff89;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-color:#ffffffc9}.offer{background:#ffffffa6}.mobile-contact{background:linear-gradient(110deg,#047359,#053e32);border:1px solid #a6f4dacc}
 @supports not (backdrop-filter:blur(1px)){.service,.header,.team-grid,.faq,.steps li{background:#f5fbf2ed}}
 @media(max-width:650px){.service-team-photo{margin-top:28px;border-radius:22px}.service-team-photo img{height:auto;aspect-ratio:3/2;object-fit:cover}.service-team-photo figcaption{font-size:10px;padding:7px 12px}.services{gap:12px}.service{padding:18px 15px;border-radius:22px}.service-icon{width:56px;height:56px;border-radius:14px;margin-bottom:12px}.service h3{font-size:17px;line-height:1.5;margin-bottom:8px}.service p{font-size:13px;line-height:1.75;margin-bottom:15px}.service-cta{padding-top:12px;font-size:13px}.service-number{font-size:11px}.mobile-contact{font-size:15px}.service:hover{transform:none}#services{padding-top:32px}}
+
+/* CLEANER LUMINOUS BUTTONS V1 */
+.button{position:relative;background:linear-gradient(145deg,#83e9c6 0%,#45c4a0 48%,#22a985 100%);color:#053d30;border:1px solid #b1ffe4;box-shadow:inset 0 2px 1px #ffffff99,inset 0 -3px 2px #08674a30,0 5px 0 #197e6266,0 9px 25px #21bd8840;text-shadow:0 1px 0 #ffffff55;transition:transform .18s,box-shadow .18s,filter .18s}
+.button.dark,.mobile-contact{background:linear-gradient(145deg,#139d79 0%,#087b5e 46%,#044d3e 100%);color:#fff;border:1px solid #8aefd0;box-shadow:inset 0 2px 1px #b4ffe65e,inset 0 -3px 2px #001e2555,0 5px 0 #023c34a6,0 10px 28px #08b98550;text-shadow:0 1px 2px #002d29}
+.button:hover{filter:brightness(1.07);transform:translateY(-2px);box-shadow:inset 0 2px 1px #ffffff99,0 7px 0 #197e6266,0 14px 32px #21bd8855}
+.button.dark:hover,.mobile-contact:hover{background:linear-gradient(145deg,#17ad87,#076951);box-shadow:inset 0 2px 1px #b4ffe65e,0 7px 0 #023c34a6,0 14px 32px #08b98560}
+.button:active{transform:translateY(3px);filter:brightness(.98);box-shadow:inset 0 1px 3px #003b3030,0 1px 0 #197e6266,0 5px 14px #21bd8830}
+.service-cta{background:linear-gradient(135deg,#effff2c9,#acf0d2b3);border:1px solid #ffffffeb;border-radius:12px;padding:10px 12px;box-shadow:inset 0 1px 1px #fff,0 3px 0 #2f956c33,0 6px 15px #2fa77717;color:#064d3b;transition:transform .18s,box-shadow .18s}
+.service:hover .service-cta{box-shadow:inset 0 1px 1px #fff,0 4px 0 #2f956c33,0 8px 20px #2fa77730}
+.service:active .service-cta{transform:translateY(2px);box-shadow:inset 0 1px 1px #fff,0 1px 0 #2f956c33}
+.coupon button{background:linear-gradient(135deg,#ffffffbb,#d2f9e7);border:1px solid #ffffff;border-radius:13px;padding:3px 12px;box-shadow:inset 0 1px 1px #fff,0 3px 0 #258d6633,0 6px 18px #0b9e6f17}
+.button:focus-visible,.service:focus-visible,.coupon button:focus-visible{outline:3px solid #004b3a;outline-offset:5px}
+@media(max-width:650px){.mobile-contact{bottom:19px}.service-cta{padding:9px 10px;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.button,.service-cta{transition:none}}
+
+/* CLEANER SHORT HERO */
+.hero{min-height:480px}
+.hero-content{padding-block:45px}
+@media(max-width:650px){
+.hero{min-height:0}
+.hero-content{padding:100px 6px 28px}
+.hero h1{font-size:38px;line-height:1.22}
+.hero-description{font-size:14px;line-height:1.75;margin-bottom:18px}
+.hero-notes{margin-top:16px}
+.hero-actions .button{padding:10px 16px;min-height:44px}
+.service-team-photo{margin-top:18px}
+.service-team-photo img{height:160px;aspect-ratio:auto;object-position:center}
+#services{padding-top:24px}
+}
+
+/* CLEANER FIXED WHATSAPP */
+.mobile-contact{
+ display:flex!important;
+ position:fixed!important;
+ top:auto!important;
+ bottom:calc(16px + env(safe-area-inset-bottom,0px))!important;
+ left:16px!important;
+ right:16px!important;
+ width:auto!important;
+ max-width:560px;
+ margin:0 auto!important;
+ z-index:9999!important;
+ transform:none!important;
+ min-height:54px;
+ font-size:14px;
+}
+.mobile-contact:hover,.mobile-contact:active{
+ transform:none!important;
+}
+body{padding-bottom:95px}
