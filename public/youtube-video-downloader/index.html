@@ -1,4 +1,55 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>تحميل فيديوهات يوتيوب | VOOXOR</title><link rel="stylesheet" href="/youtube-video-downloader/style.css">
+<!doctype html><html lang="ar" dir="rtl"><head>
+<!-- VOOXOR Android-only install visibility -->
+<script id="vooxor-native-install-visibility">
+(function () {
+  var key = 'vooxor.nativeApp.session.v1';
+  var ref = document.referrer || '';
+  var nativeApp = /^android-app:\/\/com\.vooxor\.app(?:\/|$)/.test(ref);
+
+  try {
+    if (nativeApp) {
+      sessionStorage.setItem(key, '1');
+    } else if (ref) {
+      var source = new URL(ref);
+      if (source.origin !== location.origin) {
+        sessionStorage.removeItem(key);
+      }
+    }
+    nativeApp = nativeApp || sessionStorage.getItem(key) === '1';
+  } catch (_) {}
+
+  window.vooxorNativeApp = nativeApp;
+  if (!nativeApp) return;
+
+  document.documentElement.classList.add('vooxor-native-app');
+  window.addEventListener('beforeinstallprompt', function (event) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }, true);
+})();
+</script>
+<style id="vooxor-native-install-style">
+html.vooxor-native-app body #install-app,
+html.vooxor-native-app body #pdf-install-app,
+html.vooxor-native-app body #pdfInstallBox,
+html.vooxor-native-app body #vxInstallRewardCard,
+html.vooxor-native-app body .vr-app-banner,
+html.vooxor-native-app body .vr-install-original,
+html.vooxor-native-app body .vr-install-help,
+html.vooxor-native-app body .homeInstall,
+html.vooxor-native-app body .ig-install,
+html.vooxor-native-app body .vu-install,
+html.vooxor-native-app body .spot-install-area,
+html.vooxor-native-app body [data-vr-install],
+html.vooxor-native-app body [data-vu-install],
+html.vooxor-native-app body [data-ig-install] {
+  display: none !important;
+}
+html.vooxor-native-app body .homeRewardCards:has(> .homeInstall) {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+</style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>تحميل فيديوهات يوتيوب | VOOXOR</title><link rel="stylesheet" href="/youtube-video-downloader/style.css">
 <style id="vooxor-cleaning-style">
 a.vooxor-cleaning-card{box-sizing:border-box;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:14px 10px;min-width:0;max-width:100%;height:auto!important;background:#102b27!important;border:1px solid #50c2a1!important;border-radius:18px;color:#fff!important;text-decoration:none!important;text-align:center;font:inherit;line-height:1.45}
 a.vooxor-cleaning-card img{display:block!important;width:72px!important;height:72px!important;max-width:100%;object-fit:cover;object-position:50% 55%;border-radius:14px}
