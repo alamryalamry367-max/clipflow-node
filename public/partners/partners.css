@@ -15,3 +15,23 @@
 #vooxor-partners .vp-platform:focus-visible{outline:2px solid #c084fc;outline-offset:4px;border-radius:10px}
 @media(max-width:380px){#vooxor-partners{padding:12px 10px}#vooxor-partners .vp-platforms{gap:3px}#vooxor-partners .vp-icon{width:34px;height:34px}#vooxor-partners .vp-name{font-size:9px}}
 @media(prefers-reduced-motion:reduce){#vooxor-partners .vp-platform{transition:none}}
+
+/* VOOXOR PARTNERS HELP */
+#vooxor-partners .vp-help{
+ margin:10px 0 0;border-top:1px solid #ffffff18;padding-top:8px;
+}
+#vooxor-partners .vp-help summary{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:10px;min-height:40px;padding:4px 10px;border-radius:10px;
+ background:#a78bfa12;color:#e3d5ff;font-size:12px;
+ font-weight:600;cursor:pointer;list-style:none;
+}
+#vooxor-partners .vp-help summary::-webkit-details-marker{display:none}
+#vooxor-partners .vp-help summary span{font-size:18px}
+#vooxor-partners .vp-help[open] summary span{transform:rotate(45deg)}
+#vooxor-partners .vp-help p{
+ margin:10px 4px;color:#cfc5df;font-size:12px;line-height:1.9;
+}
+#vooxor-partners .vp-help summary:focus-visible{
+ outline:2px solid #c084fc;outline-offset:3px;
+}
