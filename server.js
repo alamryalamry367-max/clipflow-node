@@ -13,6 +13,14 @@ app.disable('x-powered-by');
 app.use(express.json({ limit: '16kb' }));
 
 
+app.get('/.well-known/assetlinks.json', (req, res) => {
+  res.set('Cache-Control', 'public, max-age=300');
+  res.sendFile('assetlinks.json', {
+    root: PUBLIC + '/.well-known',
+    dotfiles: 'allow'
+  });
+});
+
 app.use(express.static(PUBLIC, { maxAge: '1h' }));
 
 function isPrivateIp(ip) {

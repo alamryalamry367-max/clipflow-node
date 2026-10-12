@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.vooxor.app",
+      "sha256_cert_fingerprints": [
+        "27:6C:05:A4:B6:AD:21:70:89:1E:8E:46:0C:1E:6E:38:F1:77:36:78:A9:7A:A5:6D:68:8A:34:EE:DA:76:C5:FE"
+      ]
+    }
+  }
+]
