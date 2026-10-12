@@ -1,0 +1,49 @@
+name: VOOXOR Android Test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install Bubblewrap
+        run: npm install -g @bubblewrap/cli@1.22.0
+
+      - name: Configure build tools
+        run: |
+          mkdir -p "$HOME/.bubblewrap"
+          node -e 'require("fs").writeFileSync(process.env.HOME+"/.bubblewrap/config.json", JSON.stringify({jdkPath:process.env.JAVA_HOME,androidSdkPath:process.env.ANDROID_HOME}))'
+
+      - name: Generate Android project
+        working-directory: vooxor-android
+        run: bubblewrap update --skipVersionUpgrade
+
+      - name: Build test APK
+        working-directory: vooxor-android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
+
+      - name: Upload test APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: VOOXOR-test-apk
+          path: vooxor-android/app/build/outputs/apk/debug/*.apk
+          if-no-files-found: error
+          retention-days: 14

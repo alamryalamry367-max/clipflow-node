@@ -1,0 +1,32 @@
+{
+  "packageId": "com.vooxor.app",
+  "host": "vooxor.com",
+  "name": "VOOXOR",
+  "launcherName": "VOOXOR",
+  "display": "standalone",
+  "themeColor": "#0b0714",
+  "themeColorDark": "#0b0714",
+  "navigationColor": "#0b0714",
+  "navigationColorDark": "#0b0714",
+  "backgroundColor": "#0b0714",
+  "startUrl": "/",
+  "iconUrl": "https://vooxor.com/vooxor-icon-512.png",
+  "appVersion": "1.0.0",
+  "appVersionCode": 1,
+  "signingKey": {
+    "path": "./vooxor-upload.keystore",
+    "alias": "vooxor"
+  },
+  "splashScreenFadeOutDuration": 300,
+  "enableNotifications": false,
+  "shortcuts": [],
+  "webManifestUrl": "https://vooxor.com/manifest.webmanifest",
+  "fullScopeUrl": "https://vooxor.com/",
+  "fallbackType": "customtabs",
+  "orientation": "default",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true
+}
