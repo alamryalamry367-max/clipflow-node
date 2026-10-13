@@ -30,6 +30,14 @@ jobs:
           mkdir -p "$HOME/.bubblewrap"
           node -e 'require("fs").writeFileSync(process.env.HOME+"/.bubblewrap/config.json", JSON.stringify({jdkPath:process.env.JAVA_HOME,androidSdkPath:process.env.ANDROID_HOME}))'
 
+      - name: Prepare Android SDK compatibility
+        run: |
+          test -x "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          if [ ! -e "$ANDROID_HOME/bin" ]; then
+            ln -s "$ANDROID_HOME/cmdline-tools/latest/bin" "$ANDROID_HOME/bin"
+          fi
+          test -x "$ANDROID_HOME/bin/sdkmanager"
+
       - name: Restore signing key
         working-directory: vooxor-android
         env:
