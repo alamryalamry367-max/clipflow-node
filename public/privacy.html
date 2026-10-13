@@ -211,16 +211,24 @@ html,body{
 <meta name="theme-color" content="#0b0714">
 <link rel="stylesheet" href="/partners/partners.css?v=1">
 <link rel="stylesheet" href="/partners/services.css?v=2">
+
+<style id="vooxor-unified-header-logo">
+header a.vx-unified-logo{background:none!important;box-shadow:none!important}
+header a.vx-unified-logo>svg{
+  display:block!important;width:132px!important;max-width:100%!important;
+  height:auto!important;aspect-ratio:290/78;
+}
+header a.vx-unified-logo.wordmark{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+}
+</style>
 </head>
 
 <body>
 <main class="legal-shell">
 
   <header class="legal-top">
-    <a class="legal-brand" href="/" aria-label="VOOXOR home">
-      <img src="/vooxor-logo.png" alt="VOOXOR">
-      <span class="legal-brand-name">VOOXOR</span>
-    </a>
+    <a class="legal-brand vx-unified-logo" href="/" aria-label="VOOXOR home"><svg class="vr-art " viewBox="705 21 290 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg></a>
 
     <nav class="legal-nav" aria-label="Legal navigation">
       <a href="/privacy">Privacy</a>
