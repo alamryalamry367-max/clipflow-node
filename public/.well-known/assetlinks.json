@@ -7,7 +7,8 @@
       "namespace": "android_app",
       "package_name": "com.vooxor.app",
       "sha256_cert_fingerprints": [
-        "27:6C:05:A4:B6:AD:21:70:89:1E:8E:46:0C:1E:6E:38:F1:77:36:78:A9:7A:A5:6D:68:8A:34:EE:DA:76:C5:FE"
+        "27:6C:05:A4:B6:AD:21:70:89:1E:8E:46:0C:1E:6E:38:F1:77:36:78:A9:7A:A5:6D:68:8A:34:EE:DA:76:C5:FE",
+        "34:D1:CE:54:57:AE:7F:05:38:D1:91:1C:01:B3:AF:9F:06:9F:0F:0F:1A:B6:6A:83:53:CD:37:C4:8E:37:D4:65"
       ]
     }
   }
