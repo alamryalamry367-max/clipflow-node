@@ -21,6 +21,13 @@ app.get('/.well-known/assetlinks.json', (req, res) => {
   });
 });
 
+// Keep alternate spellings of the Arabic TikTok page on its existing canonical URL.
+app.get(['/tiktok-video-downloader/', '/tiktok-video-downloader.html'], (req, res, next) => {
+  if (req.path === '/tiktok-video-downloader') return next();
+  const query = req.originalUrl.includes('?') ? req.originalUrl.slice(req.originalUrl.indexOf('?')) : '';
+  res.redirect(301, '/tiktok-video-downloader' + query);
+});
+
 app.use(express.static(PUBLIC, { maxAge: '1h' }));
 
 function isPrivateIp(ip) {
@@ -572,76 +579,28 @@ const youtubeLookupTimes = new Map();
 app.get('/api/youtube/info', async (req, res) => {
   const ip = req.ip || req.socket.remoteAddress || 'unknown';
   const now = Date.now();
-
-  if (now - (youtubeLookupTimes.get(ip) || 0) < 5000) {
-    return res.status(429).json({error:'Please wait 5 seconds.'});
-  }
+  if (now - (youtubeLookupTimes.get(ip) || 0) < 5000) return res.status(429).json({error:'Please wait 5 seconds.'});
   youtubeLookupTimes.set(ip, now);
-
-  if (youtubeLookupTimes.size > 3000) {
-    for (const [key, time] of youtubeLookupTimes) {
-      if (now - time > 60000) youtubeLookupTimes.delete(key);
-    }
-  }
-
+  if (youtubeLookupTimes.size > 3000) for (const [key, time] of youtubeLookupTimes) if (now-time > 60000) youtubeLookupTimes.delete(key);
   let u;
-  try {
-    u = new URL(String(req.query.url || ''));
-  } catch {
-    return res.status(400).json({error:'Invalid YouTube URL'});
-  }
-
+  try { u = new URL(String(req.query.url || '')); } catch { return res.status(400).json({error:'Invalid YouTube URL'}); }
   const host = u.hostname.toLowerCase();
-  if (
-    u.protocol !== 'https:' ||
-    !['youtube.com','www.youtube.com','m.youtube.com','youtu.be',
-      'www.youtu.be','youtube-nocookie.com',
-      'www.youtube-nocookie.com'].includes(host) ||
-    u.href.length > 500
-  ) {
-    return res.status(400).json({error:'Use a public YouTube HTTPS link.'});
-  }
-
-  const {execFile} = require('node:child_process');
-
-  execFile('yt-dlp', [
-    '--no-playlist',
-    '--skip-download',
-    '--no-warnings',
-    '--dump-single-json',
-    '--',
-    u.href
-  ], {
-    timeout: 35000,
-    maxBuffer: 2 * 1024 * 1024
-  }, (error, stdout) => {
-    if (res.destroyed) return;
-
-    if (error) {
-      return res.status(502).json({
-        error:'Unable to extract this YouTube video'
-      });
-    }
-
-    try {
-      const data = JSON.parse(stdout);
-
-      return res.set('Cache-Control','no-store').json({
-        title:String(data.title || 'YouTube video').slice(0,250),
-        author:String(data.uploader || '').slice(0,120),
-        thumbnail:typeof data.thumbnail === 'string' &&
-          data.thumbnail.startsWith('https://')
-          ? data.thumbnail : null,
-        videoUrl:null,
-        videoId:String(data.id || '').slice(0,30),
-        platform:'YouTube'
-      });
-    } catch {
-      return res.status(502).json({
-        error:'Invalid video metadata'
-      });
-    }
-  });
+  if (u.protocol !== 'https:' || !['youtube.com','www.youtube.com','m.youtube.com','youtu.be','www.youtu.be','youtube-nocookie.com','www.youtube-nocookie.com'].includes(host) || String(req.query.url).length > 500) return res.status(400).json({error:'Use a public YouTube HTTPS link.'});
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 20000);
+    let response;
+    try { response = await fetch('https://ahm7xmakki.com/api/alldl?url=' + encodeURIComponent(u.href), {signal:controller.signal, headers:{accept:'application/json'}}); }
+    finally { clearTimeout(timer); }
+    if (!response.ok) return res.status(response.status===429?429:502).json({error:'Provider unavailable'});
+    const raw = await response.text();
+    if (raw.length > 150000) return res.status(502).json({error:'Provider response too large'});
+    const data = JSON.parse(raw);
+    if (data.success !== true || !data.mediaInfo) return res.status(502).json({error:'Video not available'});
+    const m = data.mediaInfo;
+    const safeLink = value => { try { const x=new URL(value); return x.protocol==='https:' && x.hostname==='api.vidsnap.app' && x.pathname==='/proxy' ? x.href : null; } catch {return null;} };
+    res.set('Cache-Control','no-store').json({title:String(m.title||'YouTube video').slice(0,250),author:String(m.author||'').slice(0,120),thumbnail:typeof m.thumbnail==='string' && m.thumbnail.startsWith('https://')?m.thumbnail:null,videoUrl:safeLink(m.videoUrl),audioUrl:safeLink(m.audioUrl),audioFormat:'webm',platform:'YouTube'});
+  } catch (e) { res.status(502).json({error:'Unable to reach provider'}); }
 });
 
 // VOOXOR YouTube direct MP4 download
@@ -940,9 +899,12 @@ app.get('/ar/', (_, res) =>
 );
 
 app.get('/yandex_ba35d0e8892cda11.html', (_, res) => res.sendFile(path.join(PUBLIC, 'yandex_ba35d0e8892cda11.html')));
-app.get('*splat', (_, res) =>
-  res.sendFile(path.join(PUBLIC, 'index.html'))
-);
+// Unknown URLs are not copies of the homepage. Existing routes and static pages run first.
+app.get('*splat', (_, res) => {
+  res.status(404).set('X-Robots-Tag', 'noindex').type('html').send(
+    '<!doctype html><html lang="ar" dir="rtl"><meta charset="utf-8"><title>الصفحة غير موجودة | VOOXOR</title><h1>الصفحة غير موجودة</h1><p><a href="/ar/">العودة إلى الرئيسية</a></p></html>'
+  );
+});
 
 app.listen(PORT, () =>
   console.log(`VOOXOR running on http://localhost:${PORT}`)

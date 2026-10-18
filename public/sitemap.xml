@@ -1,60 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<?xml version='1.0' encoding='UTF-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://vooxor.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/"/>
   </url>
-
   <url>
     <loc>https://vooxor.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/"/>
   </url>
-
   <url>
     <loc>https://vooxor.com/privacy</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/terms</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/dmca</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/tiktok-video-downloader</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/tiktok-video-downloader"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://vooxor.com/bd/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://vooxor.com/id/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://vooxor.com/ur/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/en/tiktok-video-downloader/"/>
   </url>
-
+  <url>
+    <loc>https://vooxor.com/en/tiktok-video-downloader/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/tiktok-video-downloader"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://vooxor.com/bd/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://vooxor.com/id/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://vooxor.com/ur/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+  </url>
   <url>
     <loc>https://vooxor.com/instagram-video-downloader</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/facebook-video-downloader</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/snapchat-video-downloader</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/ar/snapchat-spotlight-downloader</loc>
   </url>
-
   <url>
     <loc>https://vooxor.com/id/tiktok-video-downloader/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/tiktok-video-downloader"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://vooxor.com/bd/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://vooxor.com/id/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://vooxor.com/ur/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/en/tiktok-video-downloader/"/>
   </url>
-
   <url>
     <loc>https://vooxor.com/bd/tiktok-video-downloader/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/tiktok-video-downloader"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://vooxor.com/bd/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://vooxor.com/id/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://vooxor.com/ur/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/en/tiktok-video-downloader/"/>
   </url>
-
   <url>
     <loc>https://vooxor.com/ur/tiktok-video-downloader/</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://vooxor.com/tiktok-video-downloader"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://vooxor.com/en/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://vooxor.com/bd/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://vooxor.com/id/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="ur" href="https://vooxor.com/ur/tiktok-video-downloader/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://vooxor.com/en/tiktok-video-downloader/"/>
   </url>
-
   <url>
     <loc>https://vooxor.com/image-to-pdf/</loc>
   </url>
-  <url><loc>https://vooxor.com/cleaner/</loc></url>
+  <url>
+    <loc>https://vooxor.com/cleaner/</loc>
+  </url>
+  <url>
+    <loc>https://vooxor.com/rewards/</loc>
+  </url>
 </urlset>
