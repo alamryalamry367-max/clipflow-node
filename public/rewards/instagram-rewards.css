@@ -41,3 +41,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 /* Keep TikTok imagery and download controls intact. */
 .vr-header{max-width:740px!important;direction:ltr}.vr-header .ig-brand{max-width:none!important}.vr-header .ig-brand .ig-art{width:100%;height:100%}.vr-header .ig-menu .ig-icon{width:26px;height:26px;flex-basis:26px}.vr-header .ig-lang summary{justify-content:center;height:40px;padding:5px!important}.vr-header .ig-lang summary span{display:none}.vr-header .ig-lang summary .ig-icon{width:23px;height:23px;flex-basis:23px}.vr-header .ig-lang>a{position:absolute!important;top:48px!important;right:0!important;left:auto!important;z-index:40}.vr-header .ig-lang>a+a{top:92px!important}.homeRewards{margin-bottom:14px!important}.homeRewardCard .vr-icon{width:17px;height:17px}.homeRewardCard small{line-height:1.7}.homeAuth[hidden]{display:none!important}.homeRewardCard[hidden]{display:none!important}.vr-header #homeAccountBtn{font-size:0!important;color:transparent!important}.vr-header #homeAccountBtn svg{color:#fff!important}.homeReferralIntro h2{font-size:clamp(18px,4vw,29px)}
 @media(max-width:600px){.homeReferral{padding:14px}.homeReferralIntro img{width:100px;height:78px}.homeReferralIntro p{font-size:11px}.homeReferralIntro a{font-size:10px}.homeReferralActions>button{font-size:10px;padding:9px 8px;max-width:125px}.homeReferralField span{font-size:10px}.homeRewardCards{gap:9px}.homeRewardCard{padding:19px 9px 10px}.homeRewardArt{width:49px;height:49px}.homeRewardArt>svg{width:44px;height:44px}.homeRewardAmount{font-size:12px}.homeRewardCard h3{font-size:11px}.homeRewardCard button,.homeRewardCTA{font-size:10px;min-height:37px}.homeRewardCard small{font-size:8px}.homeRewardCard .vr-install svg{display:none}}
+
+/* Fill the row after removing the advertising card. */
+html body .homeRewardCards,
+html body .rewardCards {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}

@@ -1,6 +1,7 @@
-self.options = {
-    "domain": "3nbf4.com",
-    "zoneId": 11869723
-}
-self.lary = ""
-importScripts('https://3nbf4.com/act/files/service-worker.min.js?r=sw')
+/* VOOXOR: replace the former advertising worker; no external imports. */
+self.addEventListener('install', () => self.skipWaiting());
+self.addEventListener('activate', event => event.waitUntil((async () => {
+  const subscription = await self.registration.pushManager.getSubscription();
+  if (subscription) await subscription.unsubscribe();
+  await self.clients.claim();
+})()));

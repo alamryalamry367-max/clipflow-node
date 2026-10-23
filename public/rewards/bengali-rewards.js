@@ -63,14 +63,7 @@ el('homeSignup').addEventListener('click',()=>void authenticate(true));
 async function copyReferral(){if(!referral){showAuth();message('আমন্ত্রণের লিংক দেখতে লগ ইন করুন।');return;}try{await navigator.clipboard.writeText(referral);message('আমন্ত্রণের লিংক কপি হয়েছে।')}catch{el('homeReferralLink').textContent=referral;message('দেখানো লিংকটি নিজে কপি করুন।')}}
 el('homeReferralCopy').addEventListener('click',()=>void copyReferral());
 el('homeReferralShare').addEventListener('click',async()=>{if(!referral){showAuth();return;}try{if(navigator.share)await navigator.share({title:'VOOXOR',text:'VOOXOR টুল ব্যবহার করে পুরস্কার সংগ্রহ করুন।',url:referral});else await copyReferral();}catch(e){if(e.name!=='AbortError')message('শেয়ার করা যায়নি; লিংকটি কপি করতে পারেন।')}});
-function adURL(){
- const url=new URL('https://spendsdetachment.com/qpad1xzw4');const params={key:'e6542ff4b88b27acc240eedbf8d07660',scrWidth:screen.width,scrHeight:screen.height,tz:-new Date().getTimezoneOffset()/60,ship:1,v:'2026.10.6_9153',refer:location.href,kw:'[]',sub3:'invoke_layer',ifid:crypto.randomUUID?.()||String(Date.now()),ibid:'01a117da-7d9e-7482-87cf-7600af955012'};Object.entries(params).forEach(([k,v])=>url.searchParams.set(k,v));return url.href;
-}
-el('homeAdOpen').addEventListener('click',()=>{
- const url=adURL();const popup=window.open(url,'_blank');if(popup){try{popup.opener=null}catch{}}
- // Each deliberate button click receives +4 VX, using the existing server RPC.
- adQueue=adQueue.then(()=>claim('watch_ad')).then(()=>{if(!popup){const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.textContent=' বিজ্ঞাপন খুলতে এখানে চাপুন';status.append(link);}}).catch(e=>message('পুরস্কার যোগ করা যায়নি: '+e.message));
-});
+// Advertising is disabled. Other rewards remain available.
 const standalone=()=>matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
 let homeInstallPrompt=null;
 const installEvidence='vooxor.installAccepted.v1';

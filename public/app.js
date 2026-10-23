@@ -145,7 +145,7 @@ async function startDownload() {
     return;
   }
 
-  window.open('https://omg10.com/4/11934145', '_blank', 'noopener,noreferrer');
+  // No advertisement is opened during downloads.
 
   // Installation must not block the video download.
   void maybePromptInstall().catch(error => console.warn('Install prompt error:', error));

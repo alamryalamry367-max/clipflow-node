@@ -59,3 +59,9 @@ body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;ba
 
 /* English layout overrides */
 .homeRewards,.homeAuth,.homeRewardCard,.homeLevel{direction:ltr}.homeReferralIntro{text-align:left}.homeReferralActions{direction:ltr}.vr-hero #url,.vr-hero #result:not(:empty){text-align:left!important}.vr-app-copy{direction:ltr;text-align:left}.vr-facts>div{direction:ltr}.homeRewardCard button,.homeRewardCTA{white-space:normal}.homeRewardCard small{font-size:10px}.homeReferralActions>button{max-width:145px}.homeReferralIntro p{line-height:1.7}.homePasteWrap{left:auto!important;right:24px}.vr-field{padding-inline-end:55px}.vr-header .homeLevelTop b{font-size:10px!important}@media(max-width:600px){.homePasteWrap{right:19px}.homeRewardCard h3{font-size:11px}.homeRewardCard button,.homeRewardCTA{font-size:10px}.homeRewardCard small{font-size:8px}.homeReferralIntro h2{font-size:17px}}
+
+/* Fill the row after removing the advertising card. */
+html body .homeRewardCards,
+html body .rewardCards {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}

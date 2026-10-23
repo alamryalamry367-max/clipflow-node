@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
+
 <!-- VOOXOR Android-only install visibility -->
 <script id="vooxor-native-install-visibility">
 (function () {
@@ -195,12 +196,11 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8585974444588582"
-     crossorigin="anonymous"></script>
 
 
 
-    <!-- Monetag In-Page Push -->
+
+
     
 <style id="vooxor-share-ui">
 .vooxor-share{
@@ -699,6 +699,22 @@ header a.vx-unified-logo.wordmark{
   display:flex;flex-direction:column;align-items:center;gap:4px;
 }
 </style>
+
+
+<style id="vooxor-two-rewards">
+html body .homeRewards .homeRewardCards {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  width: 100% !important;
+}
+html body .homeRewards .homeRewardCards > .homeRewardCard {
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  grid-column: auto !important;
+}
+</style>
+
 </head>
 
 <body dir="rtl">
@@ -711,7 +727,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;"><s
 
 <main>
 
-<section id="homeAuth" class="homeAuth" hidden aria-labelledby="homeAuthTitle"><div class="homeAuthHead"><h2 id="homeAuthTitle">حساب VOOXOR</h2><button id="homeAuthClose" type="button" aria-label="إغلاق">×</button></div><form id="homeLoginForm"><label for="homeEmail">البريد الإلكتروني</label><input id="homeEmail" type="email" autocomplete="email" required><label for="homePassword">كلمة المرور</label><input id="homePassword" type="password" autocomplete="current-password" minlength="6" required><div class="homeAuthActions"><button type="submit">تسجيل الدخول</button><button id="homeSignup" type="button">إنشاء حساب</button></div></form><p id="homeAuthStatus" role="status" aria-live="polite"></p></section><section class="homeRewards" aria-label="مكافآت VOOXOR"><div class="homeReferral"><div class="homeReferralIntro"><div><h2>VOOXOR <span>REWARDS</span></h2><p><b dir="ltr">50 VX</b> لك <span>·</span> <b dir="ltr">25 VX</b> لصديقك</p><a href="/rewards/">اكتشف عائلة VOOXOR ←</a></div><img src="/image-to-pdf/rewards-gift.png" alt="هدية وعملات VOOXOR" width="180" height="120"></div><div class="homeReferralActions"><div class="homeReferralField"><span id="homeReferralLink">سجّل الدخول لعرض رابطك</span><button id="homeReferralCopy" type="button" aria-label="نسخ رابط الإحالة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="12" height="15" rx="2"/><path d="M16 7V2H3v15h5"/></svg></button></div><button id="homeReferralShare" type="button">↗ مشاركة رابط الإحالة</button></div></div><div class="homeRewardCards"><div class="homeRewardCard homeInstall"><span class="homeRewardAmount" dir="ltr">+10 VX</span><div class="homeRewardArt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4M12 6v7m-3-3 3 3 3-3"/></svg><i class="homeCoin">V</i></div><h3>تثبيت التطبيق</h3><button type="button" class="vr-install" data-vr-install><svg class="vr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تثبيت التطبيق</span></button><small>مرة واحدة بعد التثبيت</small></div><div class="homeRewardCard homeAd"><span class="homeRewardAmount" dir="ltr">+4 VX</span><div class="homeRewardArt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="4"/><path d="m10 8 6 4-6 4z"/></svg><i class="homeAdLabel">AD</i></div><h3>زِد رصيدك</h3><button id="homeAdOpen" type="button">اربح 4 VX ▶</button><small>افتح الإعلان واحصل على مكافأتك</small></div><a class="homeRewardCard homePDF" href="/image-to-pdf/"><span class="homeRewardAmount" dir="ltr">+4 VX</span><div class="homeRewardArt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2h9l5 5v15H5zM14 2v6h5M8 12h8M8 16h6"/></svg></div><h3>جرّب أداة PDF</h3><span class="homeRewardCTA">استخدم الأداة ←</span><small>بعد أول تحويل ناجح</small></a></div><p id="homeRewardStatus" role="status" aria-live="polite"></p><button id="homeRewardRetry" type="button" hidden>إعادة محاولة مكافأة التثبيت</button></section>
+<section id="homeAuth" class="homeAuth" hidden aria-labelledby="homeAuthTitle"><div class="homeAuthHead"><h2 id="homeAuthTitle">حساب VOOXOR</h2><button id="homeAuthClose" type="button" aria-label="إغلاق">×</button></div><form id="homeLoginForm"><label for="homeEmail">البريد الإلكتروني</label><input id="homeEmail" type="email" autocomplete="email" required><label for="homePassword">كلمة المرور</label><input id="homePassword" type="password" autocomplete="current-password" minlength="6" required><div class="homeAuthActions"><button type="submit">تسجيل الدخول</button><button id="homeSignup" type="button">إنشاء حساب</button></div></form><p id="homeAuthStatus" role="status" aria-live="polite"></p></section><section class="homeRewards" aria-label="مكافآت VOOXOR"><div class="homeReferral"><div class="homeReferralIntro"><div><h2>VOOXOR <span>REWARDS</span></h2><p><b dir="ltr">50 VX</b> لك <span>·</span> <b dir="ltr">25 VX</b> لصديقك</p><a href="/rewards/">اكتشف عائلة VOOXOR ←</a></div><img src="/image-to-pdf/rewards-gift.png" alt="هدية وعملات VOOXOR" width="180" height="120"></div><div class="homeReferralActions"><div class="homeReferralField"><span id="homeReferralLink">سجّل الدخول لعرض رابطك</span><button id="homeReferralCopy" type="button" aria-label="نسخ رابط الإحالة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="7" width="12" height="15" rx="2"/><path d="M16 7V2H3v15h5"/></svg></button></div><button id="homeReferralShare" type="button">↗ مشاركة رابط الإحالة</button></div></div><div class="homeRewardCards"><div class="homeRewardCard homeInstall"><span class="homeRewardAmount" dir="ltr">+10 VX</span><div class="homeRewardArt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 18h4M12 6v7m-3-3 3 3 3-3"/></svg><i class="homeCoin">V</i></div><h3>تثبيت التطبيق</h3><button type="button" class="vr-install" data-vr-install><svg class="vr-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v4h16v-4"/></svg><span>تثبيت التطبيق</span></button><small>مرة واحدة بعد التثبيت</small></div><a class="homeRewardCard homePDF" href="/image-to-pdf/"><span class="homeRewardAmount" dir="ltr">+4 VX</span><div class="homeRewardArt"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2h9l5 5v15H5zM14 2v6h5M8 12h8M8 16h6"/></svg></div><h3>جرّب أداة PDF</h3><span class="homeRewardCTA">استخدم الأداة ←</span><small>بعد أول تحويل ناجح</small></a></div><p id="homeRewardStatus" role="status" aria-live="polite"></p><button id="homeRewardRetry" type="button" hidden>إعادة محاولة مكافأة التثبيت</button></section>
 
 
 
@@ -776,19 +792,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;"><s
   <b>Open Tool →</b>
 </a>
 
-<!-- Adsterra Banner 300x250 -->
-<div class="vooxor-ad" aria-label="Advertisement">
-  <script>
-    atOptions = {
-      'key' : 'c4c06ebc3b6b353ed9603feb319ce9a6',
-      'format' : 'iframe',
-      'height' : 250,
-      'width' : 300,
-      'params' : {}
-    };
-  </script>
-</div>
-<!-- End Adsterra Banner 300x250 -->
+
 
 
 
@@ -1020,13 +1024,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;"><s
 
 </section>
 
-<div class="vx-referrals-wrap"><nav class="vx-compact-services" aria-label="خدمات VOOXOR"><a class="vx-small-service" href="/cleaner/"><span class="vx-small-badge cleaner">خصم 25%</span><img src="/assets/cleaning-service-logo.jpg" alt="" width="32" height="32" loading="lazy"><span class="vx-small-name">كلينر</span><small class="vx-small-purpose" dir="rtl">تنظيف منازل وفلل</small></a><a class="vx-small-service" href="/tiktok-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="136 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">TikTok</span><small class="vx-small-purpose" dir="rtl">تحميل من تيك توك</small></a><a class="vx-small-service" href="/instagram-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="361 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Instagram</span><small class="vx-small-purpose" dir="rtl">تحميل من إنستجرام</small></a><a class="vx-small-service" href="/facebook-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="590 755 78 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Facebook</span><small class="vx-small-purpose" dir="rtl">تحميل من فيسبوك</small></a><a class="vx-small-service" href="/snapchat-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="817 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Snapchat</span><small class="vx-small-purpose" dir="rtl">تحميل من سناب شات</small></a></nav><section id="vooxor-partners" dir="rtl" aria-labelledby="vp-title"><div class="vp-header"><div><h2 id="vp-title">شركاء VOOXOR</h2><p class="vp-tagline">حقّق دخلًا من إحالة أصدقائك</p></div><span class="vp-money" aria-hidden="true">💵</span></div><div class="vp-platforms"><a class="vp-platform" href="https://www.binance.com/referral/earn-together/refer2earn-usdc/claim?hl=ar&amp;ref=GRO_28502_HWPV2" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة Binance" style="--vp-color:#f0b90b"><span class="vp-icon"><img src="/partners/icons/binance.png" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">Binance</span></a><a class="vp-platform" href="https://www.gate.com/ar/share/UFcQBwxb" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة Gate" style="--vp-color:#3484ff"><span class="vp-icon"><img src="/partners/icons/gate.png" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">Gate</span></a><a class="vp-platform" href="https://pocket-friends.co/r/fjeaqpcw5q" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة Pocket Option" style="--vp-color:#36c99a"><span class="vp-icon"><img src="/partners/icons/pocket.png" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">Pocket Option</span></a><a class="vp-platform" href="https://expertoption-track.com/602983059" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة ExpertOption" style="--vp-color:#26a7ee"><span class="vp-icon"><img src="/partners/icons/expert.png" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">ExpertOption</span></a><a class="vp-platform" href="https://t.deriv.link?t=2SNY3WATAXQD" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة Deriv" style="--vp-color:#ff5359"><span class="vp-icon"><img src="/partners/icons/deriv.png" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">Deriv</span></a><a class="vp-platform" href="https://url.hk/i/ar/pji4k" target="_blank" rel="sponsored noopener noreferrer" aria-label="زيارة RedotPay" style="--vp-color:#ff4764"><span class="vp-icon"><img src="/partners/icons/redotpay.svg" alt="" width="25" height="25" loading="lazy" decoding="async"></span><span class="vp-name" dir="ltr">RedotPay</span></a></div>
-<details class="vp-help" dir="rtl">
-<summary>كيف تحقق الأرباح؟ <span aria-hidden="true">＋</span></summary>
-<p>اختر المنصة وسجّل عبر رابطنا، ثم راجع شروط عرض التسجيل. إذا كان برنامج الإحالة متاحًا لحسابك، شارك رابط إحالتك الخاص مع أصدقائك لتكسب مكافآت عند استيفاء شروط المنصة.</p>
-<p>تُضاف المكافآت إلى حسابك في المنصة، وهي منفصلة عن عملات VX.</p>
-</details>
-<p class="vp-note">وفق شروط كل منصة · روابط إحالة قد نحصل منها على عمولة</p></section></div></main>
+<div class="vx-referrals-wrap"><nav class="vx-compact-services" aria-label="خدمات VOOXOR"><a class="vx-small-service" href="/cleaner/"><span class="vx-small-badge cleaner">خصم 25%</span><img src="/assets/cleaning-service-logo.jpg" alt="" width="32" height="32" loading="lazy"><span class="vx-small-name">كلينر</span><small class="vx-small-purpose" dir="rtl">تنظيف منازل وفلل</small></a><a class="vx-small-service" href="/tiktok-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="136 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">TikTok</span><small class="vx-small-purpose" dir="rtl">تحميل من تيك توك</small></a><a class="vx-small-service" href="/instagram-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="361 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Instagram</span><small class="vx-small-purpose" dir="rtl">تحميل من إنستجرام</small></a><a class="vx-small-service" href="/facebook-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="590 755 78 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Facebook</span><small class="vx-small-purpose" dir="rtl">تحميل من فيسبوك</small></a><a class="vx-small-service" href="/snapchat-video-downloader"><span class="vx-small-badge ">🎁 +4 VX</span><svg class="vr-art " viewBox="817 755 79 78" aria-hidden="true"><image href="/assets/vooxor-reference-20261002-v2/reference.png" width="1024" height="1536"/></svg><span class="vx-small-name">Snapchat</span><small class="vx-small-purpose" dir="rtl">تحميل من سناب شات</small></a></nav></div></main>
 
 <footer>
   <span>© 2026 VOOXOR</span>
@@ -1037,7 +1035,7 @@ style="display:inline-flex;align-items:center;gap:10px;text-decoration:none;"><s
   </span>
 </footer>
 
-<script src="/app.js"></script>
+<script src="/app.js?v=noads-20261023"></script>
 
 
 
@@ -1110,6 +1108,6 @@ window.addEventListener("load", function () {
   }
 })();
 </script>
-<script type="module" src="/rewards/spotlight-rewards.js?v=spotrewards1"></script>
+<script type="module" src="/rewards/spotlight-rewards.js?v=noads-20261023"></script>
 </body>
 </html>

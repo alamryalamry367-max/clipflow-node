@@ -66,3 +66,9 @@
 @media(min-width:900px){.uploadInner{padding:30px 32px 24px}.uploadIllustration{height:126px;transform:scale(1.12);margin-bottom:23px}#files{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:650px){.pdfHero{padding:25px 0 20px}.pdfHero h1{font-size:28px}.pdfHero h2{font-size:20px}.pdfHero p{font-size:11px;margin:10px 0 15px}.heroFeatures{gap:7px}.heroFeatures span{padding:7px 9px;font-size:10px;gap:5px}.heroFeatures svg{width:16px;height:16px}.uploadInner{padding:23px 18px 17px}.uploadIllustration{transform:scale(.9);height:102px;margin-bottom:10px}.uploadInner h2{font-size:24px}.uploadInner p{font-size:12px}.uploadActions .primary{height:53px;font-size:18px}.uploadInner small{font-size:11px}#workspace{padding:15px;margin-top:18px}.screenHead h2{font-size:19px}.screenHead p{font-size:10px}.addTop{font-size:11px;padding:0 9px}#files{gap:8px}#files .number{width:24px;height:24px;top:7px;right:7px;font-size:12px}#files .rotateBtn,#files .dragHandle,#files .remove{width:28px;height:28px;border-radius:8px}#files .imageActions{left:6px;bottom:7px;gap:3px}#files .remove{right:6px;bottom:7px}#workspace .panel{padding:13px}.options,.proOptions{grid-template-columns:1fr 1fr}}
 @media(max-width:370px){.pdfHero h1{font-size:25px}.pdfHero h2{font-size:18px}.heroFeatures span{padding:6px 7px;font-size:9px}.uploadInner{padding:20px 14px 16px}#files .dragHandle{display:none}.screenHead h2{font-size:17px}}
+
+/* Fill the row after removing the advertising card. */
+html body .homeRewardCards,
+html body .rewardCards {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
